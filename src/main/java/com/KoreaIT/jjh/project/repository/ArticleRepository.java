@@ -20,12 +20,14 @@ public interface ArticleRepository {
 	public void deleteArticle(int id);
 
 	@Update("""
+			<script>
 			UPDATE article
-			SET regDate = NOW(),
-			updateDate = NOW(),
-			title = #{title},
-			`body` = #{body}
+			SET
+				<if test="title != null and title != ''">title = #{title},</if>
+				<if test="body != null and body != ''">`body` = #{body},</if>
+				updateDate= NOW()
 			WHERE id = #{id}
+			</script>
 			""")
 	public void modifyArticle(int id, String title, String body);
 

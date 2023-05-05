@@ -1,10 +1,10 @@
 package com.KoreaIT.jjh.project.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -56,7 +56,7 @@ public class UsrArticleController {
 
 	@RequestMapping("usr/article/doWrite")
 	@ResponseBody
-	public Article write(String title, String body) {
+	public Article doWrite(String title, String body) {
 		int id = articleService.write(title, body);
 		
 		Article article = articleService.getArticle(id);
@@ -65,10 +65,11 @@ public class UsrArticleController {
 	}
 
 	@RequestMapping("usr/article/list")
-	@ResponseBody
-	public List<Article> showList() {
+	public String showList(Model model) {
 		List<Article> articles = articleService.getArticles();
 		
-		return articles;
+		model.addAttribute("articles",articles);
+		
+		return "usr/article/list";
 	}
 }
