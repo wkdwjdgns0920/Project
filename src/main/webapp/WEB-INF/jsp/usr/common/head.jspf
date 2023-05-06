@@ -22,8 +22,8 @@
 </head>
 <body>
 	<div class="flex justify-end pr-5 text-xs ">
-		<a class="bg-gray-300" href="#">LOGIN</a>
-		<a class="bg-gray-300" href="#">LOGOUT</a>
+		<a class="bg-gray-300" href="../member/login">LOGIN</a>
+		<a class="bg-gray-300" href="../member/logout">LOGOUT</a>
 	</div>
 	<header>
 		<div class="h-10 flex mx-auto text-2xl ">
@@ -34,7 +34,7 @@
 					<a href="#">HOME</a>
 				</li>
 				<li class="hover:underline p-1">
-					<a href="#">LIST</a>
+					<a href="../article/list">LIST</a>
 				</li>
 
 			</ul>

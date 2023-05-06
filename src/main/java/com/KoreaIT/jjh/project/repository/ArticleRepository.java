@@ -17,7 +17,7 @@ public interface ArticleRepository {
 			DELETE FROM article
 			WHERE id = #{id}
 			""")
-	public void deleteArticle(int id);
+	public int deleteArticle(int id);
 
 	@Update("""
 			<script>
@@ -29,7 +29,7 @@ public interface ArticleRepository {
 			WHERE id = #{id}
 			</script>
 			""")
-	public void modifyArticle(int id, String title, String body);
+	public int modifyArticle(int id, String title, String body);
 
 	@Select("""
 			SELECT *

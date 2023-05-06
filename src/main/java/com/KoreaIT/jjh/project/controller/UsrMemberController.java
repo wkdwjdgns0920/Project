@@ -1,5 +1,8 @@
 package com.KoreaIT.jjh.project.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,8 +65,10 @@ public class UsrMemberController {
 
 //	@RequestMapping("usr/member/doLogin")
 //	@ResponseBody
-//	public ResultData doLogin(String loginId, String loginPw) {
-//
+//	public ResultData doLogin(HttpServletRequest req ,HttpServletResponse resp, String loginId, String loginPw) {
+//		
+//		Rq rq = new Rq(req,resp);
+//		
 //		if (rq.isLogined()) {
 //			return ResultData.from("F-1", "로그아웃후에 이용해주세요");
 //		}

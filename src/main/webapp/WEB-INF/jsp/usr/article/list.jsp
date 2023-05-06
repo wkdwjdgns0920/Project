@@ -24,7 +24,9 @@
 			<tr>
 				<td class="flex justify-center">${article.id }</td>
 				<td>${article.regDate.substring(2,16) }</td>
-				<td>${article.title }</td>
+				<td>
+				<a class="hover:underline" href="../article/detail?id=">${article.title }</a>
+				</td>
 				<td>${article.body }</td>
 			</tr>
 		</c:forEach>

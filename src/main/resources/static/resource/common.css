@@ -30,13 +30,19 @@
 		url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff')
 		format('woff');
 }
+@font-face {
+    font-family: 'WandohopeR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/WandohopeR.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .lottemartdream * {
 	font-family: 'LotteMartDream', sans-serif;
 }
 
 html>body {
-	font-family: 'LotteMartDream', sans-serif;
+	font-family: 'WandohopeR', sans-serif;
 }
 
 /* 커스텀 */
