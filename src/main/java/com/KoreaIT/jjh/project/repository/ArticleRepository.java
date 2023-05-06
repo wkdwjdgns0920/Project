@@ -30,7 +30,16 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public int modifyArticle(int id, String title, String body);
-
+	
+	@Select("""
+			SELECT A.*, M.name AS extra_writer
+			FROM article AS A
+			INNER JOIN `member` AS M
+			ON A.memberId = M.id
+			WHERE A.id = #{id};
+			""")
+	public Article getForPrintArticle(int id);
+	
 	@Select("""
 			SELECT *
 			FROM article
@@ -38,6 +47,13 @@ public interface ArticleRepository {
 			""")
 	public Article getArticle(int id);
 	
+	@Select("""
+			SELECT A.*, M.name AS extra_writer
+			FROM article AS A
+			INNER JOIN `member` AS M
+			ON A.memberId = M.id
+			""")
+	public List<Article> getForPrintArticles();
 	
 	@Select("""
 			SELECT *
@@ -61,13 +77,4 @@ public interface ArticleRepository {
 			""")
 	public int getLastId();
 	
-	@Select("""
-			SELECT A.*, M.name AS extra_writer
-			FROM article AS A
-			INNER JOIN `member` AS M
-			ON A.memberId = M.id
-			WHERE A.id = #{id};
-			""")
-	public Article getForPrintArticle(int id);
-
 }

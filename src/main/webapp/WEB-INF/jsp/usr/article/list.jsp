@@ -7,14 +7,15 @@
 <table class="table table-zebra w-full ">
 	<thead>
 	<colgroup>
-		<col width="50" />
-		<col width="140" />
-		<col width="70" />
-		<col width="70" />
+		<col width="50"/>
+		<col width="100"/>
+		<col width="150"/>
+		<col width="300"/>
 	</colgroup>
 	<tr>
 		<th>번호</th>
 		<th>작성날짜</th>
+		<th>작성자</th>
 		<th>제목</th>
 		<th>내용</th>
 	</tr>
@@ -24,6 +25,7 @@
 			<tr>
 				<td class="flex justify-center">${article.id }</td>
 				<td>${article.regDate.substring(2,16) }</td>
+				<td>${article.extra_writer }</td>
 				<td>
 				<a class="hover:underline" href="../article/detail?id=${article.id }">${article.title }</a>
 				</td>

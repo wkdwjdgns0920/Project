@@ -16,5 +16,7 @@ public class Article {
 	private String body;
 	
 	private String extra_writer;
+
+	private boolean actorCanUpdate;
 	
 }

@@ -28,11 +28,6 @@ delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴여부 (0=탈퇴
 delDate DATETIME COMMENT '탈퇴날짜'
 );
 
-########################################
-
-SELECT * FROM article;
-SELECT * FROM `member`;
-
 #테스트데이터 생성
 INSERT INTO article
 SET regDate = NOW(),
@@ -84,3 +79,26 @@ loginPw = 'test2',
 `nickname` = '회원2',
 cellphoneNum = '01067896789',
 email = 'zxcv@gmail.com';
+
+ALTER TABLE article
+ADD COLUMN memberId INT(10) UNSIGNED NOT NULL AFTER updateDate;
+
+UPDATE article
+SET memberId = 2
+WHERE id IN(1,2);
+
+UPDATE article
+SET memberId = 3
+WHERE id = 3;
+
+########################################
+
+SELECT A.*, M.name AS extra_writer
+FROM article AS A
+INNER JOIN `member` AS M
+ON A.memberId = M.id
+
+SELECT * FROM article;
+DESC article;
+SELECT * FROM `member`;
+

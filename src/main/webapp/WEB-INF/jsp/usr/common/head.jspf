@@ -26,17 +26,19 @@
 		<a class="bg-gray-300" href="../member/doLogout">LOGOUT</a>
 	</div>
 	<header>
-		<div class="h-10 flex mx-auto text-2xl ">
+		<div class="h-10 flex mx-auto justify-around text-2xl ">
 			<a href="/">로고</a>
-			<div class="flex-grow"></div>
+			<!-- <div class="flex-grow"></div> -->
 			<ul class="flex">
 				<li class="hover:underline p-1">
-					<a href="#">HOME</a>
+					<a href="/">HOME</a>
 				</li>
 				<li class="hover:underline p-1">
 					<a href="../article/list">LIST</a>
 				</li>
-
+				<li class="hover:underline p-1">
+					<a href="../article/doWrite">WRITE</a>
+				</li>
 			</ul>
 		</div>
 		<h1 class="text-lg">${pageTitle }Page</h1>
