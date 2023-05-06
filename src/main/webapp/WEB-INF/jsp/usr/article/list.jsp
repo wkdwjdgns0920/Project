@@ -3,8 +3,8 @@
 <c:set var="pageTitle" value="Article List" />
 <%@ include file="../common/head.jspf"%>
 
-<div class="mt-8 text-xl">
-<table class="table table-zebra w-full">
+<div class="mt-8 text-xl bor-b">
+<table class="table table-zebra w-full ">
 	<thead>
 	<colgroup>
 		<col width="50" />
@@ -25,7 +25,7 @@
 				<td class="flex justify-center">${article.id }</td>
 				<td>${article.regDate.substring(2,16) }</td>
 				<td>
-				<a class="hover:underline" href="../article/detail?id=">${article.title }</a>
+				<a class="hover:underline" href="../article/detail?id=${article.id }">${article.title }</a>
 				</td>
 				<td>${article.body }</td>
 			</tr>

@@ -42,6 +42,7 @@ public interface ArticleRepository {
 	@Select("""
 			SELECT *
 			FROM article
+			ORDER BY id DESC
 			""")
 	public List<Article> getArticles();
 
@@ -49,14 +50,24 @@ public interface ArticleRepository {
 			INSERT INTO article
 			SET regDate = NOW(),
 			updateDate = NOW(),
+			memberId = #{actorId},
 			title = #{title},
 			`body` = #{body}
 			""")
-	public void write(String title, String body);
+	public void write(int actorId, String title, String body);
 	
 	@Select("""
 			SELECT LAST_INSERT_ID()
 			""")
 	public int getLastId();
+	
+	@Select("""
+			SELECT A.*, M.name AS extra_writer
+			FROM article AS A
+			INNER JOIN `member` AS M
+			ON A.memberId = M.id
+			WHERE A.id = #{id};
+			""")
+	public Article getForPrintArticle(int id);
 
 }
