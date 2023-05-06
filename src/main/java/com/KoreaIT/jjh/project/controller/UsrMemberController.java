@@ -1,7 +1,6 @@
 package com.KoreaIT.jjh.project.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,21 +54,19 @@ public class UsrMemberController {
 
 		return ResultData.from(joinRd.getResultCode(), joinRd.getMsg(), "member", member);
 	}
-	
+
 	@RequestMapping("usr/member/doLogout")
 	@ResponseBody
-	public ResultData doLogout(HttpSession httpSession) {
-		boolean isLogined = true;
-		
-		if(httpSession.getAttribute("loginedMemberId") == null) {
-			isLogined = false;
-			return ResultData.from("F-1", "로그아웃상태야","isLogined",isLogined);
+	public String doLogout(HttpServletRequest req) {
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		if (rq.isLogined() == false) {
+			return Ut.jsHistoryBack("F-1", "로그인안함");
 		}
-		
-		isLogined = false;
-		httpSession.removeAttribute("loginedMemberId");
-		
-		return ResultData.from("S-1", "로그아웃", "isLogined", isLogined);
+
+		rq.logout();
+
+		return Ut.jsReplace("S-1", "로그아웃!", "/");
 	}
 
 	@RequestMapping("usr/member/login")
@@ -80,32 +77,31 @@ public class UsrMemberController {
 
 	@RequestMapping("usr/member/doLogin")
 	@ResponseBody
-	public ResultData doLogin(HttpSession httpSession, String loginId, String loginPw) {
-		
-		boolean isLogined = false;
-		
-		if (httpSession.getAttribute("loginedMemberId") != null) {
-			isLogined = true;
-			return ResultData.from("F-1", "로그아웃후에 이용해주세요");
+	public String doLogin(HttpServletRequest req, String loginId, String loginPw) {
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		if (rq.isLogined() == true) {
+			return Ut.jsHistoryBack("F-1", "로그인상태");
 		}
+
 		if (Ut.empty(loginId)) {
-			return ResultData.from("F-2", "아이디릅 입력해주세요");
+			return Ut.jsHistoryBack("F-2", "아이디릅 입력해주세요");
 		}
 		if (Ut.empty(loginPw)) {
-			return ResultData.from("F-3", "비밀번호를 입력해주세요");
+			return Ut.jsHistoryBack("F-3", "비밀번호를 입력해주세요");
 		}
 
 		Member member = memberService.getMemberByLoginId(loginId);
 
 		if (member == null) {
-			return ResultData.from("F-4", Ut.f("%s 아이디는 존재하지 않는 아이디 입니다", loginId));
+			return Ut.jsHistoryBack("F-4", Ut.f("%s 아이디는 존재하지 않는 아이디 입니다", loginId));
 		}
-		if(member.getLoginPw().equals(loginPw)==false) {
-			return ResultData.from("F-5", "비밀번호가 틀립니다");
+		if (member.getLoginPw().equals(loginPw) == false) {
+			return Ut.jsHistoryBack("F-5", "비밀번호가 틀립니다");
 		}
-		
-		httpSession.setAttribute("loginedMemberId", member.getId());
 
-		return ResultData.from("S-1", "로그인성공","name",member.getName());
+		rq.login();
+
+		return Ut.jsReplace("S-1", "로그인성공", "/");
 	}
 }

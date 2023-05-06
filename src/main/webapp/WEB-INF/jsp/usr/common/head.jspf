@@ -22,8 +22,8 @@
 </head>
 <body>
 	<div class="flex justify-end pr-5 text-xs ">
-		<a class="bg-gray-300" href="../member/login">LOGIN</a>
-		<a class="bg-gray-300" href="../member/doLogout">LOGOUT</a>
+		<c:if test="${!rq.logined}"><a class="bg-gray-300" href="../member/login">LOGIN</a></c:if>
+		<c:if test="${rq.logined}"><a class="bg-gray-300" href="../member/doLogout">LOGOUT</a></c:if>
 	</div>
 	<header>
 		<div class="h-10 flex mx-auto justify-around text-2xl ">
