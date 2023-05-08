@@ -16,12 +16,10 @@ public class NeedLoginInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler)
 			throws Exception {
 
-		System.out.println("==================로그인 인터셉터===========================");
-		
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		if (rq.isLogined() == false) {
-			rq.printHistoryBackJs("로그인후에 이용해주세요!!!!!!!!");
+			rq.printHistoryBackJs("F-A","로그인후에 이용해주세요!!!!!!!!");
 			
 			return false;
 		}

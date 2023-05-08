@@ -1,5 +1,10 @@
 package com.KoreaIT.jjh.project.util;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 public class Ut {
 
 	public static String f(String msg, Object... args) {
@@ -59,5 +64,5 @@ public class Ut {
 				</script>
 				""", msg, uri);
 	}
-
+	
 }

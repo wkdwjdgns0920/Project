@@ -81,6 +81,31 @@ header>div>ul>li:hover>ul {
 	left:auto;
 	right:0%;
 }
+.login_box {
+	display: flex;
+	align-items: center;
+	justify-content:center;
+	text-align: center;
+	height: 50px;
+	border-radius: 10px;
+	background-color: gray;
+}
+.h-30 {
+	height: 30px;
+}
+
+.loginForm {
+	display: flex;
+	align-items:space-between;
+	height:250px;
+	width:300px;
+	border: 3px solid black;
+	border-radius: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 
 .po-rel {
 	position: relative;

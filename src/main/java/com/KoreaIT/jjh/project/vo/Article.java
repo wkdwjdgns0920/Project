@@ -17,6 +17,7 @@ public class Article {
 	
 	private String extra_writer;
 
-	private boolean actorCanUpdate;
+	private boolean actorCanDelete;
+	private boolean actorCanModify;
 	
 }

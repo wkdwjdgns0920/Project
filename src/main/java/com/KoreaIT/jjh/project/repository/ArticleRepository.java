@@ -52,6 +52,7 @@ public interface ArticleRepository {
 			FROM article AS A
 			INNER JOIN `member` AS M
 			ON A.memberId = M.id
+			ORDER BY A.id DESC
 			""")
 	public List<Article> getForPrintArticles();
 	

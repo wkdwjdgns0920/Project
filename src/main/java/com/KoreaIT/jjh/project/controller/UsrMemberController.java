@@ -60,9 +60,9 @@ public class UsrMemberController {
 	public String doLogout(HttpServletRequest req) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		if (rq.isLogined() == false) {
-			return Ut.jsHistoryBack("F-1", "로그인안함");
-		}
+//		if (rq.isLogined() == false) {
+//			return Ut.jsHistoryBack("F-1", "로그인안함");
+//		}
 
 		rq.logout();
 
@@ -100,7 +100,7 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack("F-5", "비밀번호가 틀립니다");
 		}
 
-		rq.login();
+		rq.login(member);
 
 		return Ut.jsReplace("S-1", "로그인성공", "/");
 	}

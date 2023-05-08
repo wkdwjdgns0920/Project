@@ -37,7 +37,7 @@
 					<a href="../article/list">LIST</a>
 				</li>
 				<li class="hover:underline p-1">
-					<a href="../article/doWrite">WRITE</a>
+					<a href="../article/write">WRITE</a>
 				</li>
 			</ul>
 		</div>

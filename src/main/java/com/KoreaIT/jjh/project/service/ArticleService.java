@@ -34,8 +34,37 @@ public class ArticleService {
 			return ResultData.from("F-2", "게시물수정실패", "affectedRow", affectedRow);
 		}
 
-		return ResultData.from("S-1", "게시물수정", "affectedRow", affectedRow);
+		return ResultData.from("S-1", Ut.f("%d번 게시글수정", id), "affectedRow", affectedRow);
 	}
+	
+	public ResultData actorCanModify(int actorId, Article article) {
+		if(article.getMemberId() != actorId) {
+			return ResultData.from("F-2", "해당게시글에 수정권한이 없습니다");
+		}
+		return ResultData.from("S-1", "수정가능");
+	}
+	
+	public ResultData actorCanDelete(int actorId, Article article) {
+
+		if (article.getMemberId() != actorId) {
+			return ResultData.from("F-A", "삭제권한이 없습니다");
+		}
+
+		return ResultData.from("S-A", "삭제가능");
+	}
+	
+	private void updateForPrintData(int actorId, Article article) {
+		if (article == null) {
+			return;
+		}
+		
+		ResultData actorCanModifyRd = actorCanModify(actorId, article);
+		article.setActorCanModify(actorCanModifyRd.isSuccess());
+		
+		ResultData actorCanDeleteRd = actorCanDelete(actorId, article);
+		article.setActorCanDelete(actorCanDeleteRd.isSuccess());
+	}
+	
 
 	public Article getForPrintArticle(int actorId, int id) {
 
@@ -44,24 +73,6 @@ public class ArticleService {
 		updateForPrintData(actorId, article);
 
 		return article;
-	}
-
-	private void updateForPrintData(int actorId, Article article) {
-		if (article == null) {
-			return;
-		}
-
-		ResultData actorCanUpdateArticleRd = actorCanUpdateArticle(actorId, article);
-		article.setActorCanUpdate(actorCanUpdateArticleRd.isSuccess());
-	}
-
-	public ResultData actorCanUpdateArticle(int actorId, Article article) {
-
-		if (article.getMemberId() != actorId) {
-			return ResultData.from("F-A", "업데이트 권한이 없습니다");
-		}
-
-		return ResultData.from("S-A", "업데이트권한있음");
 	}
 
 	public Article getArticle(int id) {

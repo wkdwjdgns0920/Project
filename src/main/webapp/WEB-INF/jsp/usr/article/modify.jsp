@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="Article Detail" />
+<c:set var="pageTitle" value="Article Modify" />
 <%@ include file="../common/head.jspf"%>
 
 <div class="mt-8 text-xl bor-b po-rel">
 	<div class="container mx-auto px-3">
+		<form action="../article/doModify" method="POST">
+		<input type="hidden" name="id" value="${article.id }" />
 		<table class="table table-zebra w-full">
 			<colgroup>
 				<col width="150" />
@@ -27,23 +29,26 @@
 					<td class="text-center">${article.extra_writer }</td>
 				</tr>
 				<tr>
-					<th>조회수</th>
-					<td></td>
-				</tr>
-				<tr>
-					<th>추천</th>
-					<td></td>
-				</tr>
-				<tr>
 					<th>제목</th>
-					<td class="text-center">${article.title }</td>
+					<td>
+						<input class="w-full" name="title" type="text" value="${article.title }" placeholder="제목" />
+					</td>
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td class="text-center">${article.body }</td>
+					<td>
+						<textarea class="w-full" type="text" name="body" placeholder="내용을 입력해주세요" />${article.body }</textarea>
+					</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>
+						<button type="submit">수정!</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
+		</form>
 	</div>
 	<div class="btns lowMenu flex justify-end">
 		<button class="btn-text-link m-1" type="button" onclick="history.back();">뒤로가기</button>
