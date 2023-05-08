@@ -36,14 +36,14 @@ public class ArticleService {
 
 		return ResultData.from("S-1", Ut.f("%d번 게시글수정", id), "affectedRow", affectedRow);
 	}
-	
+
 	public ResultData actorCanModify(int actorId, Article article) {
-		if(article.getMemberId() != actorId) {
+		if (article.getMemberId() != actorId) {
 			return ResultData.from("F-2", "해당게시글에 수정권한이 없습니다");
 		}
 		return ResultData.from("S-1", "수정가능");
 	}
-	
+
 	public ResultData actorCanDelete(int actorId, Article article) {
 
 		if (article.getMemberId() != actorId) {
@@ -52,19 +52,18 @@ public class ArticleService {
 
 		return ResultData.from("S-A", "삭제가능");
 	}
-	
+
 	private void updateForPrintData(int actorId, Article article) {
 		if (article == null) {
 			return;
 		}
-		
+
 		ResultData actorCanModifyRd = actorCanModify(actorId, article);
 		article.setActorCanModify(actorCanModifyRd.isSuccess());
-		
+
 		ResultData actorCanDeleteRd = actorCanDelete(actorId, article);
 		article.setActorCanDelete(actorCanDeleteRd.isSuccess());
 	}
-	
 
 	public Article getForPrintArticle(int actorId, int id) {
 
@@ -76,12 +75,12 @@ public class ArticleService {
 	}
 
 	public Article getArticle(int id) {
-		
+
 		return articleRepository.getArticle(id);
 	}
 
-	public int write(int actorId, String title, String body) {
-		articleRepository.write(actorId, title, body);
+	public int write(int actorId, String title, String body, int boardId) {
+		articleRepository.write(actorId, title, body, boardId);
 
 		return articleRepository.getLastId();
 	}
@@ -95,9 +94,15 @@ public class ArticleService {
 		return articleRepository.getLastId();
 	}
 
-	public List<Article> getForPrintArticles() {
+	public List<Article> getForPrintArticles(int boardId, int itemInAPage, int page, String searchKeywordType, String searchKeyword) {
+		int limitFrom = (page - 1) * itemInAPage;
+		int limit = itemInAPage;
+		return articleRepository.getForPrintArticles(boardId, limitFrom, limit,searchKeywordType,searchKeyword);
+	}
 
-		return articleRepository.getForPrintArticles();
+	public int getArticlesCount(int boardId, String searchKeywordType, String searchKeyword) {
+
+		return articleRepository.getArticlesCount(boardId,searchKeywordType,searchKeyword);
 	}
 
 }

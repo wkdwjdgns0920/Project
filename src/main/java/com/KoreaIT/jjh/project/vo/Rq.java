@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
+import com.KoreaIT.jjh.project.service.MemberService;
 import com.KoreaIT.jjh.project.util.Ut;
 
 import lombok.Getter;
@@ -22,27 +23,35 @@ public class Rq {
 	private boolean isLogined;
 	@Getter
 	private int loginedMemberId;
+	@Getter
+	private Member loginedMember;
 
 	private HttpServletRequest req;
 	private HttpServletResponse resp;
 	private HttpSession session;
 
-	public Rq(HttpServletRequest req, HttpServletResponse resp) {
+	public Rq(HttpServletRequest req, HttpServletResponse resp, MemberService memberService) {
 		this.req = req;
 		this.resp = resp;
-		
+
 		this.session = req.getSession();
-		
+
 		boolean isLogined = false;
 		int loginedMemberId = 0;
+		Member loginedMember = null;
+
 
 		if (session.getAttribute("loginedMemberId") != null) {
 			isLogined = true;
 			loginedMemberId = (int) session.getAttribute("loginedMemberId");
+			loginedMember = memberService.getMemberById(loginedMemberId);
 		}
 
 		this.isLogined = isLogined;
 		this.loginedMemberId = loginedMemberId;
+		this.loginedMember = loginedMember;
+		
+		this.req.setAttribute("rq", this);
 	}
 
 	public void logout() {
@@ -57,7 +66,6 @@ public class Rq {
 		resp.setContentType("text/html; charset=UTF-8");
 		print(Ut.jsHistoryBack(resultCode, msg));
 	}
-	
 
 	public void print(String str) {
 		try {
@@ -66,12 +74,16 @@ public class Rq {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public String jsHistoryBackOnView(String msg) {
 		req.setAttribute("msg", msg);
 		req.setAttribute("historyBack", true);
-		
+
 		return "usr/common/js";
+
+	}
+
+	public void InitOnBeforeActionInterceptor() {
 
 	}
 }
