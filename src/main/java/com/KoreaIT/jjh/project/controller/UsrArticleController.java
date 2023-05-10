@@ -118,11 +118,10 @@ public class UsrArticleController {
 		if (article == null) {
 			return Ut.jsHistoryBack("F-2", Ut.f("%d번 게시글은 없어", id));
 		}
-
-		if (article.getId() != rq.getLoginedMemberId()) {
-			System.out.println(article.getId());
-			System.out.println(rq.getLoginedMemberId());
-			return Ut.jsHistoryBack("F-3", "삭제 권한이 없음@@");
+		
+		ResultData actorCanDeleteRd = articleService.actorCanDelete(rq.getLoginedMemberId(), article);
+		if (actorCanDeleteRd.isFail()) {
+			return Ut.jsHistoryBack(actorCanDeleteRd.getResultCode(), actorCanDeleteRd.getMsg());
 		}
 
 		ResultData deleteRd = articleService.deleteArticle(id);

@@ -23,10 +23,13 @@
 <body>
 	<div class="flex justify-end pr-5 text-xs ">
 		<c:if test="${!rq.logined}">
-			<a class="bg-gray-300" href="../member/login">LOGIN</a>
+			<a class="bg-gray-300 p-3" href="../member/login">LOGIN</a>
 		</c:if>
 		<c:if test="${rq.logined}">
-			<a class="bg-gray-300" href="../member/doLogout">LOGOUT</a>
+			<a class="bg-gray-300 p-3" href="../member/doLogout">LOGOUT</a>
+		</c:if>
+		<c:if test="${!rq.logined}">
+			<a class="bg-gray-300 p-3" href="../member/join">JOIN</a>
 		</c:if>
 	</div>
 	<header>

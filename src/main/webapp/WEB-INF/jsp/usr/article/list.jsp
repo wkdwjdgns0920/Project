@@ -4,9 +4,6 @@
 <%@ include file="../common/head.jspf"%>
 
 
-<script>
-
-</script>
 
 <div class="mt-8 text-xl bor-b">
 	<div class="flex mb-4">
@@ -62,7 +59,7 @@
 
 		<c:set var="pageLen" value="4" />
 		<c:set var="startPage" value="${page - pageLen >=1 ? page - pageLen : 1 }" />
-		<c:set var="endPage" value="${startPage + pageLen <= pagesCount ? startPage + pageLen : pagesCount }" />
+		<c:set var="endPage" value="${page + pageLen <= pagesCount ? page + pageLen : pagesCount }" />
 
 		<c:set var="baseUri" value="?boardId=${boardId }" />
 		<c:set var="baseUri" value="${baseUri }&searchKeywordType=${searchKeywordType}" />
