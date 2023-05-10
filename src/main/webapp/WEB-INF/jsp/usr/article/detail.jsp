@@ -3,29 +3,50 @@
 <c:set var="pageTitle" value="Article Detail" />
 <%@ include file="../common/head.jspf"%>
 
+<!-- 조회수 -->
 <script>
-	var paramId = ${param.id};
-	
-	function articleDetail_increaseHitCount(){
-		
+	var paramId = $
+	{
+		param.id
+	};
+
+	function articleDetail_increaseHitCount() {
+
 		const localStorageKey = 'article__' + params.id + '__alreadyView';
 		if (localStorage.getItem(localStorageKey)) {
 			return;
 		}
-		localStorage.setItem(localStorageKey, true); 
-		
-		$.get('../article/doIncreaseHitCount',{
+		localStorage.setItem(localStorageKey, true);
+
+		$.get('../article/doIncreaseHitCount', {
 			id : paramId,
 			ajaxMode : 'Y'
 		}, function(data) {
 			$('.article_hitCount').empty().html(data.data1);
-		},'json');
+		}, 'json');
 	}
-	
-	$(function(){
+
+	$(function() {
 		articleDetail_increaseHitCount();
 	})
-	
+</script>
+
+<!-- 댓글 -->
+<script>
+	let ReplyWrite__submitFormDone = false;
+	function ReplyWrite__submitForm(form) {
+		if (ReplyWrite__submitFormDone) {
+			return;
+		}
+		form.body.value = form.body.value.trim();
+		if (form.body.value.length < 3) {
+			alert('3글자 이상 입력하세요');
+			form.body.focus();
+			return;
+		}
+		ReplyWrite__submitFormDone = true;
+		form.submit();
+	}
 </script>
 
 <div class="mt-8 text-xl bor-b po-rel">
@@ -53,15 +74,15 @@
 				</tr>
 				<tr>
 					<th>조회수</th>
-					<td class="text-center"> 
-					<span class="article_hitCount">${article.hitCount }</span>
+					<td class="text-center">
+						<span class="article_hitCount">${article.hitCount }</span>
 					</td>
 				</tr>
 				<tr>
 					<th>추천</th>
 					<td class="text-center">
-					<span>좋아요 : ${article.likePoint }&nbsp;</span>
-					<span>싫어요 : ${article.disLikePoint }&nbsp;</span>
+						<span>좋아요 : ${article.likePoint }&nbsp;</span>
+						<span>싫어요 : ${article.disLikePoint }&nbsp;</span>
 						<c:if test="${actorCanReaction }">
 							<div>
 								<span>
@@ -80,7 +101,8 @@
 							<div>
 								<span>
 									<span>&nbsp;</span>
-									<a href="/usr/reactionPoint/cancelLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
+									<a
+										href="/usr/reactionPoint/cancelLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
 										class="btn btn-xs">좋아요 👍</a>
 								</span>
 								<span>
@@ -97,9 +119,10 @@
 								</span>
 								<span>
 									<span>&nbsp;</span>
-									<a href="/usr/reactionPoint/cancelDisLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
+									<a
+										href="/usr/reactionPoint/cancelDisLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
 										class="btn btn-xs">싫어요 👎</a>
-									
+
 								</span>
 							</div>
 						</c:if>
@@ -127,6 +150,52 @@
 		</c:if>
 	</div>
 </div>
+
+<section class="mt-8 text-xl">
+	<div class="container mx-auto px-3">
+		<div class="table-box-type-1">
+			<c:if test="${rq.logined }">
+				<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submitForm(this); return false;">
+					<input type="hidden" name="relTypeCode" value="article" />
+					<input type="hidden" name="relId" value="${article.id }" />
+					<input type="hidden" name="replaceUri" value="${rq.currentUri }" />
+					<table>
+						<colgroup>
+							<col width="200" />
+						</colgroup>
+
+						<tbody>
+							<tr>
+								<th>댓글</th>
+								<td>
+									<textarea class="input input-bordered w-full max-w-xs" type="text" name="body" placeholder="내용을 입력해주세요" /></textarea>
+								</td>
+							</tr>
+							<tr>
+								<th></th>
+								<td>
+									<button type="submit" value="작성" />
+									댓글 작성
+									</button>
+								</td>
+							</tr>
+						</tbody>
+
+					</table>
+				</form>
+			</c:if>
+			<c:if test="${!rq.logined}">
+				<a class="btn-text-link btn btn-active btn-ghost" href="/usr/member/login">로그인</a> 후 이용해줘
+			</c:if>
+		</div>
+	</div>
+</section>
+
+<section class="mt-5">
+	<div class="container mx-auto px-3">
+		<h1 class="text-3xl">댓글 리스트(${repliesCount })</h1>
+	</div>
+</section>
 
 
 

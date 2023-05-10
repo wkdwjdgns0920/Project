@@ -65,36 +65,30 @@ public class ReactionPointService {
 
 	public ResultData cancelLikeReactionPoint(int actorId, String relTypeCode, int relId) {
 
-		int affectedRow = reactionPointRepository.cancelLikeReactionPoint(actorId, relTypeCode, relId);
+		reactionPointRepository.cancelLikeReactionPoint(actorId, relTypeCode, relId);
 
-		if (affectedRow != 1) {
-			return ResultData.from("F-1", "좋아요취소실패", "affectedRow", affectedRow);
-		}
 
 		switch (relTypeCode) {
 		case "article":
-			articleService.decreaseLikeReationPoint(relId);
+			articleService.decreaseLikeReactionPoint(relId);
 			break;
 		}
 
-		return ResultData.from("S-1", "좋아요취소", "affectedRow", affectedRow);
+		return ResultData.from("S-1", "좋아요취소");
 	}
 
 	public ResultData cancelDisLikeReactionPoint(int actorId, String relTypeCode, int relId) {
 		
-		int affectedRow = reactionPointRepository.cancelDisLikeReactionPoint(actorId, relTypeCode, relId);
+		reactionPointRepository.cancelDisLikeReactionPoint(actorId, relTypeCode, relId);
 
-		if (affectedRow != 1) {
-			return ResultData.from("F-1", "좋아요취소실패", "affectedRow", affectedRow);
-		}
 
 		switch (relTypeCode) {
 		case "article":
-			articleService.decreaseDisLikeReationPoint(relId);
+			articleService.decreaseDisLikeReactionPoint(relId);
 			break;
 		}
 
-		return ResultData.from("S-1", "싫어요취소", "affectedRow", affectedRow);
+		return ResultData.from("S-1", "싫어요취소");
 	}
 
 }

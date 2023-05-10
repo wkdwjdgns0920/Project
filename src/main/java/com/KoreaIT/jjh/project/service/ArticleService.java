@@ -142,7 +142,7 @@ public class ArticleService {
 		return ResultData.from("S-1", "싫어요증가", "affectedRow", affectedRow);
 	}
 
-	public ResultData decreaseLikeReationPoint(int relId) {
+	public ResultData decreaseLikeReactionPoint(int relId) {
 
 		int affectedRow = articleRepository.decreaseLikeReationPoint(relId);
 
@@ -153,7 +153,7 @@ public class ArticleService {
 		return ResultData.from("S-1", "좋아요감소", "affectedRow", affectedRow);
 	}
 
-	public ResultData decreaseDisLikeReationPoint(int relId) {
+	public ResultData decreaseDisLikeReactionPoint(int relId) {
 		int affectedRow = articleRepository.decreaseDisLikeReationPoint(relId);
 
 		if (affectedRow != 1) {

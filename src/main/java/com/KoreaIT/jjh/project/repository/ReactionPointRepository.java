@@ -49,7 +49,7 @@ public interface ReactionPointRepository {
 			AND relId = #{relId}
 			AND memberId = #{actorId}
 			""")
-	int cancelLikeReactionPoint(int actorId, String relTypeCode, int relId);
+	void cancelLikeReactionPoint(int actorId, String relTypeCode, int relId);
 
 	@Delete("""
 			DELETE FROM reactionPoint
@@ -57,7 +57,7 @@ public interface ReactionPointRepository {
 			AND relId = #{relId}
 			AND memberId = #{actorId}
 			""")
-	int cancelDisLikeReactionPoint(int actorId, String relTypeCode, int relId);
+	void cancelDisLikeReactionPoint(int actorId, String relTypeCode, int relId);
 	
 	
 

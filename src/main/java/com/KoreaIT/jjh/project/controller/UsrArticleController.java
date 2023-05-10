@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.KoreaIT.jjh.project.service.ArticleService;
 import com.KoreaIT.jjh.project.service.BoardService;
 import com.KoreaIT.jjh.project.service.ReactionPointService;
+import com.KoreaIT.jjh.project.service.ReplyService;
 import com.KoreaIT.jjh.project.util.Ut;
 import com.KoreaIT.jjh.project.vo.Article;
 import com.KoreaIT.jjh.project.vo.Board;
+import com.KoreaIT.jjh.project.vo.Reply;
 import com.KoreaIT.jjh.project.vo.ResultData;
 import com.KoreaIT.jjh.project.vo.Rq;
 
@@ -27,6 +29,8 @@ public class UsrArticleController {
 	BoardService boardService;
 	@Autowired
 	ReactionPointService reactionPointService;
+	@Autowired
+	ReplyService replyService;
 	@Autowired
 	private Rq rq;
 
@@ -143,11 +147,16 @@ public class UsrArticleController {
 		
 		ResultData actorCanReactionRd = reactionPointService.actorCanReaction(rq.getLoginedMemberId(), "article", id);
 		
-		
+		List<Reply> replies = replyService.getForPrintReplies(rq.getLoginedMemberId(), "article", id);
+
+		int repliesCount = replies.size();
+
+		model.addAttribute("replies", replies);
+		model.addAttribute("repliesCount", repliesCount);
 		model.addAttribute("actorCanReaction",actorCanReactionRd.isSuccess());
 		model.addAttribute("article", article);
 		
-		if(actorCanReactionRd.isFail()) {
+		if(actorCanReactionRd.getResultCode().equals("F-2")) {
 			int sumReactionPointByMemberId = (int) actorCanReactionRd.getData1();
 			
 			if(sumReactionPointByMemberId > 0) {

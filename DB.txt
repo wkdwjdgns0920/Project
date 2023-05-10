@@ -121,7 +121,7 @@ updateDate = NOW(),
 `name` = '질의응답';
 
 ALTER TABLE article ADD COLUMN boardId INT(10) UNSIGNED NOT NULL AFTER `memberId`;
-ALTER TABLE article ADD COLUMN hitCount INT(10) UNSIGNED NOT NULL AFTER `body`;
+ALTER TABLE article ADD COLUMN hitCount INT(10) UNSIGNED NOT NULL DEFAULT 0;
 
 UPDATE article
 SET boardId = 1
@@ -189,8 +189,8 @@ relId = 1,
 `point` = 1;
 
 # 게시물 테이블에 추천 관련 컬럼 추가
-ALTER TABLE article ADD COLUMN likePoint INT(10) UNSIGNED NOT NULL;
-ALTER TABLE article ADD COLUMN disLikePoint INT(10) UNSIGNED NOT NULL;
+ALTER TABLE article ADD COLUMN likePoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
+ALTER TABLE article ADD COLUMN disLikePoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
 
 # 기존 게시물의 like,disLike ReactionPoint 필드의 값을 채운다
 UPDATE article AS A
@@ -205,6 +205,57 @@ ON A.id = RP_SUM.relId
 SET A.likePoint = RP_SUM.likePoint,
 A.disLikePoint = RP_SUM.disLikePoint;
 
+# reply 테이블 생성
+CREATE TABLE reply (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    memberId INT(10) UNSIGNED NOT NULL,
+    relTypeCode CHAR(50) NOT NULL COMMENT '관련 데이터 타입 코드',
+    relId INT(10) NOT NULL COMMENT '관련 데이터 번호',
+    `body`TEXT NOT NULL
+);
+
+# 2번 회원이 1번 글에 
+INSERT INTO reply
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'article',
+relId = 1,
+`body` = '댓글 1';
+
+# 2번 회원이 1번 글에 
+INSERT INTO reply
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'article',
+relId = 1,
+`body` = '댓글 2';
+
+# 3번 회원이 1번 글에 
+INSERT INTO reply
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 3,
+relTypeCode = 'article',
+relId = 1,
+`body` = '댓글 3';
+
+# 3번 회원이 1번 글에 
+INSERT INTO reply
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'article',
+relId = 2,
+`body` = '댓글 4';
+
+# 댓글 테이블에 추천 관련 컬럼 추가
+ALTER TABLE reply ADD COLUMN likePoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
+ALTER TABLE reply ADD COLUMN disLikePoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
+
 ########################################
 
 SELECT * FROM article;
@@ -212,6 +263,7 @@ DESC article;
 SELECT * FROM `member`;
 SELECT * FROM board;
 SELECT * FROM reactionPoint;
+SELECT * FROM `reply`;
 
 # 게시물 갯수 늘리기
 INSERT INTO article 
