@@ -121,6 +121,7 @@ updateDate = NOW(),
 `name` = '질의응답';
 
 ALTER TABLE article ADD COLUMN boardId INT(10) UNSIGNED NOT NULL AFTER `memberId`;
+ALTER TABLE article ADD COLUMN hitCount INT(10) UNSIGNED NOT NULL AFTER `body`;
 
 UPDATE article
 SET boardId = 1
@@ -130,12 +131,87 @@ UPDATE article
 SET boardId = 2
 WHERE id = 3;
 
+# reactionPoint 테이블 생성
+CREATE TABLE reactionPoint (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    memberId INT(10) UNSIGNED NOT NULL,
+    relTypeCode CHAR(50) NOT NULL COMMENT '관련 데이터 타입 코드',
+    relId INT(10) NOT NULL COMMENT '관련 데이터 번호',
+    `point` INT(10) NOT NULL
+);
+
+# reactionPoint 테스트 데이터
+# 1번 회원이 1번 글에 싫어요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 1,
+relTypeCode = 'article',
+relId = 1,
+`point` = -1;
+
+# 1번 회원이 2번 글에 좋아요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 1,
+relTypeCode = 'article',
+relId = 2,
+`point` = 1;
+
+# 2번 회원이 1번 글에 싫어요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'article',
+relId = 1,
+`point` = -1;
+
+# 2번 회원이 2번 글에 싫어요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+relTypeCode = 'article',
+relId = 2,
+`point` = -1;
+
+# 3번 회원이 1번 글에 좋아요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 3,
+relTypeCode = 'article',
+relId = 1,
+`point` = 1;
+
+# 게시물 테이블에 추천 관련 컬럼 추가
+ALTER TABLE article ADD COLUMN likePoint INT(10) UNSIGNED NOT NULL;
+ALTER TABLE article ADD COLUMN disLikePoint INT(10) UNSIGNED NOT NULL;
+
+# 기존 게시물의 like,disLike ReactionPoint 필드의 값을 채운다
+UPDATE article AS A
+INNER JOIN (
+    SELECT RP.relTypeCode, RP.relId,
+    SUM(IF(RP.point > 0, RP.point,0)) AS likePoint,
+    SUM(IF(RP.point < 0, RP.point * -1,0)) AS disLikePoint
+    FROM reactionPoint AS RP
+    GROUP BY RP.relTypeCode, RP.relId
+) AS RP_SUM
+ON A.id = RP_SUM.relId
+SET A.likePoint = RP_SUM.likePoint,
+A.disLikePoint = RP_SUM.disLikePoint;
+
 ########################################
 
 SELECT * FROM article;
 DESC article;
 SELECT * FROM `member`;
 SELECT * FROM board;
+SELECT * FROM reactionPoint;
 
 # 게시물 갯수 늘리기
 INSERT INTO article 
@@ -151,3 +227,25 @@ SELECT COUNT(*) AS cnt
 FROM article AS A
 WHERE 1
 AND A.boardId = 1
+
+#좋아요가능한지 확인
+SELECT IFNULL(SUM(RP.point),0)
+FROM reactionPoint AS RP
+WHERE RP.relTypeCode = 'article'
+AND RP.relId = 1
+AND RP.memberId = 1
+
+#좋아요
+INSERT INTO reactionPoint
+SET regDate = NOW(),
+updateDate = NOW(),
+relTypeCode = 'article',
+relId = 1,
+memberId = 2,
+`point` = 1
+
+#좋아요취소
+DELETE FROM reactionPoint
+WHERE relTypeCode = 'article'
+AND relId = 1
+AND memberId = 1

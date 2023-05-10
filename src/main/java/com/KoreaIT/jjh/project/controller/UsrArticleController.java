@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.KoreaIT.jjh.project.service.ArticleService;
 import com.KoreaIT.jjh.project.service.BoardService;
+import com.KoreaIT.jjh.project.service.ReactionPointService;
 import com.KoreaIT.jjh.project.util.Ut;
 import com.KoreaIT.jjh.project.vo.Article;
 import com.KoreaIT.jjh.project.vo.Board;
@@ -25,6 +25,8 @@ public class UsrArticleController {
 	ArticleService articleService;
 	@Autowired
 	BoardService boardService;
+	@Autowired
+	ReactionPointService reactionPointService;
 	@Autowired
 	private Rq rq;
 
@@ -138,8 +140,22 @@ public class UsrArticleController {
 	public String showDetail(Model model, int id) {
 
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
-
+		
+		ResultData actorCanReactionRd = reactionPointService.actorCanReaction(rq.getLoginedMemberId(), "article", id);
+		
+		
+		model.addAttribute("actorCanReaction",actorCanReactionRd.isSuccess());
 		model.addAttribute("article", article);
+		
+		if(actorCanReactionRd.isFail()) {
+			int sumReactionPointByMemberId = (int) actorCanReactionRd.getData1();
+			
+			if(sumReactionPointByMemberId > 0) {
+				model.addAttribute("actorCanCancelLikeReaction", true);
+			} else {
+				model.addAttribute("actorCanCancelDisLikeReaction", true);
+			}
+		}
 
 		return "usr/article/detail";
 	}

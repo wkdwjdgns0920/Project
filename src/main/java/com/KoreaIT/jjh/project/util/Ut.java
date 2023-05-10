@@ -1,9 +1,7 @@
 package com.KoreaIT.jjh.project.util;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class Ut {
 
@@ -63,6 +61,17 @@ public class Ut {
 					location.replace('%s');
 				</script>
 				""", msg, uri);
+	}
+	
+	public static String getEncodedCurrentUri(String currentUri) {
+
+		try {
+			return URLEncoder.encode(currentUri, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return currentUri;
+		}
+
 	}
 	
 }

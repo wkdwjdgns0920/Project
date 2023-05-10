@@ -4,9 +4,16 @@
 <%@ include file="../common/head.jspf"%>
 
 <script>
-var paramId = ${param.id};
+	var paramId = ${param.id};
 	
 	function articleDetail_increaseHitCount(){
+		
+		const localStorageKey = 'article__' + params.id + '__alreadyView';
+		if (localStorage.getItem(localStorageKey)) {
+			return;
+		}
+		localStorage.setItem(localStorageKey, true); 
+		
 		$.get('../article/doIncreaseHitCount',{
 			id : paramId,
 			ajaxMode : 'Y'
@@ -19,7 +26,6 @@ var paramId = ${param.id};
 		articleDetail_increaseHitCount();
 	})
 	
-	console.log('asd');
 </script>
 
 <div class="mt-8 text-xl bor-b po-rel">
@@ -53,7 +59,51 @@ var paramId = ${param.id};
 				</tr>
 				<tr>
 					<th>추천</th>
-					<td></td>
+					<td class="text-center">
+					<span>좋아요 : ${article.likePoint }&nbsp;</span>
+					<span>싫어요 : ${article.disLikePoint }&nbsp;</span>
+						<c:if test="${actorCanReaction }">
+							<div>
+								<span>
+									<span>&nbsp;</span>
+									<a href="/usr/reactionPoint/like?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
+										class="btn btn-xs">좋아요 👍</a>
+								</span>
+								<span>
+									<span>&nbsp;</span>
+									<a href="/usr/reactionPoint/disLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
+										class="btn btn-xs">싫어요 👎</a>
+								</span>
+							</div>
+						</c:if>
+						<c:if test="${actorCanCancelLikeReaction }">
+							<div>
+								<span>
+									<span>&nbsp;</span>
+									<a href="/usr/reactionPoint/cancelLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
+										class="btn btn-xs">좋아요 👍</a>
+								</span>
+								<span>
+									<span>&nbsp;</span>
+									<a onclick="alert(this.title); return false;" title="좋아요를 먼저 취소해" class="btn btn-xs">싫어요 👎</a>
+								</span>
+							</div>
+						</c:if>
+						<c:if test="${actorCanCancelDisLikeReaction }">
+							<div>
+								<span>
+									<span>&nbsp;</span>
+									<a onclick="alert(this.title); return false;" title="싫어요를 먼저 취소해" class="btn btn-xs">좋아요 👍</a>
+								</span>
+								<span>
+									<span>&nbsp;</span>
+									<a href="/usr/reactionPoint/cancelDisLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
+										class="btn btn-xs">싫어요 👎</a>
+									
+								</span>
+							</div>
+						</c:if>
+					</td>
 				</tr>
 				<tr>
 					<th>제목</th>

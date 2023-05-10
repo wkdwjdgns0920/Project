@@ -94,31 +94,73 @@ public class ArticleService {
 		return articleRepository.getLastId();
 	}
 
-	public List<Article> getForPrintArticles(int boardId, int itemInAPage, int page, String searchKeywordType, String searchKeyword) {
+	public List<Article> getForPrintArticles(int boardId, int itemInAPage, int page, String searchKeywordType,
+			String searchKeyword) {
 		int limitFrom = (page - 1) * itemInAPage;
 		int limit = itemInAPage;
-		return articleRepository.getForPrintArticles(boardId, limitFrom, limit,searchKeywordType,searchKeyword);
+		return articleRepository.getForPrintArticles(boardId, limitFrom, limit, searchKeywordType, searchKeyword);
 	}
 
 	public int getArticlesCount(int boardId, String searchKeywordType, String searchKeyword) {
 
-		return articleRepository.getArticlesCount(boardId,searchKeywordType,searchKeyword);
+		return articleRepository.getArticlesCount(boardId, searchKeywordType, searchKeyword);
 	}
 
 	public ResultData doIncreaseHitCount(int id) {
-		
+
 		int affectedRow = articleRepository.doIncreaseHitCount(id);
-		
-		if(affectedRow != 1) {
+
+		if (affectedRow != 1) {
 			return ResultData.from("F-1", "조회수증가 실패", "affectedRow", affectedRow);
 		}
-		
+
 		return ResultData.from("S-1", "조회수 증가", "affectedRow", "affectedRow");
 	}
 
 	public int getArticleHitCount(int id) {
-		
+
 		return articleRepository.getArticleHitCount(id);
+	}
+
+	public ResultData increaseLikePoint(int relId) {
+		int affectedRow = articleRepository.increaseLikePoint(relId);
+
+		if (affectedRow != 1) {
+			return ResultData.from("F-1", "좋아요증가 실패", "affectedRow", affectedRow);
+		}
+
+		return ResultData.from("S-1", "좋아요증가", "affectedRow", affectedRow);
+	}
+
+	public ResultData increaseDisLikePoint(int relId) {
+		int affectedRow = articleRepository.increaseDisLikePoint(relId);
+
+		if (affectedRow != 1) {
+			return ResultData.from("F-1", "싫어요증가 실패", "affectedRow", affectedRow);
+		}
+
+		return ResultData.from("S-1", "싫어요증가", "affectedRow", affectedRow);
+	}
+
+	public ResultData decreaseLikeReationPoint(int relId) {
+
+		int affectedRow = articleRepository.decreaseLikeReationPoint(relId);
+
+		if (affectedRow != 1) {
+			return ResultData.from("F-1", "좋아요감소실패", "affectedRow", affectedRow);
+		}
+
+		return ResultData.from("S-1", "좋아요감소", "affectedRow", affectedRow);
+	}
+
+	public ResultData decreaseDisLikeReationPoint(int relId) {
+		int affectedRow = articleRepository.decreaseDisLikeReationPoint(relId);
+
+		if (affectedRow != 1) {
+			return ResultData.from("F-1", "싫어요감소실패", "affectedRow", affectedRow);
+		}
+
+		return ResultData.from("S-1", "싫어요감소", "affectedRow", affectedRow);
 	}
 
 }

@@ -141,5 +141,33 @@ public interface ArticleRepository {
 			WHERE id = #{id}
 			""")
 	public int getArticleHitCount(int id);
+	
+	@Update("""
+			UPDATE article
+			SET likePoint = likePoint + 1
+			WHERE id = #{relId}
+			""")
+	public int increaseLikePoint(int relId);
+	
+	@Update("""
+			UPDATE article
+			SET DisLikePoint = DisLikePoint + 1
+			WHERE id = #{relId}
+			""")
+	public int increaseDisLikePoint(int relId);
+	
+	@Update("""
+			UPDATE article
+			SET likePoint = likePoint - 1
+			WHERE id = #{relId}
+			""")
+	public int decreaseLikeReationPoint(int relId);
+	
+	@Update("""
+			UPDATE article
+			SET DisLikePoint = DisLikePoint - 1
+			WHERE id = #{relId}
+			""")
+	public int decreaseDisLikeReationPoint(int relId);
 
 }

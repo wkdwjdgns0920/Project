@@ -86,4 +86,19 @@ public class Rq {
 	public void InitOnBeforeActionInterceptor() {
 
 	}
+	
+	public String getCurrentUri() {
+		String currentUri = req.getRequestURI();
+		String queryString = req.getQueryString();
+
+		if (queryString != null && queryString.length() > 0) {
+			currentUri += "?" + queryString;
+		}
+		
+		return currentUri;
+	}
+	
+	public String getEncodedCurrentUri() {
+		return Ut.getEncodedCurrentUri(getCurrentUri());
+	}
 }

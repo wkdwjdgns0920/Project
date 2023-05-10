@@ -34,6 +34,7 @@
 			<col width="150" />
 			<col width="300" />
 			<col width="50" />
+			<col width="50" />
 		</colgroup>
 		<tr>
 			<th>번호</th>
@@ -42,6 +43,7 @@
 			<th>제목</th>
 			<th>내용</th>
 			<th>조회수</th>
+			<th>좋아요</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -55,6 +57,7 @@
 					</td>
 					<td>${article.body }</td>
 					<td>${article.hitCount }</td>
+					<td>${article.likePoint }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
