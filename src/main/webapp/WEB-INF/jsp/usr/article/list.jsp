@@ -31,7 +31,9 @@
 			<col width="50" />
 			<col width="100" />
 			<col width="150" />
+			<col width="150" />
 			<col width="300" />
+			<col width="50" />
 		</colgroup>
 		<tr>
 			<th>번호</th>
@@ -39,6 +41,7 @@
 			<th>작성자</th>
 			<th>제목</th>
 			<th>내용</th>
+			<th>조회수</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -51,6 +54,7 @@
 						<a class="hover:underline" href="../article/detail?id=${article.id }">${article.title }</a>
 					</td>
 					<td>${article.body }</td>
+					<td>${article.hitCount }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

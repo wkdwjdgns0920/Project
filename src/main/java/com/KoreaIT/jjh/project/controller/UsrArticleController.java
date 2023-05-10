@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,7 +50,7 @@ public class UsrArticleController {
 		int pagesCount = (int) Math.ceil(articlesCount / (double) itemInAPage);
 		int startPage = 1;
 		int endPage = 10;
-		
+
 		model.addAttribute("searchKeywordType", searchKeywordType);
 		model.addAttribute("searchKeyword", searchKeyword);
 		model.addAttribute("board", board);
@@ -118,7 +119,7 @@ public class UsrArticleController {
 		if (article == null) {
 			return Ut.jsHistoryBack("F-2", Ut.f("%d번 게시글은 없어", id));
 		}
-		
+
 		ResultData actorCanDeleteRd = articleService.actorCanDelete(rq.getLoginedMemberId(), article);
 		if (actorCanDeleteRd.isFail()) {
 			return Ut.jsHistoryBack(actorCanDeleteRd.getResultCode(), actorCanDeleteRd.getMsg());
@@ -141,6 +142,19 @@ public class UsrArticleController {
 		model.addAttribute("article", article);
 
 		return "usr/article/detail";
+	}
+
+	@RequestMapping("usr/article/doIncreaseHitCount")
+	@ResponseBody
+	public ResultData doIncreaseHitCount(int id) {
+
+		ResultData increaseHitCountRd = articleService.doIncreaseHitCount(id);
+
+		if (increaseHitCountRd.isFail()) {
+			return increaseHitCountRd;
+		}
+		
+		return ResultData.newData(increaseHitCountRd, "hitCount", articleService.getArticleHitCount(id));
 	}
 
 	@RequestMapping("usr/article/write")

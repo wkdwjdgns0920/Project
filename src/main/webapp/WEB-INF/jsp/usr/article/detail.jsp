@@ -3,6 +3,25 @@
 <c:set var="pageTitle" value="Article Detail" />
 <%@ include file="../common/head.jspf"%>
 
+<script>
+var paramId = ${param.id};
+	
+	function articleDetail_increaseHitCount(){
+		$.get('../article/doIncreaseHitCount',{
+			id : paramId,
+			ajaxMode : 'Y'
+		}, function(data) {
+			$('.article_hitCount').empty().html(data.data1);
+		},'json');
+	}
+	
+	$(function(){
+		articleDetail_increaseHitCount();
+	})
+	
+	console.log('asd');
+</script>
+
 <div class="mt-8 text-xl bor-b po-rel">
 	<div class="container mx-auto px-3">
 		<table class="table table-zebra w-full">
@@ -28,7 +47,9 @@
 				</tr>
 				<tr>
 					<th>조회수</th>
-					<td></td>
+					<td class="text-center"> 
+					<span class="article_hitCount">${article.hitCount }</span>
+					</td>
 				</tr>
 				<tr>
 					<th>추천</th>
