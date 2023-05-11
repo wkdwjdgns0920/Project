@@ -147,6 +147,11 @@ header>div>ul>li>ul>li:hover {
 	color: white;
 }
 
+.reply_modi {
+	height: 100px;
+	width: 300px;
+}
+
 .reply_box {
 	font-size: 2rem;
 	background-color: gold;

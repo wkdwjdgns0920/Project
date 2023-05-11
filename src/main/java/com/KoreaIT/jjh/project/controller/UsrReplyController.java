@@ -49,16 +49,16 @@ public class UsrReplyController {
 
 	@RequestMapping("/usr/reply/doModify")
 	@ResponseBody
-	public String doModify(int id, String body, String replaceUri) {
+	public ResultData doModify(int id, String body, String replaceUri) {
 
 		Reply reply = replyService.getReply(id);
 
 		if (reply == null) {
-			return Ut.jsHistoryBack("F-1", Ut.f("%d번 댓글은 존재하지 않습니다", id));
+			return ResultData.from("F-1", Ut.f("%d번 댓글은 존재하지 않습니다", id));
 		}
 
 		if (reply.getMemberId() != rq.getLoginedMemberId()) {
-			return Ut.jsHistoryBack("F-2", Ut.f("%d번 댓글에 대한 권한이 없습니다", id));
+			return ResultData.from("F-2", Ut.f("%d번 댓글에 대한 권한이 없습니다", id));
 		}
 
 		ResultData modifyReplyRd = replyService.modifyReply(id, body);
@@ -71,7 +71,8 @@ public class UsrReplyController {
 			}
 		}
 
-		return Ut.jsReplace(modifyReplyRd.getResultCode(), modifyReplyRd.getMsg(), replaceUri);
+
+		return ResultData.from(modifyReplyRd.getResultCode(), modifyReplyRd.getMsg());
 	}
 
 	@RequestMapping("/usr/reply/doDelete")

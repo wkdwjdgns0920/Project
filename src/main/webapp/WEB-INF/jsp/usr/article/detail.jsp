@@ -194,33 +194,7 @@
 		</div>
 	</div>
 </section>
-<select name="rating">
-					<option value="0.5">0.5</option>
-					<option value="1.0">1.0</option>
-					<option value="1.5">1.5</option>
-					<option value="2.0">2.0</option>
-					<option value="2.5">2.5</option>
-					<option value="3.0">3.0</option>
-					<option value="3.5">3.5</option>
-					<option value="4.0">4.0</option>
-				</select>
-				<style>
-				/* 평점 영역 */
-  	.rating_div{
-  		padding-top: 10px;
-  	}
-  	.rating_div h4{
-  		margin : 0;
-  	}
-  	select{
-  	margin: 15px;
-    width: 100px;
-    height: 40px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;  	
-  	}
-				</style>
+
 <section class="mt-5">
 	<div class="container mx-auto px-3">
 		<h1 class="text-3xl">댓글 리스트(${repliesCount })</h1>
@@ -228,24 +202,67 @@
 	<div class="reply_box">
 		<c:forEach var="reply" items="${replies }">
 			<div class="r-t">${reply.extra__writer }</div>
-			<div>${reply.body }</div>
+			<div class="reply_body${reply.id }">${reply.body }</div>
 			<div>${reply.regDate.substring(0,16) }</div>
 			<div class="">
 				<div class="cbox">대댓글</div>
 				<c:if test="${reply.actorCanModify }">
-					<a class="cbox" href="../reply/modify?id=${reply.id }">수정</a>
+					<button class="modify-button" data-reply-id="${reply.id}">수정하기</button>
 				</c:if>
-
-				<c:if test="${reply.actorCanDelete }">
-					<a class="cbox" onclick="if(confirm('정말 삭제하시겠습니까?')==false) return false;" href="../reply/doDelete?id=${reply.id }&replaceUri=${rq.encodedCurrentUri}">삭제</a>
-				</c:if>
-
 			</div>
 			<hr />
 		</c:forEach>
-
 	</div>
 </section>
+
+
+
+
+<!-- 댓글수정 -->
+<!-- <script>
+function modifyReply(el) {
+		var replyBody = $('.reply_body' + el).html();
+		
+		$('.reply_body' + el).empty();
+		
+		$('.reply_body' + el).html('<input class="reply_body' + el'" name="body" class="mt-2 reply_modi" value="'+ replyBody +'">');
+
+	}
+</script> -->
+
+<script>
+$(document).ready(function() {
+	// 수정 버튼 클릭 시 이벤트 처리
+	$(".modify-button").on("click", function() {
+		var replyId = $(this).data("reply-id");
+		var replyBody = $(".reply_body" + replyId).html();
+		$(".modify-form input[name='id']").val(replyId);
+		$(".modify-form textarea[name='body']").val(replyBody);
+		$(".modify-form-container").show();
+	});
+
+	// 수정 폼 제출 시 이벤트 처리
+	$(".modify-form").on("submit", function(event) {
+		event.preventDefault();
+		var form = $(this);
+		$.ajax({
+			type: "POST",
+			url: "../reply/doModify",
+			
+			success: function(data) {
+				if (data.success) {
+					location.reload();
+				} else {
+					alert(data.errorMessage);
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				alert("서버와 통신 중 오류가 발생했습니다.");
+			}
+		});
+	});
+});
+</script>
 
 
 
