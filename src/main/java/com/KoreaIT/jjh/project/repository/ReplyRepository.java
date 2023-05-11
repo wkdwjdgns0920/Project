@@ -2,11 +2,14 @@ package com.KoreaIT.jjh.project.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.KoreaIT.jjh.project.vo.Reply;
+import com.KoreaIT.jjh.project.vo.ResultData;
 
 @Mapper
 public interface ReplyRepository {
@@ -39,8 +42,29 @@ public interface ReplyRepository {
 			ON R.memberId = M.id
 			WHERE R.relTypeCode = #{relTypeCode}
 			AND R.relId = #{relId}
-			ORDER BY R.id DESC
+			ORDER BY R.id ASC
 			""")
 	List<Reply> getForPrintReplies(int actorId, String relTypeCode, int relId);
+	
+	
+	@Select("""
+			SELECT *
+			FROM `reply`
+			WHERE id = #{id}
+			""")
+	Reply getReply(int id);
+	
+	@Delete("""
+			DELETE FROM reply
+			WHERE id = #{id}
+			""")
+	int deleteReply(int id);
+	
+	@Update("""
+			UPDATE `reply`
+			set `body = #{body}
+			WHERE id = #{id}
+			""")
+	int modifyReply(int id, String body);
 
 }

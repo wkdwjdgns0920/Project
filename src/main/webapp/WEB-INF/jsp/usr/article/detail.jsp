@@ -185,18 +185,67 @@
 				</form>
 			</c:if>
 			<c:if test="${!rq.logined}">
-				<a class="btn-text-link btn btn-active btn-ghost" href="/usr/member/login">로그인</a> 후 이용해줘
+				<div class="reply_box_nl">
+					댓글을 작성하려면 &nbsp;
+					<a class="reply_box_a" href="/usr/member/login">로그인</a>
+					&nbsp; 해주세요
+				</div>
 			</c:if>
 		</div>
 	</div>
 </section>
-
+<select name="rating">
+					<option value="0.5">0.5</option>
+					<option value="1.0">1.0</option>
+					<option value="1.5">1.5</option>
+					<option value="2.0">2.0</option>
+					<option value="2.5">2.5</option>
+					<option value="3.0">3.0</option>
+					<option value="3.5">3.5</option>
+					<option value="4.0">4.0</option>
+				</select>
+				<style>
+				/* 평점 영역 */
+  	.rating_div{
+  		padding-top: 10px;
+  	}
+  	.rating_div h4{
+  		margin : 0;
+  	}
+  	select{
+  	margin: 15px;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;  	
+  	}
+				</style>
 <section class="mt-5">
 	<div class="container mx-auto px-3">
 		<h1 class="text-3xl">댓글 리스트(${repliesCount })</h1>
 	</div>
-</section>
+	<div class="reply_box">
+		<c:forEach var="reply" items="${replies }">
+			<div class="r-t">${reply.extra__writer }</div>
+			<div>${reply.body }</div>
+			<div>${reply.regDate.substring(0,16) }</div>
+			<div class="">
+				<div class="cbox">대댓글</div>
+				<c:if test="${reply.actorCanModify }">
+					<a class="cbox" href="../reply/modify?id=${reply.id }">수정</a>
+				</c:if>
 
+				<c:if test="${reply.actorCanDelete }">
+					<a class="cbox" onclick="if(confirm('정말 삭제하시겠습니까?')==false) return false;" href="../reply/doDelete?id=${reply.id }&replaceUri=${rq.encodedCurrentUri}">삭제</a>
+				</c:if>
+
+			</div>
+			<hr />
+		</c:forEach>
+
+	</div>
+</section>
 
 
 

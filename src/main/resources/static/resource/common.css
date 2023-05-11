@@ -146,3 +146,26 @@ header>div>ul>li>ul>li:hover {
 	background-color: black;
 	color: white;
 }
+
+.reply_box {
+	font-size: 2rem;
+	background-color: gold;
+	margin: 20px 50px;
+}
+
+.reply_box > .r-t {
+	margin-top: 10px;
+}
+
+.reply_box_nl {
+	border: 1px solid black;
+}
+.reply_box_a {
+	font-weight: bold;
+}
+.cbox {
+	background-color: white;
+	border: 0.5px solid black;
+	width: 100px;
+	display: inline;
+}
