@@ -50,6 +50,7 @@ html>body {
 
 /* 커스텀 */
 body {
+<<<<<<< HEAD
 	margin: 0 auto;
 	position: relative;
 	z-index: -100;
@@ -70,6 +71,10 @@ body {
 	height: 100%;
 	z-index: -1;
 	opacity: 0.8;
+=======
+	width: 1200px;
+	margin: 0 auto;
+>>>>>>> 3469d739b4b5ad85c432aa3b3f13202f38c1d487
 }
 
 .con {
@@ -245,10 +250,18 @@ header>div>ul>li>ul>li:hover {
 .reply_write_body {
 	width: 800px;
 	height: 150px;
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 3469d739b4b5ad85c432aa3b3f13202f38c1d487
 }
 
 .reply_write_btn {
 	height: 150px;
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 3469d739b4b5ad85c432aa3b3f13202f38c1d487
 	margin-left: 10px;
 }
 
@@ -256,7 +269,11 @@ header>div>ul>li>ul>li:hover {
 	font-size: 20px;
 }
 
+<<<<<<< HEAD
 .reply_regDate {
+=======
+.reply_regDate{
+>>>>>>> 3469d739b4b5ad85c432aa3b3f13202f38c1d487
 	font-size: 15px;
 }
 
@@ -264,7 +281,10 @@ header>div>ul>li>ul>li:hover {
 	background-color: white;
 	border-radius: 10px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3469d739b4b5ad85c432aa3b3f13202f38c1d487
 .reply_doModify_btn {
 	background-color: white;
 	border-radius: 10px;
