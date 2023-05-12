@@ -1,7 +1,11 @@
 package com.KoreaIT.jjh.project.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,6 +25,8 @@ public class UsrReplyController {
 	private ReplyService replyService;
 	@Autowired
 	private ArticleService articleSevice;
+	
+	
 
 	@RequestMapping("/usr/reply/doWrite")
 	@ResponseBody
@@ -46,7 +52,8 @@ public class UsrReplyController {
 
 		return Ut.jsReplace(writeReplyRd.getResultCode(), writeReplyRd.getMsg(), replaceUri);
 	}
-
+	
+	
 	@RequestMapping("/usr/reply/doModify")
 	@ResponseBody
 	public ResultData doModify(int id, String body, String replaceUri) {

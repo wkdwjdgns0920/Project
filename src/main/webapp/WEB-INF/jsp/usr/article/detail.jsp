@@ -49,9 +49,9 @@
 		form.submit();
 	}
 </script>
-
+<!-- 게시글상세보기 -->
 <div class="mt-8 text-xl bor-b po-rel">
-	<div class="container mx-auto px-3">
+	<div class="mx-auto px-3">
 		<table class="table table-zebra w-full">
 			<colgroup>
 				<col width="150" />
@@ -159,84 +159,78 @@
 	</div>
 </div>
 
-<section class="mt-8 text-xl">
-	<div class="container mx-auto px-3">
-		<div class="table-box-type-1">
-			<c:if test="${rq.logined }">
-				<form action="../reply/doWrite" method="POST"
-					onsubmit="ReplyWrite__submitForm(this); return false;">
-					<input type="hidden" name="relTypeCode" value="article" />
-					<input type="hidden" name="relId" value="${article.id }" />
-					<input type="hidden" name="replaceUri" value="${rq.currentUri }" />
-					<table>
-						<colgroup>
-							<col width="200" />
-						</colgroup>
-
-						<tbody>
-							<tr>
-								<th>댓글</th>
-								<td>
-									<textarea class="input input-bordered w-full max-w-xs"
-										type="text" name="body" placeholder="내용을 입력해주세요" /></textarea>
-								</td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>
-									<button type="submit" value="작성" />
-									댓글 작성
-									</button>
-								</td>
-							</tr>
-						</tbody>
-
-					</table>
-				</form>
-			</c:if>
-			<c:if test="${!rq.logined}">
-				<div class="reply_box_nl">
-					댓글을 작성하려면 &nbsp;
-					<a class="reply_box_a" href="/usr/member/login">로그인</a>
-					&nbsp; 해주세요
+<!-- 댓글작성폼 -->
+<section class="text-xl reply_form">
+	<c:if test="${rq.logined }">
+		<form action="../reply/doWrite" method="POST"
+			onsubmit="ReplyWrite__submitForm(this); return false;">
+			<input type="hidden" name="relTypeCode" value="article" />
+			<input type="hidden" name="relId" value="${article.id }" />
+			<input type="hidden" name="replaceUri" value="${rq.currentUri }" />
+			<div class="reply_write_box mx-auto px-3">
+				<div>댓글을 입력해주세요</div>
+				<div class="reply_write__box flex justify-between">
+					<div>
+						<textarea class="input input-bordered w-full reply_write_body"
+							type="text" name="body" placeholder="내용을 입력해주세요" /></textarea>
+					</div>
+					<button class="btn reply_write_btn" type="submit" value="작성">댓글작성</button>
 				</div>
-			</c:if>
-		</div>
+			</div>
+		</form>
+	</c:if>
+	<c:if test="${!rq.logined}">
+	<div class="reply_box_check_login">
+		댓글을 작성하려면 &nbsp;
+		<a class="reply_box_a" href="/usr/member/login">로그인</a>
+		&nbsp; 해주세요
 	</div>
+</c:if>
 </section>
 
-<section class="mt-5">
-	<div class="container mx-auto px-3">
+
+
+<!-- 댓글리스트 -->
+<section class="mt-5 reply_list">
+	<div class="mx-auto px-3">
 		<h1 class="text-3xl">댓글 리스트(${repliesCount })</h1>
 	</div>
 	<div class="reply_box">
 		<c:forEach var="reply" items="${replies }">
+
+			<input type="hidden" name="id" value="${reply.id }" />
+			<input type="hidden" name="replaceUri"
+				value="${rq.encodedCurrentUri }" />
 			<div class="r-t">${reply.id }</div>
 			<div>${reply.extra__writer }</div>
-			
+
 			<div class="reply_body${reply.id }">${reply.body }</div>
-			
-			<div>${reply.regDate.substring(0,16) }</div>
-			
+
+			<div class="reply_regDate">${reply.regDate.substring(0,16) }</div>
+
 			<div class="modify_btn_box">
 				<c:if test="${reply.actorCanModify }">
-					<button class="modify-btn btn" onclick="modifyReply(${reply.id})" >수정하기</button>
-					<button class="doModify-btn btn" onclick="doModifyReply(${reply.id})"  style="display:none;">수정하기2</button>
+					<button class="reply_modify_btn " onclick="modifyReply(${reply.id})" >수정하기</button>
+					<button class="reply_doModify_btn " type="submit"  style="display:none;">수정하기2</button>
 				</c:if>
 			</div>
-			
 			<hr />
 		</c:forEach>
 	</div>
+
+
+	<!-- 댓글페이징 -->
 	<div class="flex justify-center mt-3">
 
 		<c:set var="pageLen" value="4" />
-		<c:set var="startPage" value="${page - pageLen >=1 ? page - pageLen : 1 }" />
-		<c:set var="endPage" value="${page + pageLen <= pagesCount ? page + pageLen : pagesCount }" />
-		
-		
+		<c:set var="startPage"
+			value="${page - pageLen >=1 ? page - pageLen : 1 }" />
+		<c:set var="endPage"
+			value="${page + pageLen <= pagesCount ? page + pageLen : pagesCount }" />
+
+
 		<c:set var="baseUri" value="detail?id=${param.id }" />
-	
+
 
 		<c:if test="${page > 1 }">
 			<a class="" href="${baseUri }&page=1">◀◀</a> &nbsp&nbsp
@@ -245,7 +239,8 @@
 
 		<div>
 			<c:forEach begin="${startPage }" end="${endPage }" var="i">
-				<a class="p-1 ${param.page == i ? 'btn-active' : '' }" href="${baseUri }&page=${i }">${i }</a>
+				<a class="p-1 ${param.page == i ? 'btn-active' : '' }"
+					href="${baseUri }&page=${i }">${i }</a>
 			</c:forEach>
 
 			<c:if test="${page < pagesCount }">
@@ -257,7 +252,36 @@
 	</div>
 </section>
 
-
+<script>
+	function modifyReply(replyId) {
+		var replyBody = $('.reply_body' + replyId).html();
+		$('.reply_body' + replyId).empty();
+		$('.reply_body' + replyId)
+				.html(
+						'<input class="mt-2 reply_modify_box" name="body" value="'+ replyBody +'">');
+		$('.modify-btn').hide();
+		$('.doModify-btn').show().click(function() {
+			var newBody = $('.reply_modify_box').val();
+			$.ajax({
+				url : '/modifyReply',
+				method : 'POST',
+				data : {
+					replyId : replyId,
+					body : newBody
+				},
+				success : function(response) {
+					if (response.success) {
+						$('.reply_body' + replyId).html(response.body);
+						$('.doModify-btn').hide();
+						$('.modify-btn').show();
+					} else {
+						alert(response.errorMessage);
+					}
+				}
+			});
+		});
+	}
+</script>
 <!-- 댓글수정 -->
 <!-- <script>
 function modifyReply(el) {
@@ -266,7 +290,7 @@ function modifyReply(el) {
     $('.reply_body' + el).empty();
     const form = $(el).closest('form').get(0);
     
-    $('.reply_body' + el).html('<input class="mt-2 reply_modify_box" value="'+ replyBody +'">');
+    $('.reply_body' + el).html('<input class="mt-2 reply_modify_box" name="body" value="'+ replyBody +'">');
     
     $('.modify-btn').css('display', 'none');
     $('.doModify-btn').css('display', 'inline');
