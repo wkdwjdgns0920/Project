@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="/resource/startPage.css" />
 <%@ include file="../common/head.jspf"%>
 
+
+<img class="main_body" src="https://www.yuseong.go.kr/thumbnail/trrsrt/TR_202105110257537201.jpg" alt="">
  <blockquote>
 	<div class="polaroid">
 		<div class="card">
@@ -31,5 +33,5 @@
 	</div>
 	<cite>From the song "Things We Left Behind" by Atlas</cite>
 </blockquote>
-<img class="main_body" src="https://www.yuseong.go.kr/thumbnail/trrsrt/TR_202105110257537201.jpg" alt="">
+
 <%@ include file="../common/foot.jspf"%>

@@ -3,6 +3,7 @@
 <c:set var="pageTitle" value="Member Login" />
 <%@ include file="../common/head.jspf"%>
 
+<section class="login_con">
 <div class="loginForm flex items-end p-2">
 	<form action="../member/doLogin" method="POST">
 		<div class="login_box">로그인 폼</div>
@@ -15,3 +16,6 @@
 
 	</form>
 </div>
+</section>
+
+<%@ include file="../common/foot.jspf"%>
