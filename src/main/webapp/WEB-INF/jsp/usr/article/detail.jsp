@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="Article Detail" />
 <%@ include file="../common/head.jspf"%>
@@ -87,12 +88,14 @@
 							<div>
 								<span>
 									<span>&nbsp;</span>
-									<a href="/usr/reactionPoint/like?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
+									<a
+										href="/usr/reactionPoint/like?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
 										class="btn btn-xs">좋아요 👍</a>
 								</span>
 								<span>
 									<span>&nbsp;</span>
-									<a href="/usr/reactionPoint/disLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
+									<a
+										href="/usr/reactionPoint/disLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
 										class="btn btn-xs">싫어요 👎</a>
 								</span>
 							</div>
@@ -107,7 +110,8 @@
 								</span>
 								<span>
 									<span>&nbsp;</span>
-									<a onclick="alert(this.title); return false;" title="좋아요를 먼저 취소해" class="btn btn-xs">싫어요 👎</a>
+									<a onclick="alert(this.title); return false;"
+										title="좋아요를 먼저 취소해" class="btn btn-xs">싫어요 👎</a>
 								</span>
 							</div>
 						</c:if>
@@ -115,7 +119,8 @@
 							<div>
 								<span>
 									<span>&nbsp;</span>
-									<a onclick="alert(this.title); return false;" title="싫어요를 먼저 취소해" class="btn btn-xs">좋아요 👍</a>
+									<a onclick="alert(this.title); return false;"
+										title="싫어요를 먼저 취소해" class="btn btn-xs">좋아요 👍</a>
 								</span>
 								<span>
 									<span>&nbsp;</span>
@@ -140,12 +145,15 @@
 		</table>
 	</div>
 	<div class="btns lowMenu flex justify-end">
-		<button class="btn-text-link m-1" type="button" onclick="history.back();">뒤로가기</button>
+		<button class="btn-text-link m-1" type="button"
+			onclick="history.back();">뒤로가기</button>
 		<c:if test="${article.actorCanModify }">
-			<a class="btn-text-link m-1" href="../article/modify?id=${article.id }">수정</a>
+			<a class="btn-text-link m-1"
+				href="../article/modify?id=${article.id }">수정</a>
 		</c:if>
 		<c:if test="${article.actorCanDelete }">
-			<a class="btn-text-link m-1" onclick="if(confirm('정말 삭제하시겠습니까?')==false) return false;"
+			<a class="btn-text-link m-1"
+				onclick="if(confirm('정말 삭제하시겠습니까?')==false) return false;"
 				href="../article/doDelete?id=${article.id }">삭제</a>
 		</c:if>
 	</div>
@@ -155,7 +163,8 @@
 	<div class="container mx-auto px-3">
 		<div class="table-box-type-1">
 			<c:if test="${rq.logined }">
-				<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submitForm(this); return false;">
+				<form action="../reply/doWrite" method="POST"
+					onsubmit="ReplyWrite__submitForm(this); return false;">
 					<input type="hidden" name="relTypeCode" value="article" />
 					<input type="hidden" name="relId" value="${article.id }" />
 					<input type="hidden" name="replaceUri" value="${rq.currentUri }" />
@@ -168,7 +177,8 @@
 							<tr>
 								<th>댓글</th>
 								<td>
-									<textarea class="input input-bordered w-full max-w-xs" type="text" name="body" placeholder="내용을 입력해주세요" /></textarea>
+									<textarea class="input input-bordered w-full max-w-xs"
+										type="text" name="body" placeholder="내용을 입력해주세요" /></textarea>
 								</td>
 							</tr>
 							<tr>
@@ -201,69 +211,83 @@
 	</div>
 	<div class="reply_box">
 		<c:forEach var="reply" items="${replies }">
-			<div class="r-t">${reply.extra__writer }</div>
+			<div class="r-t">${reply.id }</div>
+			<div>${reply.extra__writer }</div>
+			
 			<div class="reply_body${reply.id }">${reply.body }</div>
+			
 			<div>${reply.regDate.substring(0,16) }</div>
-			<div class="">
-				<div class="cbox">대댓글</div>
+			
+			<div class="modify_btn_box">
 				<c:if test="${reply.actorCanModify }">
-					<button class="modify-button" data-reply-id="${reply.id}">수정하기</button>
+					<button class="modify-btn btn" onclick="modifyReply(${reply.id})" >수정하기</button>
+					<button class="doModify-btn btn" onclick="doModifyReply(${reply.id})"  style="display:none;">수정하기2</button>
 				</c:if>
 			</div>
+			
 			<hr />
 		</c:forEach>
 	</div>
+	<div class="flex justify-center mt-3">
+
+		<c:set var="pageLen" value="4" />
+		<c:set var="startPage" value="${page - pageLen >=1 ? page - pageLen : 1 }" />
+		<c:set var="endPage" value="${page + pageLen <= pagesCount ? page + pageLen : pagesCount }" />
+		
+		
+		<c:set var="baseUri" value="detail?id=${param.id }" />
+	
+
+		<c:if test="${page > 1 }">
+			<a class="" href="${baseUri }&page=1">◀◀</a> &nbsp&nbsp
+			<a class="" href="${baseUri }&page=${page-1 }">◀</a>
+		</c:if>
+
+		<div>
+			<c:forEach begin="${startPage }" end="${endPage }" var="i">
+				<a class="p-1 ${param.page == i ? 'btn-active' : '' }" href="${baseUri }&page=${i }">${i }</a>
+			</c:forEach>
+
+			<c:if test="${page < pagesCount }">
+				<a class="" href="${baseUri }&page=${page + 1 }">▶</a>&nbsp&nbsp
+				<a class="" href="${baseUri }&page=${pagesCount }">▶▶</a>
+			</c:if>
+
+		</div>
+	</div>
 </section>
-
-
 
 
 <!-- 댓글수정 -->
 <!-- <script>
 function modifyReply(el) {
-		var replyBody = $('.reply_body' + el).html();
-		
-		$('.reply_body' + el).empty();
-		
-		$('.reply_body' + el).html('<input class="reply_body' + el'" name="body" class="mt-2 reply_modi" value="'+ replyBody +'">');
+    var replyBody = $('.reply_body' + el).html();
+    
+    $('.reply_body' + el).empty();
+    const form = $(el).closest('form').get(0);
+    
+    $('.reply_body' + el).html('<input class="mt-2 reply_modify_box" value="'+ replyBody +'">');
+    
+    $('.modify-btn').css('display', 'none');
+    $('.doModify-btn').css('display', 'inline');
+}
 
-	}
 </script> -->
-
-<script>
-$(document).ready(function() {
-	// 수정 버튼 클릭 시 이벤트 처리
-	$(".modify-button").on("click", function() {
-		var replyId = $(this).data("reply-id");
-		var replyBody = $(".reply_body" + replyId).html();
-		$(".modify-form input[name='id']").val(replyId);
-		$(".modify-form textarea[name='body']").val(replyBody);
-		$(".modify-form-container").show();
-	});
-
-	// 수정 폼 제출 시 이벤트 처리
-	$(".modify-form").on("submit", function(event) {
-		event.preventDefault();
-		var form = $(this);
-		$.ajax({
-			type: "POST",
-			url: "../reply/doModify",
-			
-			success: function(data) {
-				if (data.success) {
-					location.reload();
-				} else {
-					alert(data.errorMessage);
-				}
-			},
-			error: function(jqXHR, textStatus, errorThrown) {
-				alert("서버와 통신 중 오류가 발생했습니다.");
-			}
-		});
-	});
-});
-</script>
-
+<!-- <script>
+function doModifyReply(el) {
+	var id = el;
+	var body = $('.reply_body' + el '> .reply_modify_box').val();
+	
+	$.get('../reply/doModify', {
+		id : id,
+		body : body,
+		ajaxMode : 'Y'
+	}, function(data) {
+		alert(data.msg);
+		location.reload();
+	}, 'json');
+}
+</script> -->
 
 
 <%@ include file="../common/foot.jspf"%>

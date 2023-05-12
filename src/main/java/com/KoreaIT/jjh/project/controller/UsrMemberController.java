@@ -22,6 +22,12 @@ public class UsrMemberController {
 	@Autowired
 	private Rq rq;
 	
+	@RequestMapping("/usr/member/myPage")
+	public String showMyPage() {
+
+		return "usr/member/myPage";
+	}
+	
 	@RequestMapping("/usr/member/join")
 	public String showJoin() {
 		return "usr/member/join";

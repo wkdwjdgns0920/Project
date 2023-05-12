@@ -132,6 +132,10 @@ header>div>ul>li:hover>ul {
 	margin-right: 50px;
 }
 
+.bor-1{
+	border: 1px solid black;
+}
+
 header>div>ul>li>ul {
 	display: none;
 	position: absolute;
@@ -147,9 +151,10 @@ header>div>ul>li>ul>li:hover {
 	color: white;
 }
 
-.reply_modi {
-	height: 100px;
-	width: 300px;
+.reply_modify_box {
+	height: 200px;
+	width: 1000px;
+	border: 1px solid black;
 }
 
 .reply_box {
@@ -173,4 +178,8 @@ header>div>ul>li>ul>li:hover {
 	border: 0.5px solid black;
 	width: 100px;
 	display: inline;
+}
+
+.modify_btn_box > .modify-btn {
+	
 }

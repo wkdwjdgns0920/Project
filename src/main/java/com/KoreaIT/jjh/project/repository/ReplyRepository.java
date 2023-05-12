@@ -36,15 +36,20 @@ public interface ReplyRepository {
 	int getLastInsertId();
 	
 	@Select("""
-			SELECT R.*, M.nickname AS extra__writer
-			FROM reply AS R
-			LEFT JOIN `member` AS M
-			ON R.memberId = M.id
-			WHERE R.relTypeCode = #{relTypeCode}
-			AND R.relId = #{relId}
-			ORDER BY R.id ASC
+			<script>
+				SELECT R.*, M.nickname AS extra__writer
+				FROM reply AS R
+				LEFT JOIN `member` AS M
+				ON R.memberId = M.id
+				WHERE R.relTypeCode = #{relTypeCode}
+				AND R.relId = #{relId}
+				ORDER BY R.id ASC
+				<if test="limitFrom >= 0">
+					LIMIT #{limitFrom}, #{limit}
+				</if>
+			</script>
 			""")
-	List<Reply> getForPrintReplies(int actorId, String relTypeCode, int relId);
+	List<Reply> getForPrintReplies(int actorId, String relTypeCode, int relId, int limitFrom, int limit);
 	
 	
 	@Select("""
@@ -66,5 +71,12 @@ public interface ReplyRepository {
 			WHERE id = #{id}
 			""")
 	int modifyReply(int id, String body);
+	
+	@Select("""
+			SELECT COUNT(*)
+			FROM `reply`
+			WHERE relId = #{reldId}
+			""")
+	int getRepliesCount(int relId);
 
 }

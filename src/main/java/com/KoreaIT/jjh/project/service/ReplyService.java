@@ -28,9 +28,12 @@ public class ReplyService {
 		return ResultData.from("S-1", Ut.f("%d번 댓글이 생성되었습니다", id), "id", id);
 	}
 
-	public List<Reply> getForPrintReplies(int actorId, String relTypeCode, int relId) {
+	public List<Reply> getForPrintReplies(int actorId, String relTypeCode, int relId, int itemInAPage, int page) {
 		
-		List<Reply> replies = replyRepository.getForPrintReplies(actorId, relTypeCode, relId);
+		int limitFrom = (page - 1) * itemInAPage;
+		int limit = itemInAPage;
+		
+		List<Reply> replies = replyRepository.getForPrintReplies(actorId, relTypeCode, relId, limitFrom, limit);
 		
 		for(Reply reply : replies) {
 			controlForPrintData(actorId,reply);
@@ -89,5 +92,10 @@ public class ReplyService {
 			return ResultData.from("F-3", "댓글수정실패", "affectedRow", affectedRow);
 		}
 		return ResultData.from("S-1", "댓글수정", "affectedRow", affectedRow);
+	}
+
+	public int getRepliesCount(int relId) {
+		
+		return replyRepository.getRepliesCount(relId);
 	}
 }
