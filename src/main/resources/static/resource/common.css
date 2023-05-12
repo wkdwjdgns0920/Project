@@ -49,6 +49,53 @@ html>body {
 }
 
 /* 커스텀 */
+body {
+	margin: 0 auto;
+	position: relative;
+	z-index: -100;
+}
+.head_con {
+	
+}
+
+.head_con > header:hover {
+	background-color: white;
+}
+
+.main_body {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	opacity: 0.8;
+}
+
+.con {
+	height: 100px;
+}
+
+.h-100 {
+	height: 100%;
+}
+
+.login_bar {
+	font-size: 20px;
+}
+
+.nickname_box {
+	display: flex;
+	align-items: center;
+	margin-right: 10px;
+}
+
+.logo {
+	height: 100px;
+	width: 100px;
+	background-color: red;
+}
+
 .table-box-type-1 thead th, .table-box-type-1 tbody th,
 	.table-box-type-1 td {
 	border: 1px solid black;
@@ -132,6 +179,10 @@ header>div>ul>li:hover>ul {
 	margin-right: 50px;
 }
 
+.bor-1 {
+	border: 1px solid black;
+}
+
 header>div>ul>li>ul {
 	display: none;
 	position: absolute;
@@ -147,30 +198,74 @@ header>div>ul>li>ul>li:hover {
 	color: white;
 }
 
-.reply_modi {
-	height: 100px;
-	width: 300px;
+.reply_modify_box {
+	height: 200px;
+	width: 100%;
+	border: 1px solid black;
 }
 
 .reply_box {
-	font-size: 2rem;
-	background-color: gold;
 	margin: 20px 50px;
+	font-style: normal;
 }
 
-.reply_box > .r-t {
+.reply_box>.r-t {
 	margin-top: 10px;
 }
 
-.reply_box_nl {
-	border: 1px solid black;
+.reply_box_check_login {
+	
 }
+
 .reply_box_a {
 	font-weight: bold;
 }
+
 .cbox {
 	background-color: white;
 	border: 0.5px solid black;
 	width: 100px;
 	display: inline;
+}
+
+.reply_form {
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+}
+
+.reply_write_box {
+	width: 80%;
+}
+
+.reply_write__box {
+	
+}
+
+.reply_write_body {
+	width: 800px;
+	height: 150px;
+}
+
+.reply_write_btn {
+	height: 150px;
+	margin-left: 10px;
+}
+
+.reply_list {
+	font-size: 20px;
+}
+
+.reply_regDate {
+	font-size: 15px;
+}
+
+.reply_modify_btn {
+	background-color: white;
+	border-radius: 10px;
+}
+
+.reply_doModify_btn {
+	background-color: white;
+	border-radius: 10px;
 }

@@ -1,8 +1,5 @@
 package com.KoreaIT.jjh.project.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +18,12 @@ public class UsrMemberController {
 	MemberService memberService;
 	@Autowired
 	private Rq rq;
+	
+	@RequestMapping("/usr/member/myPage")
+	public String showMyPage() {
+
+		return "usr/member/myPage";
+	}
 	
 	@RequestMapping("/usr/member/join")
 	public String showJoin() {

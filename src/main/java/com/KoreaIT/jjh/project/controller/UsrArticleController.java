@@ -54,8 +54,6 @@ public class UsrArticleController {
 
 		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordType, searchKeyword);
 		int pagesCount = (int) Math.ceil(articlesCount / (double) itemInAPage);
-		int startPage = 1;
-		int endPage = 10;
 
 		model.addAttribute("searchKeywordType", searchKeywordType);
 		model.addAttribute("searchKeyword", searchKeyword);
@@ -67,6 +65,43 @@ public class UsrArticleController {
 		model.addAttribute("articles", articles);
 
 		return "usr/article/list";
+	}
+
+	@RequestMapping("usr/article/detail")
+	public String showDetail(Model model, int id, @RequestParam(defaultValue = "1") int page) {
+
+		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
+
+		ResultData actorCanReactionRd = reactionPointService.actorCanReaction(rq.getLoginedMemberId(), "article", id);
+
+		int itemInAPage = 5;
+
+		List<Reply> replies = replyService.getForPrintReplies(rq.getLoginedMemberId(), "article", id, itemInAPage,
+				page);
+
+		int repliesCount = replyService.getRepliesCount(id);
+
+		int pagesCount = (int) Math.ceil(repliesCount / (double) itemInAPage);
+		System.out.println(pagesCount + "=============================================");
+
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("page", page);
+		model.addAttribute("replies", replies);
+		model.addAttribute("repliesCount", repliesCount);
+		model.addAttribute("actorCanReaction", actorCanReactionRd.isSuccess());
+		model.addAttribute("article", article);
+
+		if (actorCanReactionRd.getResultCode().equals("F-2")) {
+			int sumReactionPointByMemberId = (int) actorCanReactionRd.getData1();
+
+			if (sumReactionPointByMemberId > 0) {
+				model.addAttribute("actorCanCancelLikeReaction", true);
+			} else {
+				model.addAttribute("actorCanCancelDisLikeReaction", true);
+			}
+		}
+
+		return "usr/article/detail";
 	}
 
 	@RequestMapping("usr/article/modify")
@@ -140,35 +175,6 @@ public class UsrArticleController {
 		return Ut.jsReplace("S-1", Ut.f("%d번 게시글 삭제!", id), Ut.f("list", id));
 	}
 
-	@RequestMapping("usr/article/detail")
-	public String showDetail(Model model, int id) {
-
-		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
-		
-		ResultData actorCanReactionRd = reactionPointService.actorCanReaction(rq.getLoginedMemberId(), "article", id);
-		
-		List<Reply> replies = replyService.getForPrintReplies(rq.getLoginedMemberId(), "article", id);
-
-		int repliesCount = replies.size();
-
-		model.addAttribute("replies", replies);
-		model.addAttribute("repliesCount", repliesCount);
-		model.addAttribute("actorCanReaction",actorCanReactionRd.isSuccess());
-		model.addAttribute("article", article);
-		
-		if(actorCanReactionRd.getResultCode().equals("F-2")) {
-			int sumReactionPointByMemberId = (int) actorCanReactionRd.getData1();
-			
-			if(sumReactionPointByMemberId > 0) {
-				model.addAttribute("actorCanCancelLikeReaction", true);
-			} else {
-				model.addAttribute("actorCanCancelDisLikeReaction", true);
-			}
-		}
-
-		return "usr/article/detail";
-	}
-
 	@RequestMapping("usr/article/doIncreaseHitCount")
 	@ResponseBody
 	public ResultData doIncreaseHitCount(int id) {
@@ -178,7 +184,7 @@ public class UsrArticleController {
 		if (increaseHitCountRd.isFail()) {
 			return increaseHitCountRd;
 		}
-		
+
 		return ResultData.newData(increaseHitCountRd, "hitCount", articleService.getArticleHitCount(id));
 	}
 
