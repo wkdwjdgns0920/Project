@@ -130,6 +130,11 @@ header>div>ul>li:hover>ul {
 	right: 0%;
 }
 
+.h-30 {
+	height: 30px;
+}
+
+/* Login */
 .login_box {
 	display: flex;
 	align-items: center;
@@ -140,27 +145,120 @@ header>div>ul>li:hover>ul {
 	background-color: gray;
 }
 
-.h-30 {
-	height: 30px;
-}
-
 .login_con {
 	height: 100%;
 	width: 100%;
 	background-color: blue;
 }
 
+.id_put {
+	width: 400px;
+	height: 50px;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+.pw_put {
+	width: 400px;
+	height: 50px;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+.btn_put{
+	width: 400px;
+	height: 50px;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+
+.mt_3{
+	margin-top: 3px;
+}
+
 .loginForm {
 	display: flex;
-	align-items: space-between;
-	height: 250px;
-	width: 300px;
+	align-items: flex-end;
+	justify-content : center;
+	height: 350px;
+	width: 500px;
 	border: 3px solid black;
 	border-radius: 20px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+.put_box{
+	display: flex;
+	align-items: center;
+	
+}
+
+.t-c{
+	text-align: center;
+}
+
+/* .empty_btn {
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	background-color: gold;
+	border-radius: 100%;
+	
+} */
+
+
+/* checkPw */
+.checkPw_con {
+	height: 100%;
+	width: 100%;
+	background-color: blue;
+}
+
+.checkPw_Form {
+	display: flex;
+	align-items: flex-end;
+	justify-content : center;
+	height: 350px;
+	width: 500px;
+	border: 3px solid black;
+	border-radius: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.checkPw_box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height: 50px;
+	border-radius: 10px;
+	background-color: gray;
+}
+
+.checkPw_put_box{
+	display: flex;
+	align-items: center;
+	
+}
+
+.checkPwId_put {
+	width: 400px;
+	height: 50px;
+	border: 1px solid black;
+	border-radius: 10px;
+	font-size: 30px;
+	text-align: center;
+}
+
+.checkPw_put {
+	width: 400px;
+	height: 50px;
+	border: 1px solid black;
+	border-radius: 10px;
 }
 
 .text_box {
@@ -235,7 +333,7 @@ header>div>ul>li>ul>li:hover {
 .reply_form {
 	margin-top: 50px;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 }
 
 .reply_write_box {

@@ -22,22 +22,22 @@
 </head>
 <body>
 	<section class="head_con">
-	<header>
-		<div class="flex justify-end pr-5 text-xs login_bar">
-			<c:if test="${!rq.logined}">
-				<a class="bg-gray-300 p-3" href="../member/login">LOGIN</a>
-			</c:if>
-			<c:if test="${rq.logined}">
-				<div class="nickname_box">${rq.loginedMember.nickname }님.. 환영합니다</div>
-			</c:if>
-			<c:if test="${rq.logined}">
-				<a class="bg-gray-300 p-3" href="../member/doLogout">LOGOUT</a>
-			</c:if>
-			<c:if test="${!rq.logined}">
-				<a class="bg-gray-300 p-3" href="../member/join">JOIN</a>
-			</c:if>
-		</div>
-		
+		<header>
+			<div class="flex justify-end pr-5 text-xs login_bar">
+				<c:if test="${!rq.logined}">
+					<a class="bg-gray-300 p-3" href="../member/login">LOGIN</a>
+				</c:if>
+				<c:if test="${rq.logined}">
+					<div class="nickname_box">${rq.loginedMember.nickname }님..환영합니다</div>
+				</c:if>
+				<c:if test="${rq.logined}">
+					<a class="bg-gray-300 p-3" href="../member/doLogout">LOGOUT</a>
+				</c:if>
+				<c:if test="${!rq.logined}">
+					<a class="bg-gray-300 p-3" href="../member/join">JOIN</a>
+				</c:if>
+			</div>
+
 			<div class="h-10 flex mx-auto justify-around text-2xl con">
 				<div class="logo">
 					<a class="h-100 flex justify-center items-center" href="/">로고</a>
@@ -62,8 +62,12 @@
 					</li>
 					<li class="hover:underline p-3">
 						<a href="../article/write">WRITE</a>
-
 					</li>
+					<c:if test="${rq.logined}">
+						<li class="hover:underline p-3">
+							<a href="/usr/member/myPage">MyPage</a>
+						</li>
+					</c:if>
 				</ul>
 			</div>
 			<h1 class="text-lg">${pageTitle }Page</h1>

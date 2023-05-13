@@ -15,6 +15,19 @@ public class MemberService {
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
 	}
+	
+	//
+	
+	public ResultData modify(int actorId,String loginPw, String name, String nickname, String cellphoneNum, String email) {
+		
+		int affectedRow = memberRepository.modify(actorId,loginPw, name, nickname, cellphoneNum, email);
+		
+		if(affectedRow != 1) {
+			return ResultData.from("F-2", "회원정보수정 실패", "affectedRow", affectedRow);
+		}
+		
+		return ResultData.from("S-1", "회원정보수정!", "affectedRow", affectedRow);
+	}
 
 	public ResultData<Integer> join(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
 			String email) {

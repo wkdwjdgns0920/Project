@@ -6,10 +6,7 @@
 
 <!-- 조회수 -->
 <script>
-	var paramId = $
-	{
-		param.id
-	};
+	var paramId = ${param.id};
 
 	function articleDetail_increaseHitCount() {
 
@@ -201,22 +198,35 @@
 			<input type="hidden" name="id" value="${reply.id }" />
 			<input type="hidden" name="replaceUri"
 				value="${rq.encodedCurrentUri }" />
-			<div class="r-t">${reply.id }</div>
+			<div class="r-t replyId_${reply.id }" >${reply.id }</div>
 			<div>${reply.extra__writer }</div>
 
-			<div class="reply_body${reply.id }">${reply.body }</div>
+			<div class="reply_body_${reply.id }">${reply.body }</div>
 
 			<div class="reply_regDate">${reply.regDate.substring(0,16) }</div>
 
 			<div class="modify_btn_box">
 				<c:if test="${reply.actorCanModify }">
-					<button class="reply_modify_btn " onclick="modifyReply(${reply.id})" >수정하기</button>
-					<button class="reply_doModify_btn " type="submit"  style="display:none;">수정하기2</button>
+					<button class="reply_modify_btn_${reply.id } " onclick="showModifyForm(${reply.id})" >수정하기</button>
+					<button class="reply_doModify_btn_${reply.id } " type="submit"  style="display:none;">수정하기2</button>
 				</c:if>
 			</div>
 			<hr />
 		</c:forEach>
 	</div>
+
+<!-- 시도2 -->
+<script>
+function showModifyForm(el){
+	location.reload();
+	
+	/* var id = el;
+	var body = $('.reply_body_' + el).html();
+	$('.reply_body_' + el).html(
+			'<input class="mt-2 reply_modify_box' + el'" name="body" value="'+ body +'">'); */
+	
+}
+</script>
 
 
 	<!-- 댓글페이징 -->
@@ -252,7 +262,11 @@
 	</div>
 </section>
 
-<script>
+
+
+
+<!-- 댓글수정 시도1 -->
+<!-- <script>
 	function modifyReply(replyId) {
 		var replyBody = $('.reply_body' + replyId).html();
 		$('.reply_body' + replyId).empty();
@@ -281,37 +295,8 @@
 			});
 		});
 	}
-</script>
-<!-- 댓글수정 -->
-<!-- <script>
-function modifyReply(el) {
-    var replyBody = $('.reply_body' + el).html();
-    
-    $('.reply_body' + el).empty();
-    const form = $(el).closest('form').get(0);
-    
-    $('.reply_body' + el).html('<input class="mt-2 reply_modify_box" name="body" value="'+ replyBody +'">');
-    
-    $('.modify-btn').css('display', 'none');
-    $('.doModify-btn').css('display', 'inline');
-}
+</script> -->
 
-</script> -->
-<!-- <script>
-function doModifyReply(el) {
-	var id = el;
-	var body = $('.reply_body' + el '> .reply_modify_box').val();
-	
-	$.get('../reply/doModify', {
-		id : id,
-		body : body,
-		ajaxMode : 'Y'
-	}, function(data) {
-		alert(data.msg);
-		location.reload();
-	}, 'json');
-}
-</script> -->
 
 
 <%@ include file="../common/foot.jspf"%>
