@@ -3,6 +3,7 @@ package com.KoreaIT.jjh.project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.KoreaIT.jjh.project.service.MemberService;
@@ -133,26 +134,26 @@ public class UsrMemberController {
 
 	@RequestMapping("usr/member/doLogout")
 	@ResponseBody
-	public String doLogout() {
+	public String doLogout(String afterLogoutUri) {
 
-//		if (rq.isLogined() == false) {
-//			return Ut.jsHistoryBack("F-1", "로그인안함");
-//		}
+		if (rq.isLogined() == false) {
+			return Ut.jsHistoryBack("F-1", "로그인안함");
+		}
 
 		rq.logout();
 
-		return Ut.jsReplace("S-1", "로그아웃!", "/");
+		return Ut.jsReplace("S-1", "로그아웃!", afterLogoutUri);	
 	}
 
 	@RequestMapping("usr/member/login")
-	public String login(String loginId, String loginPw) {
+	public String login() {
 
 		return "usr/member/login";
 	}
 
 	@RequestMapping("usr/member/doLogin")
 	@ResponseBody
-	public String doLogin(String loginId, String loginPw) {
+	public String doLogin(String loginId, String loginPw, @RequestParam(defaultValue = "/") String afterLoginUri) {
 
 		if (rq.isLogined() == true) {
 			return Ut.jsHistoryBack("F-1", "로그인상태");
@@ -176,6 +177,6 @@ public class UsrMemberController {
 
 		rq.login(member);
 
-		return Ut.jsReplace("S-1", "로그인성공", "/");
+		return Ut.jsReplace("S-1", "로그인성공", afterLoginUri);
 	}
 }

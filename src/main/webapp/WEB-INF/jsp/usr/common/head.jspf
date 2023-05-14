@@ -25,13 +25,13 @@
 		<header>
 			<div class="flex justify-end pr-5 text-xs login_bar">
 				<c:if test="${!rq.logined}">
-					<a class="bg-gray-300 p-3" href="../member/login">LOGIN</a>
+					<a class="bg-gray-300 p-3" href="${rq.loginUri }">LOGIN</a>
 				</c:if>
 				<c:if test="${rq.logined}">
 					<div class="nickname_box">${rq.loginedMember.nickname }님..환영합니다</div>
 				</c:if>
 				<c:if test="${rq.logined}">
-					<a class="bg-gray-300 p-3" href="../member/doLogout">LOGOUT</a>
+					<a class="bg-gray-300 p-3" href="${rq.logoutUri }">LOGOUT</a>
 				</c:if>
 				<c:if test="${!rq.logined}">
 					<a class="bg-gray-300 p-3" href="../member/join">JOIN</a>

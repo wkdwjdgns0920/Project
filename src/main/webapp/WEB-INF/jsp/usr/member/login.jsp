@@ -10,7 +10,7 @@
 			$(".id_put").val("");
 		});
 	});
-	
+
 	$(document).ready(function() {
 		$(".pw_empty").click(function() {
 			$(".pw_put").val("");
@@ -22,6 +22,7 @@
 <section class="login_con">
 	<div class="loginForm p-2">
 		<form action="../member/doLogin" method="POST">
+			<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri }" />
 			<div class="login_box">로그인 폼</div>
 			<div class="h-30"></div>
 			<div class="put_box">

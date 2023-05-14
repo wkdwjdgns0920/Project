@@ -179,7 +179,7 @@
 	<c:if test="${!rq.logined}">
 	<div class="reply_box_check_login">
 		댓글을 작성하려면 &nbsp;
-		<a class="reply_box_a" href="/usr/member/login">로그인</a>
+		<a class="reply_box_a" href="${rq.loginUri }">로그인</a>
 		&nbsp; 해주세요
 	</div>
 </c:if>
@@ -196,12 +196,11 @@
 		<c:forEach var="reply" items="${replies }">
 
 			<input type="hidden" name="id" value="${reply.id }" />
-			<input type="hidden" name="replaceUri"
-				value="${rq.encodedCurrentUri }" />
-			<div class="r-t replyId_${reply.id }" >${reply.id }</div>
+			<input type="hidden" name="replaceUri" value="${rq.encodedCurrentUri }" />
+			<div class="r-t replyId_${reply.id }" id="${reply.id }">${reply.id }</div>
 			<div>${reply.extra__writer }</div>
 
-			<div class="reply_body_${reply.id }">${reply.body }</div>
+			<div class="reply_body_${reply.id }" id="">${reply.body }</div>
 
 			<div class="reply_regDate">${reply.regDate.substring(0,16) }</div>
 
