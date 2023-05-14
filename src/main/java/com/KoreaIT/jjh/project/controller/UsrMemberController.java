@@ -91,35 +91,83 @@ public class UsrMemberController {
 
 		return "usr/member/myPage";
 	}
+	
+	@RequestMapping("/usr/member/checkValidPw")
+	@ResponseBody
+	public ResultData checkValidPw(String loginPw) {
 
-	@RequestMapping("/usr/member/join")
-	public String showJoin() {
-		return "usr/member/join";
+		if (Ut.empty(loginPw)) {
+			return ResultData.from("F-1", "비밀번호를 입력해주세요");
+		}
+
+		if(Ut.validationPasswd(loginPw)) {
+			return ResultData.from("F-2", "최소 8자리에 숫자, 문자, 특수문자 사용해주세요!!");
+		}
+
+		return ResultData.from("S-1", "사용 가능!", "loginPw", loginPw);
 	}
+	
+	@RequestMapping("/usr/member/checkValidEmail")
+	@ResponseBody
+	public ResultData checkValidEmail(String email) {
 
+		if (Ut.empty(email)) {
+			return ResultData.from("F-1", "이메일을 입력해주세요");
+		}
+		
+		if(Ut.isValidEmail(email) == false) {
+			return ResultData.from("F-2", "이메일형식을 확인해주세요");
+		}
+
+		return ResultData.from("S-1", "사용 가능!", "email", email);
+	}
+	
+	@RequestMapping("/usr/member/getLoginIdDup")
+	@ResponseBody
+	public ResultData getLoginIdDup(String loginId) {
+
+		if (Ut.empty(loginId)) {
+			return ResultData.from("F-1", "아이디를 입력해주세요");
+		}
+
+		Member existsMember = memberService.getMemberByLoginId(loginId);
+
+		if (existsMember != null) {
+			return ResultData.from("F-2", "해당 아이디는 이미 사용중이야", "loginId", loginId);
+		}
+
+		return ResultData.from("S-1", "사용 가능!", "loginId", loginId);
+	}
+	
 	@RequestMapping("usr/member/doJoin")
 	@ResponseBody
 	public String doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
-			String email) {
+			String email, @RequestParam(defaultValue = "/") String afterLoginUri) {
 
-		if (Ut.empty(loginId)) {
-			return Ut.jsHistoryBack("F-1", "아이디를 입력해주세요");
-		}
-		if (Ut.empty(loginPw)) {
-			return Ut.jsHistoryBack("F-2", "비밀번호를 입력해주세요");
-		}
-		if (Ut.empty(name)) {
-			return Ut.jsHistoryBack("F-3", "이름을 입력해주세요");
-		}
-		if (Ut.empty(nickname)) {
-			return Ut.jsHistoryBack("F-4", "닉네임을 입력해주세요");
-		}
-		if (Ut.empty(cellphoneNum)) {
-			return Ut.jsHistoryBack("F-5", "전화번호를 입력해주세요");
-		}
-		if (Ut.empty(email)) {
-			return Ut.jsHistoryBack("F-6", "이메일을 입력해주세요");
-		}
+//		if (Ut.empty(loginId)) {
+//			return Ut.jsHistoryBack("F-1", "아이디를 입력해주세요");
+//		}
+//		if (Ut.empty(loginPw)) {
+//			return Ut.jsHistoryBack("F-2", "비밀번호를 입력해주세요");
+//		}
+//		if(Ut.validationPasswd(loginPw)) {
+//			return Ut.jsHistoryBack("F-A", "최소 8자리에 숫자, 문자, 특수문자 사용해주세요");
+//		}
+//		if (Ut.empty(name)) {
+//			return Ut.jsHistoryBack("F-3", "이름을 입력해주세요");
+//		}
+//		if (Ut.empty(nickname)) {
+//			return Ut.jsHistoryBack("F-4", "닉네임을 입력해주세요");
+//		}
+//		if (Ut.empty(cellphoneNum)) {
+//			return Ut.jsHistoryBack("F-5", "전화번호를 입력해주세요");
+//		}
+//		if (Ut.empty(email)) {
+//			return Ut.jsHistoryBack("F-6", "이메일을 입력해주세요");
+//		}
+//		if(Ut.isValidEmail(email) == false) {
+//			return Ut.jsHistoryBack("F-11", "이메일형식을 확인해주세요");
+//		}
 
 		ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
 
@@ -128,8 +176,15 @@ public class UsrMemberController {
 		}
 
 		Member member = memberService.getMemberById((int) joinRd.getData1());
+		
+		String afterJoinUri = "../member/login?afterLoginUri=" + Ut.getEncodedUri(afterLoginUri);
 
-		return Ut.jsReplace(joinRd.getResultCode(), joinRd.getMsg(), "/");
+		return Ut.jsReplace(joinRd.getResultCode(), joinRd.getMsg(), afterJoinUri);
+	}
+	
+	@RequestMapping("/usr/member/join")
+	public String showJoin() {
+		return "usr/member/join";
 	}
 
 	@RequestMapping("usr/member/doLogout")

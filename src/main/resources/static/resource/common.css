@@ -154,17 +154,15 @@ header>div>ul>li:hover>ul {
 .id_put {
 	width: 400px;
 	height: 50px;
-	border: 1px solid black;
 	border-radius: 10px;
 }
 .pw_put {
 	width: 400px;
 	height: 50px;
-	border: 1px solid black;
 	border-radius: 10px;
 }
 .btn_put{
-	width: 400px;
+	width: 450px;
 	height: 50px;
 	border: 1px solid black;
 	border-radius: 10px;
@@ -191,21 +189,26 @@ header>div>ul>li:hover>ul {
 .put_box{
 	display: flex;
 	align-items: center;
-	
+	border: 1px solid black;
+	border-radius: 10px;
+	margin: 10px 0px;
 }
 
 .t-c{
 	text-align: center;
 }
 
-/* .empty_btn {
-	display: inline-block;
-	height: 30px;
-	width: 30px;
-	background-color: gold;
-	border-radius: 100%;
+.can_use {
+	color: blue;
+}
+.cant_use {
+	color: red;
+}
+
+.empty_btn {
+	margin-right: 10px;
 	
-} */
+}
 
 
 /* checkPw */

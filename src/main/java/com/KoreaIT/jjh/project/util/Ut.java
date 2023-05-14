@@ -5,6 +5,8 @@ import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -106,6 +108,28 @@ public class Ut {
 		}
 
 		return param;
+	}
+	
+	public static boolean validationPasswd(String pw){
+	    Pattern p = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$");
+	    // 최소 8자리에 숫자, 문자, 특수문자 각각 1개 이상 포함
+	    Matcher m = p.matcher(pw);
+
+	    if(m.matches()){
+	        return false;
+	    }
+	    return true;
+	}
+
+	public static boolean isValidEmail(String email) {
+		boolean err = false;
+		String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(email);
+		if (m.matches()) {
+			err = true;
+		}
+		return err;
 	}
 	
 }

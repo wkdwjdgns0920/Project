@@ -5,6 +5,11 @@
 
 <script>
 	let submitJoinFormDone = false;
+	let validLoginId = "";
+	let validEmail = false;
+	let validPw = false;
+	
+	
 	function submitJoinForm(form) {
 		if (submitJoinFormDone) {
 			alert('처리중입니다');
@@ -18,6 +23,10 @@
 		form.loginPw.value = form.loginPw.value.trim();
 		if (form.loginPw.value == 0) {
 			alert('비밀번호를 입력해주세요');
+			return;
+		}
+		if(validPw == false){
+			alert('최소 8자리에 숫자, 문자, 특수문자 사용해주세요');
 			return;
 		}
 		form.loginPwConfirm.value = form.loginPwConfirm.value.trim();
@@ -45,6 +54,10 @@
 			alert('이메일을 입력해주세요');
 			return;
 		}
+		if(validEmail == false){
+			alert('이메일형식을 확인해주세요');
+			return;
+		}
 		form.cellphoneNum.value = form.cellphoneNum.value.trim();
 		if (form.cellphoneNum.value == 0) {
 			alert('전화번호를 입력해주세요');
@@ -53,6 +66,78 @@
 		submitJoinFormDone = true;
 		form.submit();
 	}
+	
+	function checkLoginIdDup(el) {
+		$('.checkDupId_msg').empty();
+		const form = $(el).closest('form').get(0);
+
+		if (form.loginId.value.length == 0) {
+			validLoginId = '';
+			return;
+		}
+
+		if (validLoginId == form.loginId.value) {
+			return;
+		}
+
+		$.get('../member/getLoginIdDup', {
+			isAjax : 'Y',
+			loginId : form.loginId.value
+		}, function(data) {
+
+			
+			if (data.success) {
+				$('.checkDupId_msg').html('<div class="can_use">' + data.msg + '</div>')
+				validLoginId = data.data1;
+			} else {
+				$('.checkDupId_msg').html('<div class="cant_use">' + data.msg + '</div>')
+				validLoginId = '';
+			}
+
+		}, 'json');
+
+	}
+	
+	function validPw(el) {
+		$('.validPw_msg').empty();
+		const form = $(el).closest('form').get(0);
+
+		$.get('../member/checkValidPw', {
+			isAjax : 'Y',
+			loginPw : form.loginPw.value
+		}, function(data) {
+
+			if (data.success) {
+				$('.validPw_msg').html('<div class="can_use">' + data.msg + '</div>')
+				validPw = true;
+			} else {
+				$('.validPw_msg').html('<div class="cant_use">' + data.msg + '</div>')
+			}
+
+		}, 'json');
+
+	}
+	
+	function validEmail(el) {
+		$('.validEmail_msg').empty();
+		const form = $(el).closest('form').get(0);
+
+		$.get('../member/checkValidEmail', {
+			isAjax : 'Y',
+			email : form.email.value
+		}, function(data) {
+
+			if (data.success) {
+				$('.validEmail_msg').html('<div class="can_use">' + data.msg + '</div>')
+				validEmail = true;
+			} else {
+				$('.validEmail_msg').html('<div class="cant_use">' + data.msg + '</div>')
+			}
+
+		}, 'json');
+
+	}
+	
 </script>
 
 <section class="mt-8 text-xl">
@@ -68,13 +153,15 @@
 					<tr>
 						<th>아이디</th>
 						<td>
-							<input name="loginId" class="w-full input input-bordered  max-w-xs" placeholder="아이디를 입력해주세요" />
+							<input onblur="checkLoginIdDup(this)" name="loginId" class="w-full input input-bordered  max-w-xs" placeholder="아이디를 입력해주세요" />
+							<div class="checkDupId_msg"></div>
 						</td>
 					</tr>
 					<tr>
 						<th>비밀번호</th>
 						<td>
-							<input name="loginPw" class="w-full input input-bordered  max-w-xs" placeholder="비밀번호를 입력해주세요" />
+							<input onblur="validPw(this)" name="loginPw" class="w-full input input-bordered  max-w-xs" placeholder="비밀번호를 입력해주세요" />
+							<div class="validPw_msg"></div>
 						</td>
 					</tr>
 					<tr>
@@ -104,7 +191,8 @@
 					<tr>
 						<th>이메일</th>
 						<td>
-							<input name="email" class="w-full input input-bordered  max-w-xs" placeholder="이메일을 입력해주세요" />
+							<input onblur="validEmail(this)" name="email" class="w-full input input-bordered  max-w-xs" placeholder="이메일을 입력해주세요" />
+							<div class="validEmail_msg"></div>
 						</td>
 					</tr>
 					<tr>

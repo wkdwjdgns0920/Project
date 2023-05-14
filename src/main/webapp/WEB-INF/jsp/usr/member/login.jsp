@@ -27,7 +27,7 @@
 			<div class="h-30"></div>
 			<div class="put_box">
 				<input class="id_put" type="text" autocomplete="off" placeholder="아이디" name="loginId" />
-				<div class="empty_btn btn btn-xs id_empty">X</div>
+				<span class="empty_btn btn btn-xs id_empty">X</span>
 			</div>
 
 			<div class="put_box">
