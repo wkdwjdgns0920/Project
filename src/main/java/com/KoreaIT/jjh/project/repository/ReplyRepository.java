@@ -66,7 +66,7 @@ public interface ReplyRepository {
 	
 	@Update("""
 			UPDATE `reply`
-			set `body = #{body}
+			SET `body` = #{body}
 			WHERE id = #{id}
 			""")
 	int modifyReply(int id, String body);

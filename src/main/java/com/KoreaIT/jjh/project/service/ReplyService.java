@@ -91,6 +91,9 @@ public class ReplyService {
 		if(affectedRow != 1) {
 			return ResultData.from("F-3", "댓글수정실패", "affectedRow", affectedRow);
 		}
+		
+		
+		
 		return ResultData.from("S-1", "댓글수정", "affectedRow", affectedRow);
 	}
 

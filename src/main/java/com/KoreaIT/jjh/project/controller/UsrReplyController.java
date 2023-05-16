@@ -56,11 +56,15 @@ public class UsrReplyController {
 	
 	@RequestMapping("/usr/reply/doModify")
 	@ResponseBody
-	public ResultData doModify(int id, String body, String replaceUri) {
-
+	public ResultData doModify(int id, String body) {
+		
+		System.out.println("==================================수정======================");
+		System.out.println(id + "+" + body );
+		
 		Reply reply = replyService.getReply(id);
 
 		if (reply == null) {
+			
 			return ResultData.from("F-1", Ut.f("%d번 댓글은 존재하지 않습니다", id));
 		}
 
@@ -70,15 +74,16 @@ public class UsrReplyController {
 
 		ResultData modifyReplyRd = replyService.modifyReply(id, body);
 
-		if (Ut.empty(replaceUri)) {
-			switch (reply.getRelTypeCode()) {
-			case "article":
-				replaceUri = Ut.f("../article/detail?id=%d", reply.getRelId());
-				break;
-			}
-		}
+//		if (Ut.empty(replaceUri)) {
+//			switch (reply.getRelTypeCode()) {
+//			case "article":
+//				replaceUri = Ut.f("../article/detail?id=%d", reply.getRelId());
+//				break;
+//			}
+//		}
 
-
+		System.out.println("========2222222222222222222222222222222222222");
+		
 		return ResultData.from(modifyReplyRd.getResultCode(), modifyReplyRd.getMsg());
 	}
 

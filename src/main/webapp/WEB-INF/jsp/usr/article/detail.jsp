@@ -1,8 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="Article Detail" />
 <%@ include file="../common/head.jspf"%>
+
+<script>
+	const params = {}
+	params.id = parseInt('${param.id}');
+</script>
 
 <!-- 조회수 -->
 <script>
@@ -85,14 +89,12 @@
 							<div>
 								<span>
 									<span>&nbsp;</span>
-									<a
-										href="/usr/reactionPoint/like?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
+									<a href="/usr/reactionPoint/like?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
 										class="btn btn-xs">좋아요 👍</a>
 								</span>
 								<span>
 									<span>&nbsp;</span>
-									<a
-										href="/usr/reactionPoint/disLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
+									<a href="/usr/reactionPoint/disLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
 										class="btn btn-xs">싫어요 👎</a>
 								</span>
 							</div>
@@ -107,8 +109,7 @@
 								</span>
 								<span>
 									<span>&nbsp;</span>
-									<a onclick="alert(this.title); return false;"
-										title="좋아요를 먼저 취소해" class="btn btn-xs">싫어요 👎</a>
+									<a onclick="alert(this.title); return false;" title="좋아요를 먼저 취소해" class="btn btn-xs">싫어요 👎</a>
 								</span>
 							</div>
 						</c:if>
@@ -116,8 +117,7 @@
 							<div>
 								<span>
 									<span>&nbsp;</span>
-									<a onclick="alert(this.title); return false;"
-										title="싫어요를 먼저 취소해" class="btn btn-xs">좋아요 👍</a>
+									<a onclick="alert(this.title); return false;" title="싫어요를 먼저 취소해" class="btn btn-xs">좋아요 👍</a>
 								</span>
 								<span>
 									<span>&nbsp;</span>
@@ -142,15 +142,12 @@
 		</table>
 	</div>
 	<div class="btns lowMenu flex justify-end">
-		<button class="btn-text-link m-1" type="button"
-			onclick="history.back();">뒤로가기</button>
+		<button class="btn-text-link m-1" type="button" onclick="history.back();">뒤로가기</button>
 		<c:if test="${article.actorCanModify }">
-			<a class="btn-text-link m-1"
-				href="../article/modify?id=${article.id }">수정</a>
+			<a class="btn-text-link m-1" href="../article/modify?id=${article.id }">수정</a>
 		</c:if>
 		<c:if test="${article.actorCanDelete }">
-			<a class="btn-text-link m-1"
-				onclick="if(confirm('정말 삭제하시겠습니까?')==false) return false;"
+			<a class="btn-text-link m-1" onclick="if(confirm('정말 삭제하시겠습니까?')==false) return false;"
 				href="../article/doDelete?id=${article.id }">삭제</a>
 		</c:if>
 	</div>
@@ -159,8 +156,7 @@
 <!-- 댓글작성폼 -->
 <section class="text-xl reply_form">
 	<c:if test="${rq.logined }">
-		<form action="../reply/doWrite" method="POST"
-			onsubmit="ReplyWrite__submitForm(this); return false;">
+		<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submitForm(this); return false;">
 			<input type="hidden" name="relTypeCode" value="article" />
 			<input type="hidden" name="relId" value="${article.id }" />
 			<input type="hidden" name="replaceUri" value="${rq.currentUri }" />
@@ -168,8 +164,7 @@
 				<div>댓글을 입력해주세요</div>
 				<div class="reply_write__box flex justify-between">
 					<div>
-						<textarea class="input input-bordered w-full reply_write_body"
-							type="text" name="body" placeholder="내용을 입력해주세요" /></textarea>
+						<textarea class="input input-bordered w-full reply_write_body" type="text" name="body" placeholder="내용을 입력해주세요" /></textarea>
 					</div>
 					<button class="btn reply_write_btn" type="submit" value="작성">댓글작성</button>
 				</div>
@@ -177,12 +172,12 @@
 		</form>
 	</c:if>
 	<c:if test="${!rq.logined}">
-	<div class="reply_box_check_login">
-		댓글을 작성하려면 &nbsp;
-		<a class="reply_box_a" href="${rq.loginUri }">로그인</a>
-		&nbsp; 해주세요
-	</div>
-</c:if>
+		<div class="reply_box_check_login">
+			댓글을 작성하려면 &nbsp;
+			<a class="reply_box_a" href="${rq.loginUri }">로그인</a>
+			&nbsp; 해주세요
+		</div>
+	</c:if>
 </section>
 
 
@@ -202,29 +197,70 @@
 
 			<div class="reply_body_${reply.id }" id="">${reply.body }</div>
 
+			<textarea class="input input-bordered w-full reply_write_body reply_modify_body_${reply.id }" type="text" name="body"
+				placeholder="내용을 입력해주세요" style="display: none;" />${reply.body }</textarea>
+
 			<div class="reply_regDate">${reply.regDate.substring(0,16) }</div>
 
 			<div class="modify_btn_box">
 				<c:if test="${reply.actorCanModify }">
-					<button class="reply_modify_btn_${reply.id } " onclick="showModifyForm(${reply.id})" >수정하기</button>
-					<button class="reply_doModify_btn_${reply.id } " type="submit"  style="display:none;">수정하기2</button>
+					<span>
+						<button class="reply_modify_btn_${reply.id }" onclick="showModifyForm(${reply.id})">수정하기</button>
+					</span>
+					<span>
+						<button class="reply_doModify_btn_${reply.id }" onclick="modifyReply(${reply.id})" style="display: none;">수정하기2</button>
+					</span>
 				</c:if>
 			</div>
 			<hr />
 		</c:forEach>
 	</div>
 
-<!-- 시도2 -->
-<script>
-function showModifyForm(el){
-	location.reload();
-	
-	/* var id = el;
-	var body = $('.reply_body_' + el).html();
-	$('.reply_body_' + el).html(
-			'<input class="mt-2 reply_modify_box' + el'" name="body" value="'+ body +'">'); */
-	
-}
+
+	<script>
+  function showModifyForm(replyId) {
+    // 해당 요소 가져오기
+    var btn = document.querySelector(".reply_modify_btn_" + replyId); // 댓글수정 보여지는 버튼
+    var doModify_btn = document.querySelector(".reply_doModify_btn_" + replyId); // 댓글 수정하기 버튼
+    var textarea = document.querySelector(".reply_modify_body_" + replyId);
+
+    // 텍스트 영역의 표시 스타일을 전환
+    textarea.style.display = textarea.style.display === "none" ? "block" : "none";
+
+    // 텍스트 영역의 표시 스타일에 따라 버튼 텍스트 변경
+    btn.textContent = textarea.style.display === "none" ? "수정하기" : "취소";
+    
+    doModify_btn.style.display = textarea.style.display === "none" ? "none" : "block";
+  }
+  
+  function modifyReply(replyId) {
+	    // 해당 텍스트 영역과 해당 값을 가져옵니다.
+	    var textarea = document.querySelector(".reply_modify_body_" + replyId);
+	    var modifydBody = textarea.value.trim(); // 수정된 댓글 본문 가져오기
+	    var paramId = ${param.id};
+	    
+	    
+	      // 여기에서 원하는 작업을 수행하여 modifyBody 값으로 주석을 업데이트합니다.
+	      // 주석을 업데이트하기 위해 AJAX 또는 다른 방법을 사용하여modifiedBody를 서버로 보낼 수 있습니다.
+	      
+			$.get('../reply/doModify', {
+				isAjax : 'Y',
+				id : replyId,
+				body : modifydBody
+			}, function(data) {
+
+				if (data.success) {
+					alert('수정성공!@#');
+				} else {
+					alert('수정실패!@#');
+				}
+
+			}, 'json');
+      
+	      // 댓글이 성공적으로 업데이트된 후 페이지를 새로 고칩니다.
+	      window.location.reload();
+	    }
+
 </script>
 
 
@@ -232,10 +268,8 @@ function showModifyForm(el){
 	<div class="flex justify-center mt-3">
 
 		<c:set var="pageLen" value="4" />
-		<c:set var="startPage"
-			value="${page - pageLen >=1 ? page - pageLen : 1 }" />
-		<c:set var="endPage"
-			value="${page + pageLen <= pagesCount ? page + pageLen : pagesCount }" />
+		<c:set var="startPage" value="${page - pageLen >=1 ? page - pageLen : 1 }" />
+		<c:set var="endPage" value="${page + pageLen <= pagesCount ? page + pageLen : pagesCount }" />
 
 
 		<c:set var="baseUri" value="detail?id=${param.id }" />
@@ -248,8 +282,7 @@ function showModifyForm(el){
 
 		<div>
 			<c:forEach begin="${startPage }" end="${endPage }" var="i">
-				<a class="p-1 ${param.page == i ? 'btn-active' : '' }"
-					href="${baseUri }&page=${i }">${i }</a>
+				<a class="p-1 ${param.page == i ? 'btn-active' : '' }" href="${baseUri }&page=${i }">${i }</a>
 			</c:forEach>
 
 			<c:if test="${page < pagesCount }">
