@@ -17,8 +17,21 @@ public class UsrHomeController {
 		return "redirect:/usr/home/main";
 	}
 	
+	@RequestMapping("usr/home/travel")
+	public String showTravelPage() {
+		
+		return "usr/home/travel";
+	}
+	
+	@RequestMapping("usr/home/event")
+	public String showEventPage() {
+		
+		return "usr/home/event";
+	}
+	
 	@RequestMapping("usr/home/startPage")
 	public String startPage() {
 		return "usr/home/startPage";
 	}
+	
 }

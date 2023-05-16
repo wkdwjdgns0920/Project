@@ -21,6 +21,24 @@
 <script src="/resource/common.js" defer="defer"></script>
 </head>
 <body>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	  var bg = document.querySelector('.bg');
+	  var li = document.querySelectorAll('.con > ul > li');
+
+	  li.forEach(function(li) {
+	    li.addEventListener('mouseover', function() {
+	    	bg.style.height = '200px';
+	    });
+
+	    li.addEventListener('mouseout', function() {
+	    	bg.style.height = 'auto';
+	    });
+	  });
+	});
+</script>
+
 	<section class="head_con">
 		<header>
 			<div class="flex justify-end pr-5 text-xs login_bar">
@@ -38,10 +56,12 @@
 				</c:if>
 			</div>
 
-			<div class="h-10 flex mx-auto justify-around text-2xl con">
+			<div class="h-10 flex justify-center text-2xl con">
+				<div class="bg"></div>
 				<div class="logo">
-					<a class="h-100 flex justify-center items-center" href="/">로고</a>
+					<a class="h-100 flex justify-center items-center" href="/"><i class="fa-brands fa-weixin fa-2xl"></i></a>
 				</div>
+				<div class="space"></div>
 				<ul class="flex">
 					<li class="hover:underline p-3">
 						<a href="/">HOME</a>
@@ -63,6 +83,9 @@
 					<li class="hover:underline p-3">
 						<a href="../article/write">WRITE</a>
 					</li>
+					<li class="hover:underline p-3">
+						<a href="">TRAVEL</a>
+					</li>
 					<c:if test="${rq.logined}">
 						<li class="hover:underline p-3">
 							<a href="/usr/member/myPage">MyPage</a>
@@ -70,7 +93,7 @@
 					</c:if>
 				</ul>
 			</div>
-			<h1 class="text-lg">${pageTitle }Page</h1>
+			<%-- <h1 class="text-lg">${pageTitle }Page</h1> --%>
 		</header>
 	</section>
 	<hr />
