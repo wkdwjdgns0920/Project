@@ -186,6 +186,16 @@ header>div>ul>li:hover>ul {
 	transform: translate(-50%, -50%);
 }
 
+.loginForm_low {
+	position: absolute;
+	top: 100%;
+	margin-top: 20px;
+}
+
+.loginForm_low_item {
+	padding: 5px;
+}
+
 .put_box{
 	display: flex;
 	align-items: center;
@@ -208,6 +218,27 @@ header>div>ul>li:hover>ul {
 .empty_btn {
 	margin-right: 10px;
 	
+}
+
+/* findLogin */
+.findLogin_con {
+	height: 100%;
+	width: 100%;
+	background-color: blue;
+}
+
+.findLoginForm {
+	display: flex;
+	align-items: flex-end;
+	justify-content : center;
+	height: 400px;
+	width: 500px;
+	border: 3px solid black;
+	border-radius: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 

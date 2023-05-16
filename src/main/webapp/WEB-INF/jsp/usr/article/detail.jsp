@@ -189,9 +189,6 @@
 	</div>
 	<div class="reply_box">
 		<c:forEach var="reply" items="${replies }">
-
-			<input type="hidden" name="id" value="${reply.id }" />
-			<input type="hidden" name="replaceUri" value="${rq.encodedCurrentUri }" />
 			<div class="r-t replyId_${reply.id }" id="${reply.id }">${reply.id }</div>
 			<div>${reply.extra__writer }</div>
 
@@ -204,19 +201,15 @@
 
 			<div class="modify_btn_box">
 				<c:if test="${reply.actorCanModify }">
-					<span>
-						<button class="reply_modify_btn_${reply.id }" onclick="showModifyForm(${reply.id})">수정하기</button>
-					</span>
-					<span>
-						<button class="reply_doModify_btn_${reply.id }" onclick="modifyReply(${reply.id})" style="display: none;">수정하기2</button>
-					</span>
+					<button class="reply_modify_btn_${reply.id }" onclick="showModifyForm(${reply.id})">수정하기</button>
+					<button class="p-1 reply_doModify_btn_${reply.id }" onclick="modifyReply(${reply.id})" style="display: none;">수정하기2</button>
 				</c:if>
 			</div>
 			<hr />
 		</c:forEach>
 	</div>
 
-
+	<!-- 댓글수정 -->
 	<script>
   function showModifyForm(replyId) {
     // 해당 요소 가져오기
@@ -229,20 +222,17 @@
 
     // 텍스트 영역의 표시 스타일에 따라 버튼 텍스트 변경
     btn.textContent = textarea.style.display === "none" ? "수정하기" : "취소";
-    
-    doModify_btn.style.display = textarea.style.display === "none" ? "none" : "block";
+    // 텍스트 영역의 표시 스타일에 따라 doModify_btn 디스플레이 설정
+    doModify_btn.style.display = textarea.style.display === "none" ? "none" : "inline";
   }
   
   function modifyReply(replyId) {
 	    // 해당 텍스트 영역과 해당 값을 가져옵니다.
 	    var textarea = document.querySelector(".reply_modify_body_" + replyId);
-	    var modifydBody = textarea.value.trim(); // 수정된 댓글 본문 가져오기
+	    var modifydBody = textarea.value; // 수정된 댓글 본문 가져오기
 	    var paramId = ${param.id};
 	    
-	    
-	      // 여기에서 원하는 작업을 수행하여 modifyBody 값으로 주석을 업데이트합니다.
-	      // 주석을 업데이트하기 위해 AJAX 또는 다른 방법을 사용하여modifiedBody를 서버로 보낼 수 있습니다.
-	      
+	      // ajax활용하여 doModify실행
 			$.get('../reply/doModify', {
 				isAjax : 'Y',
 				id : replyId,
@@ -257,7 +247,7 @@
 
 			}, 'json');
       
-	      // 댓글이 성공적으로 업데이트된 후 페이지를 새로 고칩니다.
+	      // 댓글이 성공적으로 업데이트된 후 페이지를 새로고침
 	      window.location.reload();
 	    }
 
@@ -293,42 +283,6 @@
 		</div>
 	</div>
 </section>
-
-
-
-
-<!-- 댓글수정 시도1 -->
-<!-- <script>
-	function modifyReply(replyId) {
-		var replyBody = $('.reply_body' + replyId).html();
-		$('.reply_body' + replyId).empty();
-		$('.reply_body' + replyId)
-				.html(
-						'<input class="mt-2 reply_modify_box" name="body" value="'+ replyBody +'">');
-		$('.modify-btn').hide();
-		$('.doModify-btn').show().click(function() {
-			var newBody = $('.reply_modify_box').val();
-			$.ajax({
-				url : '/modifyReply',
-				method : 'POST',
-				data : {
-					replyId : replyId,
-					body : newBody
-				},
-				success : function(response) {
-					if (response.success) {
-						$('.reply_body' + replyId).html(response.body);
-						$('.doModify-btn').hide();
-						$('.modify-btn').show();
-					} else {
-						alert(response.errorMessage);
-					}
-				}
-			});
-		});
-	}
-</script> -->
-
 
 
 <%@ include file="../common/foot.jspf"%>

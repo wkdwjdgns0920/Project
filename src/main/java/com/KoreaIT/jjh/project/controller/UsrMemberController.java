@@ -19,6 +19,55 @@ public class UsrMemberController {
 	MemberService memberService;
 	@Autowired
 	private Rq rq;
+	
+	
+	
+	@RequestMapping("/usr/member/findLoginPw")
+	public String showFindLoginPw() {
+
+		return "usr/member/findLoginPw";
+	}
+
+	@RequestMapping("/usr/member/doFindLoginPw")
+	@ResponseBody
+	public String doFindLoginPw(@RequestParam(defaultValue = "/") String afterFindLoginPwUri, String loginId,
+			String email) {
+
+		Member member = memberService.getMemberByLoginId(loginId);
+
+		if (member == null) {
+			return Ut.jsHistoryBack("F-1", "존재하지 않는 아이디입니다");
+		}
+
+		if (member.getEmail().equals(email) == false) {
+			return Ut.jsHistoryBack("F-2", "이메일이 일치하지 않습니다");
+		}
+
+		ResultData notifyTempLoginPwByEmailRd = memberService.notifyTempLoginPwByEmail(member);
+
+		return Ut.jsReplace(notifyTempLoginPwByEmailRd.getResultCode(), notifyTempLoginPwByEmailRd.getMsg(),
+				afterFindLoginPwUri);
+	}
+	
+	@RequestMapping("/usr/member/findLoginId")
+	public String showFindLoginId() {
+
+		return "usr/member/findLoginId";
+	}
+
+	@RequestMapping("/usr/member/doFindLoginId")
+	@ResponseBody
+	public String doFindLoginId(@RequestParam(defaultValue = "/") String afterFindLoginIdUri, String name,
+			String email) {
+
+		Member member = memberService.getMemberByNameAndEmail(name, email);
+
+		if (member == null) {
+			return Ut.jsHistoryBack("F-1", "등록되지 않은 회원입니다");
+		}
+
+		return Ut.jsReplace("S-1", Ut.f("아이디 [ %s ]", member.getLoginId()), afterFindLoginIdUri);
+	}
 
 	@RequestMapping("/usr/member/doModify")
 	@ResponseBody

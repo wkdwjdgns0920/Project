@@ -37,7 +37,21 @@
 			<div class="h-30"></div>
 			<button class="btn_put input input-bordered" type="submit">로그인</button>
 		</form>
+		<div class="loginForm_low">
+			<span class="loginForm_low_item">
+				<a href="findLoginId">아이디 찾기</a>
+			</span>
+			<span>|</span>
+			<span class="loginForm_low_item">
+				<a href="findLoginPw">비밀번호 찾기</a>
+			</span>
+			<span>|</span>
+			<span class="loginForm_low_item">
+				<a href="${rq.joinUri }">회원가입</a>
+			</span>
+		</div>
 	</div>
 </section>
+
 
 <%@ include file="../common/foot.jspf"%>

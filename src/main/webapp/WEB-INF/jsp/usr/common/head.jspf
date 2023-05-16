@@ -34,7 +34,7 @@
 					<a class="bg-gray-300 p-3" href="${rq.logoutUri }">LOGOUT</a>
 				</c:if>
 				<c:if test="${!rq.logined}">
-					<a class="bg-gray-300 p-3" href=${rq.joinUri }>JOIN</a>
+					<a class="bg-gray-300 p-3" href="${rq.joinUri }">JOIN</a>
 				</c:if>
 			</div>
 
