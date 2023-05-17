@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						<a href="../article/write">WRITE</a>
 					</li>
 					<li class="hover:underline p-3">
-						<a href="">TRAVEL</a>
+						<a href="../home/map">TRAVEL</a>
 					</li>
 					<li class="hover:underline p-3">
 						<a href="../home/event">EVENT</a>

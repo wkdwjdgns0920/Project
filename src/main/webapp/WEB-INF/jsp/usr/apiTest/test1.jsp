@@ -5,9 +5,9 @@
 
 <%@ include file="../common/head.jspf"%>
 
-
+<div>${line }</div>
 <c:forEach var="sb" items="sb">
-	<div>${sb}</div>
+	<div>${line}</div>
 </c:forEach>
 
 <%@ include file="../common/foot.jspf"%>
