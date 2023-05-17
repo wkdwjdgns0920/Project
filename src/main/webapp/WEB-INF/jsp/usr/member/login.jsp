@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="Member Login" />
 <%@ include file="../common/head.jspf"%>
@@ -18,20 +19,35 @@
 	});
 </script>
 
+<script>
+	$(document).ready(function() {
+		var id_text = document.querySelector(".id_put");
+		var btn = document.querySelector(".id_empty");
+
+		if (id_text.value != "") {
+			console.log('asdasd');
+			btn.style.display = "block";
+		}
+	});
+</script>
+
 <!-- 로그인폼 -->
 <section class="login_con">
 	<div class="loginForm p-2">
 		<form action="../member/doLogin" method="POST">
-			<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri }" />
+			<input type="hidden" name="afterLoginUri"
+				value="${param.afterLoginUri }" />
 			<div class="login_box">로그인 폼</div>
 			<div class="h-30"></div>
 			<div class="put_box">
-				<input class="id_put" type="text" autocomplete="off" placeholder="아이디" name="loginId" />
-				<span class="empty_btn btn btn-xs id_empty">X</span>
+				<input class="id_put" type="text" autocomplete="off"
+					placeholder="아이디" name="loginId" />
+				<span class="empty_btn btn btn-xs id_empty" style="display: none;">X</span>
 			</div>
 
 			<div class="put_box">
-				<input class="pw_put mt_3" type="text" autocomplete="off" placeholder="비밀번호" name="loginPw" />
+				<input class="pw_put mt_3" type="text" autocomplete="off"
+					placeholder="비밀번호" name="loginPw" />
 				<div class="empty_btn btn btn-xs pw_empty">X</div>
 			</div>
 			<div class="h-30"></div>

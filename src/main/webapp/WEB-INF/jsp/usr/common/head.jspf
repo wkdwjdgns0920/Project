@@ -86,6 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
 					<li class="hover:underline p-3">
 						<a href="">TRAVEL</a>
 					</li>
+					<li class="hover:underline p-3">
+						<a href="../home/event">EVENT</a>
+					</li>
 					<c:if test="${rq.logined}">
 						<li class="hover:underline p-3">
 							<a href="/usr/member/myPage">MyPage</a>
