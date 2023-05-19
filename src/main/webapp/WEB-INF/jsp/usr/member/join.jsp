@@ -131,7 +131,7 @@
 	}
 	
 	/* 이메일 유효성 확인 */
-	function validEmail(el) {
+	function validCheckEmail(el) {
 		$('.validEmail_msg').empty();
 		const form = $(el).closest('form').get(0);
 
@@ -204,7 +204,7 @@
 					<tr>
 						<th>이메일</th>
 						<td>
-							<input onblur="validEmail(this)" name="email" class="w-full input input-bordered  max-w-xs" placeholder="이메일을 입력해주세요" />
+							<input onblur="validCheckEmail(this)" name="email" class="w-full input input-bordered  max-w-xs" placeholder="이메일을 입력해주세요" />
 							<div class="validEmail_msg"></div>
 						</td>
 					</tr>
