@@ -23,18 +23,21 @@ public interface MemberRepository {
 			email = #{email}
 			""")
 	void join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email);
-
+	//	회원가입을 실행
+	
 	@Select("""
 			SELECT *
 			FROM `member`
 			WHERE id = #{id}
 			""")
 	Member getMemberById(int id);
+	//	id가 일치하는 회원의 정보를 가져옴
 
 	@Select("""
 			SELECT LAST_INSERT_ID()
 			""")
 	int getLastInsertId();
+	//	마지막에 회원가입된 회원의 id를 가져옴
 
 	@Select("""
 			SELECT *
@@ -42,6 +45,7 @@ public interface MemberRepository {
 			WHERE loginId = #{loginId}
 			""")
 	Member getMemberByLoginId(String loginId);
+	//	loginId에 맞는 회원의 정보를 가져옴
 
 	@Select("""
 			SELECT *
@@ -50,6 +54,7 @@ public interface MemberRepository {
 			AND email = #{email}
 			""")
 	Member getMemberByNameAndEmail(String name, String email);
+	//	회원의 이름과 이메일을 통해서 일하는 회원의 정보를 가져옴
 	
 	
 	@Update("""
@@ -76,9 +81,6 @@ public interface MemberRepository {
 			</script>
 			""")
 	int modify(int actorId, String loginPw, String name, String nickname, String cellphoneNum, String email);
-	
-	
-
-	
-	
+	//	회원정보를 수정하고 수정한 행에 대한 정보를 전달	
+		
 }

@@ -3,6 +3,7 @@
 <c:set var="pageTitle" value="JOIN" />
 <%@ include file="../common/head.jspf"%>
 
+<!-- 회원가입 실행전에 체크 -->
 <script>
 	let submitJoinFormDone = false;
 	let validLoginId = "";
@@ -76,6 +77,7 @@
 		form.submit();
 	}
 	
+	/* 아이디 입력시에 Ajax로 아이디 중복검사 */
 	function checkLoginIdDup(el) {
 		$('.checkDupId_msg').empty();
 		const form = $(el).closest('form').get(0);
@@ -107,7 +109,8 @@
 
 	}
 	
-	function validPw(el) {
+	/* Ajax로 비밀번호 유효성 확인 */
+	function validCheckPw(el) {
 		$('.validPw_msg').empty();
 		const form = $(el).closest('form').get(0);
 
@@ -127,6 +130,7 @@
 
 	}
 	
+	/* 이메일 유효성 확인 */
 	function validEmail(el) {
 		$('.validEmail_msg').empty();
 		const form = $(el).closest('form').get(0);
@@ -169,7 +173,7 @@
 					<tr>
 						<th>비밀번호</th>
 						<td>
-							<input onblur="validPw(this)" name="loginPw" class="w-full input input-bordered  max-w-xs" placeholder="비밀번호를 입력해주세요" />
+							<input onblur="validCheckPw(this)" name="loginPw" class="w-full input input-bordered  max-w-xs" placeholder="비밀번호를 입력해주세요" />
 							<div class="validPw_msg"></div>
 						</td>
 					</tr>

@@ -9,6 +9,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.KoreaIT.jjh.project.vo.Rq;
 
+//	페이지 실행전에 먼저 실행됨
 @Component
 public class BeforeActionInterceptor implements HandlerInterceptor {
 	@Autowired
@@ -17,9 +18,7 @@ public class BeforeActionInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
-
-		System.out.println("=========================================================");
-
+		
 		rq.InitOnBeforeActionInterceptor();
 
 		return true;

@@ -16,12 +16,14 @@
 
 <!-- 제이쿼리 불러오기 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
+<!-- 공통 css파일 사용 -->
 <link rel="stylesheet" href="/resource/common.css" />
+<!-- 공통 js파일 사용 -->
 <script src="/resource/common.js" defer="defer"></script>
 </head>
 <body>
 
+<!-- 메뉴창의 게시글에 마우스 올렸을 시에 배경내려오기 설정 -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 	  var bg = document.querySelector('.bg');

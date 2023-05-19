@@ -110,26 +110,36 @@ public class Ut {
 		return param;
 	}
 	
-	public static boolean validationPasswd(String pw){
+	//	비밀번호 유효성 검사 메서드
+	public static boolean validationPasswd(String loginpw){
 	    Pattern p = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$");
 	    // 최소 8자리에 숫자, 문자, 특수문자 각각 1개 이상 포함
-	    Matcher m = p.matcher(pw);
-
+	    Matcher m = p.matcher(loginpw);
+	    //	입력받은 비밀번호 유효성 검사를 실행
 	    if(m.matches()){
 	        return false;
 	    }
-	    return true;
-	}
+	    //	사용할 수 없는 비밀번호일 경우 false값을 반환
 
+	    return true;
+	    //	사용할 수 있는 비밀번호일 경우 true값을 반환
+	}
+	
+	
+	//	이메일 유효성 검사 메서드
 	public static boolean isValidEmail(String email) {
-		boolean err = false;
-		String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+		boolean err = false;	//	err의 값을 기본 false로 설정
+		
+		String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";	//	이메일 유효성검사를 확인할 문자열
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(email);
+		//	이메일의 유효성 검사를 함
 		if (m.matches()) {
 			err = true;
+			//	이메일 유효성검사를 통화하면 err를 true로 변환
 		}
 		return err;
+		//	이메일 유효성검사의 값을 반환(통과 true, 실패 false)
 	}
 	
 	public static String getTempPassword(int length) {

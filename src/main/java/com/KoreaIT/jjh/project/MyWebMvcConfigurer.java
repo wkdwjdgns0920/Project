@@ -10,6 +10,7 @@ import com.KoreaIT.jjh.project.interceptor.BeforeActionInterceptor;
 import com.KoreaIT.jjh.project.interceptor.NeedLoginInterceptor;
 import com.KoreaIT.jjh.project.interceptor.NeedLogoutInterceptor;
 
+//	각각의 해당페이지가 실행되기전에 검사할 것들을 먼저 검사함
 @Configuration
 public class MyWebMvcConfigurer implements WebMvcConfigurer {
 

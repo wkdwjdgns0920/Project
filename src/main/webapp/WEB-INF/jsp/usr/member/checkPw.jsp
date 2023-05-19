@@ -4,6 +4,7 @@
 <%@ include file="../common/head.jspf"%>
 <hr />
 
+<!-- .empty_btn클릭시에 내용 전체 지워지게 -->
 <script>
 $(document).ready(function() {
 	$(".pw_empty").click(function() {

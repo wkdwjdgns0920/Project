@@ -16,6 +16,6 @@ public interface BoardRepository {
 			AND delStatus = 0
 			""")
 	Board getBoardById(int boardId);
-
+	//	boardId에 대한 board정보를 가져옴
 
 }

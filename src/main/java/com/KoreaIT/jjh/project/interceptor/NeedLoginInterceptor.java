@@ -10,6 +10,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import com.KoreaIT.jjh.project.util.Ut;
 import com.KoreaIT.jjh.project.vo.Rq;
 
+//	로그인을 확인하기 위함, 로그인이 필요한 경우 실행
 @Component
 public class NeedLoginInterceptor implements HandlerInterceptor {
 	

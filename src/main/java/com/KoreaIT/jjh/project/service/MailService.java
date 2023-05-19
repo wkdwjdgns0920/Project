@@ -58,9 +58,11 @@ public class MailService {
 			}
 		}
 	}
-
+	
+	//	메일전송 메서드
 	public ResultData send(String email, String title, String body) {
-
+		
+		//	메일전송
 		MailHandler mail;
 		try {
 			mail = new MailHandler(sender);
@@ -72,8 +74,10 @@ public class MailService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResultData.from("F-1", "메일 발송 실패하였습니다.");
+			//	메일 실패에 대한 결과를 리턴
 		}
 
 		return ResultData.from("S-1", "메일이 발송되었습니다.");
+		//	메일전송에 대한 결과
 	}
 }
