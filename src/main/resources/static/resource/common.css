@@ -430,4 +430,12 @@ header>div>ul>li>ul>li:hover {
 	display: flex;
 	justify-content: center;
 }
-
+.element:hover {
+  cursor: pointer; /* 마우스가 요소 위에 올라갔을 때 포인터 형태로 변경 */
+}
+.showMap_btn{
+	background-color: gold;
+}
+.h-00 {
+	height: 100%;
+}

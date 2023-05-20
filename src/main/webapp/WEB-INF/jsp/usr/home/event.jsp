@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="TRAVEL" />
+<c:set var="pageTitle" value="대전광역시 공연행사정보" />
 
 <%@ include file="../common/head.jspf"%>
 <script>
@@ -23,7 +23,7 @@
 	            var placeCdNm = eventData[i].placeCdNm;
 	            var targetCdNm = eventData[i].targetCdNm;
 	            
-	            var eventElement = document.createElement("p");
+	            var eventElement = document.createElement("div");
 	            eventElement.innerHTML = "title: " + title + "<br>날짜: " + beginDt + "<br>장소:" + placeCdNm + "<br>관람연령:" + targetCdNm + "<br><br>";
 	            titleContainer.appendChild(eventElement);
 			}
