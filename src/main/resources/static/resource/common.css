@@ -425,4 +425,9 @@ header>div>ul>li>ul>li:hover {
 	justify-content: center;
 }
 
+/* event2 Page */
+.event_section {
+	display: flex;
+	justify-content: center;
+}
 

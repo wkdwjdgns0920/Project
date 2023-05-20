@@ -2,6 +2,7 @@ package com.KoreaIT.jjh.project.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -33,7 +34,7 @@ public class UsrHomeController {
 	}
 	
 	@RequestMapping("usr/home/event2")
-	public String event2() {
+	public String event2(@RequestParam(defaultValue = "1") int page) {
 		
 		return "usr/home/event2";
 	}

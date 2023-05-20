@@ -16,6 +16,7 @@
 			var eventData = response.msgBody;
 			
 			console.log(eventData);
+			
 			for (var i = 0; i < eventData.length; i++) {
 	            var title = eventData[i].title;
 	            var beginDt = eventData[i].beginDt;
