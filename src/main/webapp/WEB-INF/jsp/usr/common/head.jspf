@@ -24,7 +24,7 @@
 <body>
 
 	<!-- 메뉴창의 게시글에 마우스 올렸을 시에 배경내려오기 설정 -->
-	<script>
+<!-- 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			var bg = document.querySelector('.bg');
 			var li = document.querySelectorAll('.con > ul > li');
@@ -39,7 +39,7 @@
 				});
 			});
 		});
-	</script>
+	</script> -->
 
 	<section class="head_con">
 		<header>
@@ -59,7 +59,7 @@
 			</div>
 
 			<div class="h-10 flex justify-center text-2xl con">
-				<div class="bg"></div>
+				
 				<div class="logo">
 					<a class="h-100 flex justify-center items-center" href="/">
 						<i class="fa-brands fa-weixin fa-2xl"></i>
@@ -71,8 +71,9 @@
 						<a href="/">HOME</a>
 					</li>
 					<li class="hover:underline p-3">
+						<div class="bg"></div>
 						<a href="../article/list">LIST</a>
-						<ul class="z-10">
+						<ul class="z-i">
 							<li class="p-3">
 								<a href="/usr/article/list?boardId=1">NOTICE</a>
 							</li>
@@ -88,13 +89,13 @@
 						<a href="../article/write">WRITE</a>
 					</li>
 					<li class="hover:underline p-3">
-						<a href="../home/map">MAP</a>
-					</li>
-					<li class="hover:underline p-3">
 						<a href="../home/event">EVENT</a>
 					</li>
 					<li class="hover:underline p-3">
 						<a href="../home/event2?page=1">EVENT2</a>
+					</li>
+					<li class="hover:underline p-3">
+						<a href="../home/news">공연행사정보</a>
 					</li>
 					<c:if test="${rq.logined}">
 						<li class="hover:underline p-3">

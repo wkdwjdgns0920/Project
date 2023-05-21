@@ -86,7 +86,41 @@ public interface ArticleRepository {
 	public List<Article> getForPrintArticles(int boardId, int limitFrom, int limit, String searchKeywordType, String searchKeyword);
 	//	boardId에 맞게 searchKeyword가 있다면 그에 맞는 게시글들을 limitFrom개 가져옴
 	
-
+	
+	@Select("""
+			<script>
+			SELECT A.*, M.name AS extra_writer
+			FROM article AS A
+			INNER JOIN `member` AS M
+			ON A.memberId = M.id
+			WHERE 1
+				<if test="boardId != 0">
+					AND A.boardId = #{boardId}
+				</if>
+				<if test="searchKeyword != ''">
+					<choose>
+						<when test="searchKeywordType == 'title'" >
+							AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+						</when>
+						<when test="searchKeywordType == 'body'" >
+							AND A.body LIKE CONCAT('%',#{searchKeyword},'%')
+						</when>
+						<otherwise>
+							AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+							OR A.body LIKE CONCAT('%',#{searchKeyword},'%')
+						</otherwise>
+					</choose>
+				</if>
+			ORDER BY A.hitCount DESC
+			<if test="limitFrom >= 0">
+			LIMIT #{limitFrom}, #{limit}
+			</if>
+			</script>
+			""")
+	public List<Article> getForPrintArticlesByHitCount(int boardId, int limitFrom, int limit, String searchKeywordType,
+			String searchKeyword);
+	//	조회수순으로 게시글 가져오기
+	
 	@Select("""
 			SELECT *
 			FROM article
@@ -190,5 +224,6 @@ public interface ArticleRepository {
 			""")
 	public int decreaseDisLikeReationPoint(int relId);
 	//	싫어요 감소
+
 
 }

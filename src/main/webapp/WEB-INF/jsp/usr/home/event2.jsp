@@ -60,7 +60,7 @@ function showApi(el) {
 </script>
 
 
-<section class="event_section">
+<section class="event_section mt-8">
 	<div id="titleContainer"></div>
 	<div class="space"></div>
 	<div class="div_center">
@@ -68,10 +68,6 @@ function showApi(el) {
 	</div>
 </section>
 
-
-<div class="div_center">
-	<p id="result"></p>
-</div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3047bd817887b648d90088cc385d3845"></script>
 
 <!-- 지도API -->
@@ -101,6 +97,7 @@ function showMap(lat1,lot1){
 
 	// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 	// marker.setMap(null);
+	
 }
 
 </script>

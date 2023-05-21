@@ -119,6 +119,13 @@ public class ArticleService {
 		return articleRepository.getForPrintArticles(boardId, limitFrom, limit, searchKeywordType, searchKeyword);
 		//	게시글들을 전달
 	}
+	
+	public List<Article> getForPrintArticlesByHitCount(int boardId, int itemInAPage, int page, String searchKeywordType,
+			String searchKeyword) {
+		int limitFrom = (page - 1) * itemInAPage;	//	(현재 페이지 -1) * 한 페이지당 들어갈 게시글의 갯수 (몇번부터 limit개 가져올지에 대한 번호를 구함)
+		int limit = itemInAPage;	//	한 페이지당 들어가야할 게시글의 갯수
+		return articleRepository.getForPrintArticlesByHitCount(boardId, limitFrom, limit, searchKeywordType, searchKeyword);
+	}
 
 	public int getArticlesCount(int boardId, String searchKeywordType, String searchKeyword) {
 

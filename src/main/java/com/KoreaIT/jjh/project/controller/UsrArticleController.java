@@ -51,6 +51,9 @@ public class UsrArticleController {
 
 		List<Article> articles = articleService.getForPrintArticles(boardId, itemInAPage, page, searchKeywordType,
 				searchKeyword); // 한 페이지에 들어갈 게시글들을 가져옴(searchKeyword가 있으면 그에 맞는 게시글들을 가져옴)(작성자 이름도 함께 가저옴)
+		
+		List<Article> articlesByHitCount = articleService.getForPrintArticlesByHitCount(boardId, itemInAPage, page, searchKeywordType,
+				searchKeyword);	//	조회수순으로 가져옴
 
 		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordType, searchKeyword);
 		// boardId와 searchKeyword에 맞게 게시들들의 갯수를 가져옴
@@ -65,6 +68,7 @@ public class UsrArticleController {
 		model.addAttribute("pagesCount", pagesCount);	//	페이지의 갯수를 넘김
 		model.addAttribute("articlesCount", articlesCount);	//	boardId에 대한 게시글의 갯수를 넘김
 		model.addAttribute("articles", articles);	//	게시글들의 정보를 넘김
+		model.addAttribute("articlesByHitCount", articlesByHitCount);	//	조회수 순서의 게시글들의 정보를 넘김
 		// 가져온 값들을 JSP페이지에서 사용할 수 있게 넘김
 
 		return "usr/article/list";
@@ -75,6 +79,10 @@ public class UsrArticleController {
 
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 		// 게시글의 번호에 맞는 게시글과 작성자이름을 가져옴
+		
+		if(article == null) {
+			return rq.jsHistoryBackOnView("게시글이 존재하지 않습니다");
+		}
 
 		ResultData actorCanReactionRd = reactionPointService.actorCanReaction(rq.getLoginedMemberId(), "article", id);
 		// 좋아요와 싫어요를 누를 수 있는지 확인하고 사용자가 이 게시글에 추천을한 총 점수를 가져옴

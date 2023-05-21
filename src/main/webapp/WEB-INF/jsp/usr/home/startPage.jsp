@@ -1,35 +1,101 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>startPage</title>
-<link rel="stylesheet" href="/resource/test.css" />
-<script type="text/javascript">
-	var imgArray = new Array();
-	imgArray[0] = "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRs6w5YHcaCVjTB_X_Nbqx9fxuYqvvR1eBbG0CUMuyL_oKxal84GYhSSouw8HMv5WLlirN5hGdphZzpTrZAnqXkflf5MQ";
-	imgArray[1] = "https://www.yuseong.go.kr/thumbnail/trrsrt/TR_202105110255503251.jpg";
-	imgArray[2] = "https://www.yuseong.go.kr/thumbnail/trrsrt/TR_202105110301566521.jpg";
-	imgArray[3] = "https://lh5.googleusercontent.com/p/AF1QipP2LQDefthNled7iiCFcV5ONpsXxa8uBch8LUsQ=w548-h318-n-k-no";
-	
-	function showImage() {
-		var imgNum = Math.round(Math.random() * 2);
-		var objImg = document.getElementById("introImg");
-		objImg.src = imgArray[imgNum];
-		setTimeout("showImage()", 1000);
-	}
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="pageTitle" value="MAIN" />
+<link rel="stylesheet" href="/resource/startPage.css" />
+<%@ include file="../common/head.jspf"%>
+
+<script>
+const images = document.querySelectorAll('.slider span');
+const sliderContainer = document.querySelector('slider-container');
+const slider = document.querySelector('.slider');
+const prevBtn = document.querySelector('.leftBtn');
+const nextBtn = document.querySelector('.rightBtn');
+
+let current = 1;
+const imgSize = images[0].clientWidth;
+
+slider.style.transform = `translateX(${-imgSize}px)`;
+
+prevBtn.addEventListener('click',()=>{
+    if( current <= 0) return;
+    slider.style.transition = '400ms ease-in-out transform';
+    current--;
+    slider.style.transform = `translateX(${-imgSize * current}px)`;
+})
+
+nextBtn.addEventListener('click',()=>{
+    if( current >= images.length -1 ) return;
+    slider.style.transition = '400ms ease-in-out transform';
+    current++;
+    slider.style.transform = `translateX(${-imgSize * current}px)`;
+})
+
+slider.addEventListener('transitionend', ()=> {
+    if(images[current].classList.contains('first-img')){
+        slider.style.transition = 'none';
+        current = images.length - 2;
+        slider.style.transform = `translateX(${-imgSize * current}px)`;
+    }
+    if(images[current].classList.contains('last-img')){
+        slider.style.transition = 'none';
+        current = images.length - current;
+        slider.style.transform = `translateX(${-imgSize * current}px)`;
+    }
+})
 </script>
-</head>
-<body onload="showImage()">
-	<div class="img_box">
-		<img class="img_box" id="introImg" border="0">
-	</div>
-	<div class="img_box">
-		<img class="" src="https://lh5.googleusercontent.com/p/AF1QipP2LQDefthNled7iiCFcV5ONpsXxa8uBch8LUsQ=w548-h318-n-k-no" alt="">
-		<img class="" src="https://lh5.googleusercontent.com/p/AF1QipMKvD8zzZLzVmKZENxJsHxT-uO1hHN5LBQAr7jm=w548-h318-n-k-no" alt="">
-		<img class="" src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcS0943dhl2Kk2dalLCV6fWtZIVwb5B-PSc5pVV_QWFaTmbr9O8pOGiGTuXlAmgfypQh8VaMbv_dAKJb-xixLC6gEmqHFA" alt="">
-		<img class="" src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRs6w5YHcaCVjTB_X_Nbqx9fxuYqvvR1eBbG0CUMuyL_oKxal84GYhSSouw8HMv5WLlirN5hGdphZzpTrZAnqXkflf5MQ" alt="">
-		<img class="" src="" alt="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQLLiQENWSaeK_jK6UXQ-BB7QmV7e8ezWNlCrwib97jM89VQ6hvoj1VUOwTjyt3XCi9A7e0tJ5VVwP1bteAOv3zsLPZjg">
-		<img class="" src="" alt="">
-		
-	</div>
-</body>
-</html>
+
+<div id="slide">
+        <div class="slider-container">
+            <span class="leftBtn">
+                <i class="fa-solid fa-chevron-left"></i>
+            </span>
+            <div class="slider">
+                <span class="first-img">
+                    <div class="text-wrap">
+                        <h5>WEEKLY DESIGN</h5>
+                        <h1>사용자가 좋아하는 디자인, WEB/APP 디자인</h1>
+                        <h4>WEB/APP 바로가기 ></h4>
+                    </div>
+                    <img src="4.png" alt="0" />
+                </span>
+                <span>
+                    <div class="text-wrap">
+                        <h5>LOUDSOURCING</h5>
+                        <h1>디자인부터 아이디어까지, &nbsp; 19만 전문가에게 의뢰하세요</h1>
+                        <h4>콘테스트 개최하기 ></h4>
+                    </div>
+                    <img src="1.png" alt="1" />
+                </span>
+                <span>
+                    <div class="text-wrap">
+                        <h5>WEEKLY DESIGN</h5>
+                        <h1>디자인 트렌드는 라우드소싱 2022 로고/BI 디자인</h1>
+                        <h4>로고/BI 바로가기 ></h4>
+                    </div>
+                    <img src="2" alt="2" />
+                </span>
+                <span>
+                    <div class="text-wrap">
+                        <h5>WEEKLY DESIGN</h5>
+                        <h1>사용자가 좋아하는 디자인, WEB/APP 디자인</h1>
+                        <h4>WEB/APP 바로가기 ></h4>
+                    </div>
+                    <img src="3" alt="3" />
+                </span>
+                <span class="last-img">
+                    <div class="text-wrap">
+                        <h5>LOUDSOURCING</h5>
+                        <h1>디자인부터 아이디어까지, &nbsp; 19만 전문가에게 의뢰하세요</h1>
+                        <h4>콘테스트 개최하기 ></h4>
+                    </div>
+                    <img src="1.png" alt="4" />
+                </span>
+            </div>
+            <span class="rightBtn">
+                <i class="fa-solid fa-chevron-right"></i>
+            </span>
+        </div>
+    </div>
+ 
+
+<%@ include file="../common/foot.jspf"%>

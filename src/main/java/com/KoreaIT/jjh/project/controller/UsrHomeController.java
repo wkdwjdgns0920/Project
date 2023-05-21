@@ -21,12 +21,6 @@ public class UsrHomeController {
 	}
 	
 	
-	@RequestMapping("usr/home/map")
-	public String showTravelPage() {
-		
-		return "usr/home/map";
-	}
-	
 	@RequestMapping("usr/home/event")
 	public String showEventPage() {
 		
@@ -35,13 +29,30 @@ public class UsrHomeController {
 	
 	@RequestMapping("usr/home/event2")
 	public String event2(@RequestParam(defaultValue = "1") int page) {
-		
+
 		return "usr/home/event2";
+	}
+	
+	@RequestMapping("usr/home/news")
+	public String news() {
+		
+		return "usr/home/news";
+	}
+	
+	@RequestMapping("usr/home/detailNews")
+	public String detailNews(int id) {
+		
+		return "usr/home/detailNews";
 	}
 	
 	@RequestMapping("usr/home/startPage")
 	public String startPage() {
 		return "usr/home/startPage";
+	}
+	
+	@RequestMapping("usr/home/test")
+	public String test() {
+		return "usr/home/test";
 	}
 	
 }
