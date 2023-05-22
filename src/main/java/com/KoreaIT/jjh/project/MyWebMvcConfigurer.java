@@ -1,9 +1,11 @@
 package com.KoreaIT.jjh.project;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.KoreaIT.jjh.project.interceptor.BeforeActionInterceptor;
@@ -13,6 +15,15 @@ import com.KoreaIT.jjh.project.interceptor.NeedLogoutInterceptor;
 //	각각의 해당페이지가 실행되기전에 검사할 것들을 먼저 검사함
 @Configuration
 public class MyWebMvcConfigurer implements WebMvcConfigurer {
+	
+	@Value("${custom.genFileDirPath}")
+	private String genFileDirPath;
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/gen/**").addResourceLocations("file:///" + genFileDirPath + "/")
+				.setCachePeriod(20);
+	}
 
 	@Autowired
 	BeforeActionInterceptor beforeActionInterceptor;

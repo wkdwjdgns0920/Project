@@ -55,20 +55,9 @@
 
 
 <!-- 게시글상세보기 -->
-<section class="div_center mt_50">
+<section class="div_center">
 	<div class="mt-8 text-xl bor-b po-rel w-800">
-		<!-- 디테일페이지 이동버튼 -->
-		<div class="movePage_btn">
-			<a href="detail?id=${param.id -1 }">
-				<button class="btn btn-active btn-ghost">이전글</button>
-			</a>
-			<a href="detail?id=${param.id +1 }">
-				<button class="btn btn-active btn-ghost">다음글</button>
-			</a>
-			<a href="list">
-				<button class="btn btn-active btn-ghost">목록</button>
-			</a>
-		</div>
+
 		<div class="mx-auto px-3">
 			<table class="table table-zebra w-full">
 				<colgroup>
@@ -95,6 +84,14 @@
 						<th>조회수</th>
 						<td class="text-center">
 							<span class="article_hitCount">${article.hitCount }</span>
+						</td>
+					</tr>
+					<tr>
+						<th>첨부 이미지</th>
+						<td>
+							<img class="img_file rounded-xl" src="${rq.getImgUri(article.id)}" onerror="${rq.profileFallbackImgOnErrorHtml}"
+								alt="" />
+							<div>${rq.getImgUri(article.id)}</div>
 						</td>
 					</tr>
 					<tr>
@@ -175,13 +172,26 @@
 				</div>
 			</div>
 		</div>
-		<div class="btns lowMenu flex justify-end">
-			<button class="btn-text-link m-1" type="button" onclick="history.back();">뒤로가기</button>
+		<div class="btns lowMenu flex justify-end mt_10">
+			<!-- 디테일페이지 이동버튼 -->
+			<div class="movePage_btn">
+				<a href="detail?id=${param.id -1 }">
+					<button class="btn btn-active btn-ghost">이전글</button>
+				</a>
+				<a href="detail?id=${param.id +1 }">
+					<button class="btn btn-active btn-ghost">다음글</button>
+				</a>
+				<a href="list">
+					<button class="btn btn-active btn-ghost">목록</button>
+				</a>
+			</div>
+			<div class="empty_box"></div>
+			<button class="btn btn-active btn-ghost" type="button" onclick="history.back();">뒤로가기</button>
 			<c:if test="${article.actorCanModify }">
-				<a class="btn-text-link m-1" href="../article/modify?id=${article.id }">수정</a>
+				<a class="btn btn-active btn-ghost" href="../article/modify?id=${article.id }">수정</a>
 			</c:if>
 			<c:if test="${article.actorCanDelete }">
-				<a class="btn-text-link m-1" onclick="if(confirm('정말 삭제하시겠습니까?')==false) return false;"
+				<a class="btn btn-active btn-ghost" onclick="if(confirm('정말 삭제하시겠습니까?')==false) return false;"
 					href="../article/doDelete?id=${article.id }">삭제</a>
 			</c:if>
 		</div>

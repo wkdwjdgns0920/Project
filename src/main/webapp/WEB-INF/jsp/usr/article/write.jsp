@@ -4,8 +4,8 @@
 <%@ include file="../common/head.jspf"%>
 
 <section class="div_center mt_50">
-	<div class="mt-8 text-xl bor-b po-rel w-800 h-800">
-		<form action="../article/doWrite">
+	<div class="mt-8 text-xl po-rel w-800 h-800">
+		<form action="../article/doWrite" method="POST" enctype="multipart/form-data">
 			<table class="table table-zebra w-full h-700">
 				<colgroup>
 					<col width="50" />
@@ -30,6 +30,12 @@
 						<th>제목</th>
 						<td>
 							<input class="text_box" type="text" name="title" placeholder="제목" />
+						</td>
+					</tr>
+					<tr>
+						<th>첨부 이미지</th>
+						<td>
+							<input name="file__article__0__extra__Img__1" placeholder="이미지를 선택해주세요" type="file" />
 						</td>
 					</tr>
 					<tr>

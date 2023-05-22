@@ -202,7 +202,7 @@ function showMap(festvAddr,festvNm) {
 					</td>
 				</tr>
 				<tr>
-					<th>행사주제</th>
+					<th>Topic</th>
 					<td>
 						<div id="festvTpicContainer"></div>
 					</td>

@@ -34,16 +34,20 @@
 				<c:if test="${rq.logined}">
 					<a class=" p-3" href="${rq.logoutUri }">LOGOUT</a>
 				</c:if>
+				<c:if test="${rq.logined}">
+					<a class=" p-3" href="/usr/member/myPage">MyPage</a>
+				</c:if>
 				<c:if test="${!rq.logined}">
 					<a class=" p-3" href="${rq.joinUri }">JOIN</a>
 				</c:if>
 			</div>
 
 			<div class="h-10 flex justify-center text-2xl con">
-				
+
 				<div class="logo">
 					<a class="h-100 flex justify-center items-center" href="/">
-						<i class="fa-brands fa-weixin fa-2xl"></i>
+						<!-- <i class="fa-brands fa-weixin fa-2xl"></i> -->
+						<img src="/resources/img/caravan.png"/>
 					</a>
 				</div>
 				<div class="space"></div>
@@ -78,11 +82,6 @@
 					<li class="hover:underline p-3">
 						<a href="../home/festv">Festival</a>
 					</li>
-					<c:if test="${rq.logined}">
-						<li class="hover:underline p-3">
-							<a href="/usr/member/myPage">MyPage</a>
-						</li>
-					</c:if>
 				</ul>
 			</div>
 			<h1 class="text-lg">${pageTitle }Page</h1>

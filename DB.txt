@@ -1,7 +1,7 @@
 #DB 생성
-DROP DATABASE IF EXISTS Project;
-CREATE DATABASE Project;
-USE Project;
+DROP DATABASE IF EXISTS jjh;
+CREATE DATABASE jjh;
+USE jjh;
 
 # 게시물 테이블 생성
 CREATE TABLE article(
@@ -57,7 +57,7 @@ loginPw = 'admin',
 `name` = '관리자',
 `nickname` = '관리자',
 cellphoneNum = '01012341234',
-email = 'abcdef@gmail.com';
+email = 'wjdgnst123@gmail.com';
 
 # 회원 테스트데이터 생성 (일반)
 INSERT INTO `member` 
@@ -68,7 +68,7 @@ loginPw = 'test1',
 `name` = '회원1',
 `nickname` = '회원1',
 cellphoneNum = '01043214321',
-email = 'abcd@gmail.com';
+email = 'wjdgnst123@gmail.com';
 
 INSERT INTO `member` 
 SET regDate = NOW(),
@@ -78,7 +78,7 @@ loginPw = 'test2',
 `name` = '회원2',
 `nickname` = '회원2',
 cellphoneNum = '01067896789',
-email = 'zxcv@gmail.com';
+email = 'wjdgnst123@gmail.com';
 
 ALTER TABLE article
 ADD COLUMN memberId INT(10) UNSIGNED NOT NULL AFTER updateDate;
@@ -259,6 +259,28 @@ ALTER TABLE reply ADD COLUMN disLikePoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
 # 댓글 테이블에 인덱스 추가
 ALTER TABLE `Project`.`reply` ADD KEY `relTypeCodeId` (`relTypeCode` , `relId`);
 
+# 파일 테이블 추가
+CREATE TABLE genFile (
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, # 번호
+  regDate DATETIME DEFAULT NULL, # 작성날짜
+  updateDate DATETIME DEFAULT NULL, # 갱신날짜
+  delDate DATETIME DEFAULT NULL, # 삭제날짜
+  delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0, # 삭제상태(0:미삭제,1:삭제)
+  relTypeCode CHAR(50) NOT NULL, # 관련 데이터 타입(article, member)
+  relId INT(10) UNSIGNED NOT NULL, # 관련 데이터 번호
+  originFileName VARCHAR(100) NOT NULL, # 업로드 당시의 파일이름
+  fileExt CHAR(10) NOT NULL, # 확장자
+  typeCode CHAR(20) NOT NULL, # 종류코드 (common)
+  type2Code CHAR(20) NOT NULL, # 종류2코드 (attatchment)
+  fileSize INT(10) UNSIGNED NOT NULL, # 파일의 사이즈
+  fileExtTypeCode CHAR(10) NOT NULL, # 파일규격코드(img, video)
+  fileExtType2Code CHAR(10) NOT NULL, # 파일규격2코드(jpg, mp4)
+  fileNo SMALLINT(2) UNSIGNED NOT NULL, # 파일번호 (1)
+  fileDir CHAR(20) NOT NULL, # 파일이 저장되는 폴더명
+  PRIMARY KEY (id),
+  KEY relId (relTypeCode,relId,typeCode,type2Code,fileNo)
+);
+
 
 ########################################
 
@@ -276,13 +298,14 @@ SELECT * FROM `member`;
 SELECT * FROM board;
 SELECT * FROM reactionPoint;
 SELECT * FROM `reply`;
+SELECT * FROM `genFile`;
 
 # 게시물 갯수 늘리기
 INSERT INTO article 
 ( 
-    regDate, updateDate, memberId, boardId, title, `body`
+    regDate, updateDate, memberId, boardId, title, `body`, hitCount
 )
-SELECT NOW(), NOW(), FLOOR(RAND() * 2) + 2, FLOOR(RAND() * 2) + 1, CONCAT('제목_',RAND()), CONCAT('내용_',RAND())
+SELECT NOW(), NOW(), FLOOR(RAND() * 2) + 2, FLOOR(RAND() * 2) + 1, CONCAT('제목_',RAND()), CONCAT('내용_',RAND()), ROUND(RAND() * 3,1)
 FROM article;
 
 SELECT COUNT(*) FROM article;

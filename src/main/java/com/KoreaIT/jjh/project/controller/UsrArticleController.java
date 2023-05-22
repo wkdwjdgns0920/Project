@@ -1,6 +1,7 @@
 package com.KoreaIT.jjh.project.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,9 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 
 import com.KoreaIT.jjh.project.service.ArticleService;
 import com.KoreaIT.jjh.project.service.BoardService;
+import com.KoreaIT.jjh.project.service.GenFileService;
 import com.KoreaIT.jjh.project.service.ReactionPointService;
 import com.KoreaIT.jjh.project.service.ReplyService;
 import com.KoreaIT.jjh.project.util.Ut;
@@ -33,6 +37,8 @@ public class UsrArticleController {
 	ReplyService replyService;
 	@Autowired
 	private Rq rq;
+	@Autowired
+	private GenFileService genFileService;
 
 	// 액션메서드
 
@@ -235,7 +241,7 @@ public class UsrArticleController {
 
 	@RequestMapping("usr/article/doWrite") // 사용자에게 받은 내용을 통해 게시글을 작성
 	@ResponseBody
-	public String doWrite(int boardId, String title, String body) {
+	public String doWrite(int boardId, String title, String body, MultipartRequest multipartRequest) {
 
 		if (rq.isLogined() == false) {
 			return Ut.jsHistoryBack("F-1", "로그인후에 이용해주세요");
@@ -253,7 +259,18 @@ public class UsrArticleController {
 		//	내용을 입력하지 않았으면 내용을 입력해달라는 알림창을 띄우고 뒤로가기
 
 		int id = articleService.write(rq.getLoginedMemberId(), title, body, boardId);
-		//	마지막으로 작성된 게시글의 id를 가져옴
+		//	게시글작성하고 마지막으로 작성된 게시글의 id를 가져옴
+		
+		Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
+
+		for (String fileInputName : fileMap.keySet()) {
+			MultipartFile multipartFile = fileMap.get(fileInputName);
+
+			if (multipartFile.isEmpty() == false) {
+				System.out.println("===================이미이미지===================");
+				genFileService.save(multipartFile, id);
+			}
+		}
 
 		return Ut.jsReplace("S-1", "글쓰기", Ut.f("detail?id=%d", id));
 		//	게시글이 작성되었다는 정보와 작성된 게시글의 상세보기 페이지로 이동

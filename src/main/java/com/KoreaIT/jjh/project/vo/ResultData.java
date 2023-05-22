@@ -1,17 +1,30 @@
 package com.KoreaIT.jjh.project.vo;
 
-import lombok.Getter;
+import java.util.Map;
 
+import com.KoreaIT.jjh.project.util.Ut;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class ResultData<DT> {
 	
-	@Getter
 	private String resultCode;
-	@Getter
 	private String msg;
-	@Getter
 	private DT data1;
-	@Getter
 	private String data1Name;
+	private Map<String, Object> body;
+
+	public ResultData(String resultCode, String msg, Object... args) {
+		this.resultCode = resultCode;
+		this.msg = msg;
+		this.body = Ut.mapOf(args);
+	}
+	
 	
 	//	ResultData
 	public static <DT> ResultData<DT> from (String resultCode, String msg) {
