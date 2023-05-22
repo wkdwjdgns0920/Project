@@ -97,8 +97,8 @@ function showMap(festvAddr,festvNm) {
     
 </script>
 
-<section class="mt-8 text-xl div_center">
-	<div class="w-800">
+<section class="mt-8 div_center">
+	<div class="w-800 text-xl">
 	<table class="table table-zebra w-full">
 
 		<tbody>
@@ -241,10 +241,10 @@ function showMap(festvAddr,festvNm) {
 
 		</tbody>
 	</table>
-	<div class="mt-8">위치정보</div>
-	<div class="div_center">
-		<div id="map" style="width: 100%; height: 500px;"></div>
-	</div>
+		<div class="mt-8">위치정보</div>
+		<div class="div_center">
+			<div id="map" style="width: 100%; height: 500px;"></div>
+		</div>
 	</div>
 </section>
 

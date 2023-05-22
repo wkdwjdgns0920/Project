@@ -6,12 +6,12 @@
 
 
 
-<section class="mt-8 text-xl">
-	<div class="container mx-auto px-3">
-		<div class="table-box-type-1">
+<section class="div_center mt_50">
+	<div class="mt-8 text-xl bor-b po-rel w-800">
+		<div class="table-box-type-2">
 			<form action="../member/doModify" method="POST" onsubmit="if(confirm('정말 수정하시겠습니까?')==false) return false;">
 				<input type="hidden" name="loginId" value="${rq.loginedMember.loginId }" />
-				<table border="1">
+				<table class="table table-zebra w-full h-700">
 					<colgroup>
 						<col width="200" />
 					</colgroup>
@@ -70,19 +70,17 @@
 						<tr>
 							<th></th>
 							<td>
-								<button type="submit" value="수정" />
-								수정
-								</button>
+								<div class="flex justify-end">
+									<button class="btn btn-ghost" type="submit" value="수정" />수정</button>
+								</div>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</form>
 		</div>
-		<div class="btns">
+		<div class="back_btn">
 			<button class="btn-text-link btn btn-active btn-ghost" type="button" onclick="history.back();">뒤로가기</button>
-
-
 		</div>
 	</div>
 </section>

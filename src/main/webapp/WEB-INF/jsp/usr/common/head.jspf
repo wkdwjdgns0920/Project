@@ -76,7 +76,7 @@
 						<a href="../home/event2?page=1">EVENT2</a>
 					</li>
 					<li class="hover:underline p-3">
-						<a href="../home/news">공연행사정보</a>
+						<a href="../home/festv">공연행사정보</a>
 					</li>
 					<c:if test="${rq.logined}">
 						<li class="hover:underline p-3">

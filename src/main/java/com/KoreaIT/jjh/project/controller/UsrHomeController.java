@@ -33,16 +33,16 @@ public class UsrHomeController {
 		return "usr/home/event2";
 	}
 	
-	@RequestMapping("usr/home/news")
-	public String news() {
+	@RequestMapping("usr/home/festv")
+	public String festv() {
 		
-		return "usr/home/news";
+		return "usr/home/festv";
 	}
 	
-	@RequestMapping("usr/home/detailNews")
-	public String detailNews(int id) {
+	@RequestMapping("usr/home/festvDetail")
+	public String festvDetail(int id) {
 		
-		return "usr/home/detailNews";
+		return "usr/home/festvDetail";
 	}
 	
 	@RequestMapping("usr/home/startPage")

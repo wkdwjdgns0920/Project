@@ -7,11 +7,8 @@
 
 <section class="div_center mt-8">
 
-	<div class="mt-8 text-xl bor-b po-rel">
-		<!-- 리스트변경버튼 -->
-		<div class="list_btn">
-			<button class="hitCount_btn" onclick="showList()">조회수순</button>
-		</div>
+	<div class="mt-8 text-xl po-rel">
+		
 		<div class="flex mb-4">
 			<div>
 				게시물 갯수 :
@@ -19,6 +16,7 @@
 				개
 			</div>
 			<div class="flex-grow"></div>
+			<button class="hitCount_btn" onclick="showList()">조회수순</button>	<!-- 리스트변경버튼 -->
 			<form action="">
 				<input type="hidden" name="boardId" value="${param.boardId }" />
 				<select data-value="${param.searchKeywordType }" name="searchKeywordType" class="select select-ghost">
@@ -108,7 +106,7 @@
 			</tbody>
 		</table>
 
-		<!-- 시동중 -->
+		<!-- 조회수순서 리스트 보여지기 -->
 		<script>
 			function showList() {
 				// 해당 요소 가져오기

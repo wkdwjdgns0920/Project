@@ -25,7 +25,7 @@
 				var titleBox = document.createElement("div");
 				var idBox = document.createElement("div");
 				
-				titleBox.innerHTML = "<div class='mt_10'> <a href='detailNews?id="+ (i+1) +"'>"+ eventTitle +"</a> </div>";
+				titleBox.innerHTML = "<div class='mt_10'> <a href='festvDetail?id="+ (i+1) +"'>"+ eventTitle +"</a> </div>";
 				idBox.innerHTML = "<div class='mt_10'>" + (i+1) + "</div>"
 				
 				titleContainer.appendChild(titleBox);
@@ -38,8 +38,8 @@
 	xhr.send('');
 </script>
 
-<section class="mt-8 text-xl div_center">
-	<div class="w-500">
+<section class="mt-8 div_center">
+	<div class="w-500 text-xl">
 	<table class="table table-zebra w-full ">
 		<thead>
 		<colgroup>

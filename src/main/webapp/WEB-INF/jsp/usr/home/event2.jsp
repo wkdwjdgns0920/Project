@@ -46,10 +46,10 @@
 				eventIdElement.innerHTML = "<div class=eventId>" + (i + 1)	+ " </div>"
 				idContainer.appendChild(eventIdElement);
 
-				eventTitleElement.innerHTML = "<div class=eventTitle" + i + " onclick=showApi(" + i + ")> " + tourspotSumm	+ " </div>"
+				eventTitleElement.innerHTML = "<div class=eventTitle" + i + " onclick=showApi(" + i + ") style='cursor: pointer'> " + tourspotSumm	+ " </div>"
 				titleContainer.appendChild(eventTitleElement);
 
-				eventBodyElement.innerHTML = "<div class=eventBody"+ i +" style='display: none;'>mngTime : " + mngTime + "<br>주소 :" + tourspotAddr + "<br>tourspotNm :" + tourspotNm	+ "<br>cnvenFcltGuid : " + cnvenFcltGuid + "<br> <button onclick=showMap("+ mapLat +  ',' + mapLot +")>위치보기</button> </div>"
+				eventBodyElement.innerHTML = "<div class=eventBody"+ i +" style='display: none;'>mngTime : " + mngTime + "<br>주소 :" + tourspotAddr + "<br>tourspotNm :" + tourspotNm	+ "<br>cnvenFcltGuid : " + cnvenFcltGuid + "<br> <button class='btn-text-link btn btn-active btn-ghost' onclick=showMap("+ mapLat +  ',' + mapLot +")>위치보기</button> </div>"
 				bodyContainer.appendChild(eventBodyElement);
 			}
 			
@@ -77,9 +77,9 @@
 
 </script>
 
-<section class="event_section mt-8 div_center">
+<section class="event_section div_center">
 	<div class="mt-8 text-xl div_center w-00">
-		<table class="table table-zebra w-700">
+		<table class="table w-700">
 			<thead>
 			<colgroup>
 				<col width="50" />
@@ -87,15 +87,15 @@
 			</colgroup>
 			<tr>
 				<th>번호</th>
-				<th>제목</th>
+				<th>관광지</th>
 			</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td class="mb-20">
+					<td>
 						<div id="idContainer"></div>
 					</td>
-					<td class="mb-20">
+					<td>
 						<div id="titleContainer"></div>
 					</td>
 				</tr>
