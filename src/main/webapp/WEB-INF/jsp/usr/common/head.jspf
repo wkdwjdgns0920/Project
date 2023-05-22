@@ -70,13 +70,13 @@
 						<a href="../article/write">WRITE</a>
 					</li>
 					<li class="hover:underline p-3">
-						<a href="../home/event">EVENT</a>
+						<a href="../home/event?page=1">Event</a>
 					</li>
 					<li class="hover:underline p-3">
-						<a href="../home/event2?page=1">EVENT2</a>
+						<a href="../home/tourspot?page=1">Tourspot</a>
 					</li>
 					<li class="hover:underline p-3">
-						<a href="../home/festv">공연행사정보</a>
+						<a href="../home/festv">Festival</a>
 					</li>
 					<c:if test="${rq.logined}">
 						<li class="hover:underline p-3">

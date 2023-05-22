@@ -22,15 +22,15 @@ public class UsrHomeController {
 	
 	
 	@RequestMapping("usr/home/event")
-	public String showEventPage() {
+	public String showEventPage(@RequestParam(defaultValue = "1") int page) {
 		
 		return "usr/home/event";
 	}
 	
-	@RequestMapping("usr/home/event2")
-	public String event2(@RequestParam(defaultValue = "1") int page) {
+	@RequestMapping("usr/home/tourspot")
+	public String tourspot(@RequestParam(defaultValue = "1") int page) {
 
-		return "usr/home/event2";
+		return "usr/home/tourspot";
 	}
 	
 	@RequestMapping("usr/home/festv")
