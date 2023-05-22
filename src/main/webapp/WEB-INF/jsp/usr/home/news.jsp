@@ -45,10 +45,12 @@
 		<colgroup>
 			<col width="50" />
 			<col width="50" />
+			<col width="50" />
 		</colgroup>
 		<tr>
 			<th>번호</th>
-			<th>title</th>
+			<th></th>
+			<th>행사</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -56,6 +58,7 @@
 					<td>
 						<div id="idContainer"></div>
 					</td>
+					<td></td>
 					<td>
 						<div id="titleContainer"></div>
 					</td>

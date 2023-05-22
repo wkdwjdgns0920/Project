@@ -202,41 +202,42 @@ function showMap(festvAddr,festvNm) {
 					</td>
 				</tr>
 				<tr>
-					<th>festvNm</th>
+					<th>행사주제</th>
+					<td>
+						<div id="festvTpicContainer"></div>
+					</td>
+				</tr>
+				<tr>
+					<th>행사명</th>
 					<td>
 						<div id="festvNmContainer"></div>
 					</td>
 				</tr>
 				<tr>
-					<th>festvAddr</th>
+					<th>행사주소</th>
 					<td>
 						<div id="festvAddrContainer"></div>
 					</td>
 				</tr>
 				<tr>
-					<th>festvDtlAddr</th>
+					<th>상세주소</th>
 					<td>
 						<div id="festvDtlAddrContainer"></div>
 					</td>
 				</tr>
 				<tr>
-					<th>festvPrid</th>
+					<th>행사기간</th>
 					<td>
 						<div id="festvPridContainer"></div>
 					</td>
 				</tr>
 				<tr>
-					<th>festvSumm</th>
+					<th>소개</th>
 					<td>
 						<div id="festvSummContainer"></div>
 					</td>
 				</tr>
-				<tr>
-					<th>festvTpic</th>
-					<td>
-						<div id="festvTpicContainer"></div>
-					</td>
-				</tr>
+				
 
 		</tbody>
 	</table>

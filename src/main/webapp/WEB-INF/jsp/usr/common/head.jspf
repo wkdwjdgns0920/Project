@@ -22,39 +22,20 @@
 <script src="/resource/common.js" defer="defer"></script>
 </head>
 <body>
-
-	<!-- 메뉴창의 게시글에 마우스 올렸을 시에 배경내려오기 설정 -->
-<!-- 	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			var bg = document.querySelector('.bg');
-			var li = document.querySelectorAll('.con > ul > li');
-
-			li.forEach(function(li) {
-				li.addEventListener('mouseover', function() {
-					bg.style.height = '200px';
-				});
-
-				li.addEventListener('mouseout', function() {
-					bg.style.height = 'auto';
-				});
-			});
-		});
-	</script> -->
-
 	<section class="head_con">
 		<header>
 			<div class="flex justify-end pr-5 text-xs login_bar">
 				<c:if test="${!rq.logined}">
-					<a class="bg-gray-300 p-3" href="${rq.loginUri }">LOGIN</a>
+					<a class=" p-3" href="${rq.loginUri }">LOGIN</a>
 				</c:if>
 				<c:if test="${rq.logined}">
 					<div class="nickname_box">${rq.loginedMember.nickname }님..환영합니다</div>
 				</c:if>
 				<c:if test="${rq.logined}">
-					<a class="bg-gray-300 p-3" href="${rq.logoutUri }">LOGOUT</a>
+					<a class=" p-3" href="${rq.logoutUri }">LOGOUT</a>
 				</c:if>
 				<c:if test="${!rq.logined}">
-					<a class="bg-gray-300 p-3" href="${rq.joinUri }">JOIN</a>
+					<a class=" p-3" href="${rq.joinUri }">JOIN</a>
 				</c:if>
 			</div>
 

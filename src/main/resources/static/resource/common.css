@@ -471,6 +471,7 @@ header>div>ul>li>ul>li:hover {
 .event_section {
 	display: flex;
 	justify-content: center;
+
 }
 .element:hover {
   cursor: pointer; /* 마우스가 요소 위에 올라갔을 때 포인터 형태로 변경 */
@@ -493,8 +494,22 @@ header>div>ul>li>ul>li:hover {
 	margin-bottom: 20px;
 }
 
+/* event2Page */
+#bodyContainer{
+	margin-left:30px;
+	width: 300px;
+	height: 100%;
+}
+.w-1000 {
+	width: 1300px;
+}
+.w-700 {
+	width: 500px;
+}
+
 /* test */
 .list_sec {
 	display: none;
 }
+
 
