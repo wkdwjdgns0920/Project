@@ -16,7 +16,7 @@
 				개
 			</div>
 			<div class="flex-grow"></div>
-			<button class="hitCount_btn" onclick="showList()">조회수순</button>	<!-- 리스트변경버튼 -->
+			<button class="hitCount_btn" onclick="showList()" value="ListH">ListH</button>	<!-- 리스트변경버튼 -->
 			<form action="">
 				<input type="hidden" name="boardId" value="${param.boardId }" />
 				<select data-value="${param.searchKeywordType }" name="searchKeywordType" class="select select-ghost">
@@ -123,8 +123,7 @@
 						: "none";
 
 				// 버튼텍스트 변경
-				btn.textContent = list_sec.style.display === "none" ? "조회수순서"
-						: "걍리스트";
+				btn.textContent = list_sec.style.display === "none" ? "ListH"	: "List";
 
 			}
 		</script>
