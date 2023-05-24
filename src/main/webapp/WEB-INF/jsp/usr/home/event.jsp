@@ -75,8 +75,7 @@
 
 
 
-
-<section class="div_center">
+<section class="div_center mt_50">
 	<div class="div_al_c">
 		<div id="titleContainer"></div>
 	</div>
@@ -91,12 +90,12 @@
 
 	<div>
 		<c:forEach begin="${startPage }" end="${endPage }" var="i">
-			<a class="p-1 test ${param.page == i ? 'btn-active' : '' }" href="?page=${i }">${i }</a>
+			<a class="p-1 ${param.page == i ? 'page_active btn-active' : '' }" href="?page=${i }">${i }</a>
 		</c:forEach>
 
 	</div>
 </div>
-
+<div class="h-500"></div>
 
 
 

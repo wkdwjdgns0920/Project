@@ -98,7 +98,7 @@
 }
 .sopt_detail {
 	width: 600px;
-	height: 500px;
+	height: 600px;
 	background-color: white;
 	color: black;
 	position: fixed;
@@ -204,7 +204,7 @@ function showModal(el) {
 	</div>
 </div>
 
-<section class="event_section div_center">
+<section class="event_section div_center mt_50">
 	<div class="mt-8 text-xl div_center w-00">
 		<table class="table w-700 mr-20">
 			<thead>
@@ -222,28 +222,7 @@ function showModal(el) {
 		</table>
 	</div>
 </section>
-<div class="flex justify-center mt-3">
-
-	<c:set var="pageLen" value="4" />
-	<c:set var="startPage" value="1" />
-	<c:set var="endPage" value="14" />
-
-	<c:if test="${page > 1 }">
-		<a class="" href="?page=1">◀◀</a> &nbsp&nbsp
-			<a class="" href="?page=${page-1 }">◀</a>
-	</c:if>
-
-	<div>
-		<c:forEach begin="${startPage }" end="${endPage }" var="i">
-			<a class="p-1 test ${param.page == i ? 'btn-active' : '' }" href="?page=${i }">${i }</a>
-		</c:forEach>
-
-		<c:if test="${page < pagesCount }">
-			<a class="" href="?page=${page + 1 }">▶</a>&nbsp&nbsp
-				<a class="" href="?page=${pagesCount }">▶▶</a>
-		</c:if>
-
-	</div>
+<div class="h-500">
 </div>
 
 <!-- 지도API -->

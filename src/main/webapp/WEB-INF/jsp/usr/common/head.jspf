@@ -32,13 +32,13 @@
 					<div class="nickname_box">${rq.loginedMember.nickname }님..환영합니다</div>
 				</c:if>
 				<c:if test="${rq.logined}">
-					<a class=" p-3" href="${rq.logoutUri }">LOGOUT</a>
+					<a class=" p-3" href="${rq.logoutUri }">로그아웃</a>
 				</c:if>
 				<c:if test="${rq.logined}">
-					<a class=" p-3" href="/usr/member/myPage">MyPage</a>
+					<a class=" p-3" href="/usr/member/myPage">마이페이지</a>
 				</c:if>
 				<c:if test="${!rq.logined}">
-					<a class=" p-3" href="${rq.joinUri }">JOIN</a>
+					<a class=" p-3" href="${rq.joinUri }">회원가입</a>
 				</c:if>
 			</div>
 
@@ -52,17 +52,14 @@
 				<div class="space"></div>
 				<ul class="flex">
 					<li class="hover:underline p-3">
-						<a href="/">HOME</a>
-					</li>
-					<li class="hover:underline p-3">
 						<div class="bg"></div>
-						<a href="../article/list">LIST</a>
+						<a href="../article/list">게시글</a>
 						<ul class="z-i">
 							<li class="p-3">
-								<a href="/usr/article/list?boardId=1">NOTICE</a>
+								<a href="/usr/article/list?boardId=1">공지사항</a>
 							</li>
 							<li class="p-3">
-								<a href="/usr/article/list?boardId=2">FREE</a>
+								<a href="/usr/article/list?boardId=2">자유게시판</a>
 							</li>
 							<li class="p-3">
 								<a href="/usr/article/list?boardId=3">QnA</a>
@@ -70,16 +67,16 @@
 						</ul>
 					</li>
 					<li class="hover:underline p-3">
-						<a href="../article/write">WRITE</a>
+						<a href="../article/write">글쓰기</a>
 					</li>
 					<li class="hover:underline p-3">
-						<a href="../home/event?page=1">Event</a>
+						<a href="../home/event?page=1">공연정보</a>
 					</li>
 					<li class="hover:underline p-3">
-						<a href="../home/tourspot?page=1">Tourspot</a>
+						<a href="../home/tourspot?page=1">관광지</a>
 					</li>
 					<li class="hover:underline p-3">
-						<a href="../home/festv?page=1">Festival</a>
+						<a href="../home/festv?page=1">축제행사정보</a>
 					</li>
 				</ul>
 			</div>

@@ -130,10 +130,16 @@
 
 		<div class="flex justify-center mt-3">
 
-			<c:set var="pageLen" value="4" />
-			<c:set var="startPage" value="${page - pageLen >=1 ? page - pageLen : 1 }" />
+			<c:set var="pageLen" value="2" />
+			<c:set var="startPage" value="${page - pageLen >= 1 ? page - pageLen : 1 }" />
 			<c:set var="endPage" value="${page + pageLen <= pagesCount ? page + pageLen : pagesCount }" />
-
+			<c:if test="${page == 1 || page == 2 }">
+				<c:set var="endPage" value="${startPage + 4}" />
+			</c:if>
+			<c:if test="${endPage ==  pagesCount || endPage == pagesCount -1}">
+				<c:set var="startPage" value="${endPage - 4}" />
+			</c:if>
+			
 			<c:set var="baseUri" value="?boardId=${boardId }" />
 			<c:set var="baseUri" value="${baseUri }&searchKeywordType=${searchKeywordType}" />
 			<c:set var="baseUri" value="${baseUri }&searchKeyword=${searchKeyword}" />
@@ -145,7 +151,7 @@
 
 			<div>
 				<c:forEach begin="${startPage }" end="${endPage }" var="i">
-					<a class="p-1 ${param.page == i ? 'btn-active' : '' }" href="${baseUri }&page=${i }">${i }</a>
+					<a class="p-1 ${param.page == i ? 'btn-active page_active' : '' }" href="${baseUri }&page=${i }">${i }</a>
 				</c:forEach>
 
 				<c:if test="${page < pagesCount }">

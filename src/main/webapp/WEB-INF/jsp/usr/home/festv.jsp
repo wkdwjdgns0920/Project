@@ -264,8 +264,18 @@
 <!-- 페이지 -->
 <section class="div_center mt_50">
 	<div>
+		<c:set var="pageLen" value="2" />
+		<c:set var="startPage" value="${page - pageLen >= 1 ? page - pageLen : 1 }" />
+		<c:set var="endPage" value="${page + pageLen <= pagesCount ? page + pageLen : pagesCount }" />
+		<c:if test="${page == 1 || page == 2 }">
+			<c:set var="endPage" value="${startPage + 4}" />
+		</c:if>
+		<c:if test="${endPage ==  pagesCount || endPage == pagesCount -1}">
+			<c:set var="startPage" value="${endPage - 4}" />
+		</c:if>
+		
 		<c:forEach begin="1" end="3" var="i">
-			<a class="p-1 ${param.page == i ? 'btn-active' : '' }"
+			<a class="p-1 ${param.page == i ? 'page_active btn-active' : '' }"
 				href="?page=${i }">${i }</a>
 		</c:forEach>
 	</div>
