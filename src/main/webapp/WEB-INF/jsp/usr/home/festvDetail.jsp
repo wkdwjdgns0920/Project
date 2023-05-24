@@ -35,7 +35,7 @@
 			var festvSummBox = document.createElement("div");
 			var festvTpicBox = document.createElement("div");
 			
-			idBox.innerHTML = "<div class='mt_10'>" + id + "</div>"
+			idBox.innerHTML = "<div class='mt_10'>" + ${param.id } + "</div>"
 			festvNmBox.innerHTML = "<div class='mt_10'>" + festvNm + "</div>"
 			festvAddrBox.innerHTML = "<div class='mt_10'>" + festvAddr + "</div>"
 			festvDtlAddrBox.innerHTML = "<div class='mt_10'>" + festvDtlAddr + "</div>"

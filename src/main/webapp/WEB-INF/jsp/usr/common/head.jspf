@@ -46,7 +46,6 @@
 
 				<div class="logo">
 					<a class="h-100 flex justify-center items-center" href="/">
-						<!-- <i class="fa-brands fa-weixin fa-2xl"></i> -->
 						<img src="/resources/img/caravan.png"/>
 					</a>
 				</div>
@@ -80,7 +79,7 @@
 						<a href="../home/tourspot?page=1">Tourspot</a>
 					</li>
 					<li class="hover:underline p-3">
-						<a href="../home/festv">Festival</a>
+						<a href="../home/festv?page=1">Festival</a>
 					</li>
 				</ul>
 			</div>

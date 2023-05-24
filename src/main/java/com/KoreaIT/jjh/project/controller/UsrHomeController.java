@@ -34,7 +34,7 @@ public class UsrHomeController {
 	}
 	
 	@RequestMapping("usr/home/festv")
-	public String festv() {
+	public String festv(@RequestParam(defaultValue = "1") int page) {
 		
 		return "usr/home/festv";
 	}

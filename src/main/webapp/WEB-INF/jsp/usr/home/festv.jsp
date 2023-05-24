@@ -31,7 +31,8 @@
 				var titleBox = document.createElement("div");
 				var idBox = document.createElement("div");
 
-				titleBox.innerHTML = "<div class='mt_10'> <a href='festvDetail?id="	+ (i + 1) + "'>" + eventTitle + "</a> </div>";
+				titleBox.innerHTML = "<div class='mt_10'> <a href='festvDetail?id="
+						+ (i + 1) + "'>" + eventTitle + "</a> </div>";
 				idBox.innerHTML = "<div class='mt_10'>" + (i + 1) + "</div>"
 
 				titleContainer.appendChild(titleBox);
@@ -74,88 +75,197 @@
 </section> --%>
 
 
-<section class="mt-8 div_center">
-<div>
-	<div class="w-500 h-00 text-xl flec h-300">
-	
-		<div class="flec">
-			1<div class="i_box w-00">
-				<img src="https://www.newstnt.com/news/photo/201911/40653_33359_4942.jpg" alt="" />
-				<a href="festvDetail?id=1" >asd</a>
+<section class="mt_50 div_center">
+	<div>
+		<!-- 1페이지 -->
+		<c:if test="${param.page == 1}">
+			<div class="w-500 h-00 text-xl h-300">
+
+				<div class="jc-sb">
+					<div class="">
+						<a href="festvDetail?id=1">
+							<img class="i_box"
+								src="https://www.newstnt.com/news/photo/201911/40653_33359_4942.jpg"
+								alt="" />
+							유성 국화 페스티벌
+						</a>
+					</div>
+
+					<div class="img_empty"></div>
+
+					<div class="">
+						<a href="festvDetail?id=2">
+							<img class="i_box"
+								src="https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1553041875109.jpg"
+								alt="" />
+							대청호 벚꽃축제
+						</a>
+					</div>
+
+					<div class="img_empty"></div>
+
+					<div class="">
+						<a href="festvDetail?id=3">
+							<img class="i_box"
+								src="https://mblogthumb-phinf.pstatic.net/MjAxNzA1MTJfMTQg/MDAxNDk0NTI4MTY0ODgx.HjeOwQNGczmjevfbyKv0zZBWEcZa5nyy0YNcYF0G41Ug.EjUKx9j9B5BQBcY3UyAPprEsaU5K2ZraMHqMn_nO79Ug.JPEG.first_seogu/%EB%8C%80%EC%A0%84_%EC%84%9C%EA%B5%AC%ED%9E%90%EB%A7%81_%EC%95%84%ED%8A%B8%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C%E2%94%83%EC%95%84%ED%8A%B8_%EB%B9%9B_%ED%84%B0%EB%84%9016.jpg?type=w800"
+								alt="" />
+							서구힐링아트페스티벌
+						</a>
+					</div>
+
+				</div>
 			</div>
-			<div class="empty_box"></div>
-			2<div class="i_box">
-				<img class="" src="https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1553041875109.jpg" alt="" />
-				<div class="tit" id="titleContainer"></div>
+
+			<div class="h-30"></div>
+
+			<div class="w-500 h-00 text-xl h-300">
+
+				<div class="jc-sb">
+
+					<div class="">
+						<a href="festvDetail?id=4">
+							<img class="i_box"
+								src="https://www.barefootfesta.com:444/mobile/project/design/main/main_img01.jpg"
+								alt="" />
+							계족산맨발축제
+						</a>
+					</div>
+
+					<div class="img_empty"></div>
+
+					<div class="">
+						<a href="festvDetail?id=5">
+							<img class="i_box"
+								src="https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1461904424401.jpg"
+								alt="" />
+							유성온천문화축제
+						</a>
+					</div>
+
+					<div class="img_empty"></div>
+
+					<div class="">
+						<a href="festvDetail?id=6">
+							<img class="i_box"
+								src="https://cdn.ggilbo.com/news/photo/201911/725823_562028_88.jpg"
+								alt="" />
+							효문화뿌리축제
+						</a>
+					</div>
+
+				</div>
 			</div>
-			<div class="empty_box"></div>
-			3<div class="i_box">
-				<img class="" src="https://mblogthumb-phinf.pstatic.net/MjAxNzA1MTJfMTQg/MDAxNDk0NTI4MTY0ODgx.HjeOwQNGczmjevfbyKv0zZBWEcZa5nyy0YNcYF0G41Ug.EjUKx9j9B5BQBcY3UyAPprEsaU5K2ZraMHqMn_nO79Ug.JPEG.first_seogu/%EB%8C%80%EC%A0%84_%EC%84%9C%EA%B5%AC%ED%9E%90%EB%A7%81_%EC%95%84%ED%8A%B8%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C%E2%94%83%EC%95%84%ED%8A%B8_%EB%B9%9B_%ED%84%B0%EB%84%9016.jpg?type=w800" alt="" />
-				<div class="tit" id="titleContainer"></div>
+		</c:if>
+
+		<!-- 2페이지 -->
+		<c:if test="${param.page == 2}">
+			<div class="w-500 h-00 text-xl h-300">
+				<div class="jc-sb">
+
+					<div class="">
+						<a href="festvDetail?id=7">
+							<img class="i_box"
+								src="https://www.daejeontoday.com/news/photo/201903/541285_192161_5837.jpg"
+								alt="" />
+							대청호 대덕뮤직페스티벌
+						</a>
+					</div>
+
+					<div class="img_empty"></div>
+
+					<div class="">
+						<a href="festvDetail?id=8">
+							<img class="i_box"
+								src="https://cdn.ccdailynews.com/news/photo/202110/2090065_559742_2722.jpg"
+								alt="" />
+							대전사이언스페스티벌
+						</a>
+					</div>
+
+					<div class="img_empty"></div>
+
+					<div class="">
+						<a href="festvDetail?id=9">
+							<img class="i_box"
+								src="https://image.여기유.com/content_festival/2020011311055815788811582751.jpg"
+								alt="" />
+							2022 대전국제와인페스티벌
+						</a>
+					</div>
+
+				</div>
 			</div>
-			<div class="empty_box"></div>
-			4<div class="i_box">
-				<img class="" src="https://www.barefootfesta.com:444/mobile/project/design/main/main_img01.jpg" alt="" />
-				<div class="tit" id="titleContainer"></div>
+
+			<div class="h-30"></div>
+
+			<div class="w-500 h-00 text-xl h-300">
+				<div class="jc-sb">
+					<div class="">
+						<a href="festvDetail?id=10">
+							<img class="i_box"
+								src="https://www.timenews.co.kr/web/news/article_image/81d532e05ec6b0d7f2b10f9f362f4f88"
+								alt="" />
+							대전 0시 뮤직페스티벌
+						</a>
+					</div>
+
+					<div class="img_empty"></div>
+
+					<div class="">
+						<a href="festvDetail?id=11">
+							<img class="i_box"
+								src="https://img2.yna.co.kr/etc/inner/KR/2018/10/17/AKR20181017088900063_01_i_P4.jpg"
+								alt="" />
+							대전사이언스페스티벌
+						</a>
+					</div>
+
+					<div class="img_empty"></div>
+
+					<div class="">
+						<a href="festvDetail?id=12">
+							<img class="i_box"
+								src="https://www.thesegye.com/news/data/20221016/p1065578299763795_321_thum.jpg"
+								alt="" />
+							2022 대전 서구 힐링 아트페스티벌
+						</a>
+					</div>
+				</div>
 			</div>
-			<div class="empty_box"></div>
-			5<div class="i_box">
-				<img class="" src="https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1461904424401.jpg" alt="" />
-				<div class="tit" id="titleContainer"></div>
+		</c:if>
+		<!-- 3페이지 -->
+		<c:if test="${param.page ==3 }">
+			<div class="w-500 h-00 text-xl h-300">
+
+				<div class="flex">
+
+					<div class="empty_box"></div>
+
+					<div class="">
+						<a href="festvDetail?id=3">
+							<img class="i_box"
+								src="https://newsimg.sedaily.com/2023/01/02/29KBGC3TII_1.jpg"
+								alt="" />
+							2023 대전맨몸마라톤
+						</a>
+					</div>
+
+				</div>
 			</div>
-		</div>
+		</c:if>
 	</div>
-		
-	<div class="w-500 h-00 text-xl flec h-300">
-		<div class="flec">
-			1<div class="i_box w-00">
-				<img class="" src="https://cdn.ggilbo.com/news/photo/201911/725823_562028_88.jpg" alt="" />
-				<div class="tit" id="titleContainer"></div>
-			</div>
-			<div class="empty_box"></div>
-			2<div class="i_box">
-				<img class="" src="https://www.daejeontoday.com/news/photo/201903/541285_192161_5837.jpg" alt="" />
-				<div class="tit" id="titleContainer"></div>
-			</div>
-			<div class="empty_box"></div>
-			3<div class="i_box">
-				<img class="" src="https://cdn.ccdailynews.com/news/photo/202110/2090065_559742_2722.jpg" alt="" />
-				<div class="tit" id="titleContainer"></div>
-			</div>
-			<div class="empty_box"></div>
-			4<div class="i_box">
-				<img class="" src="https://image.여기유.com/content_festival/2020011311055815788811582751.jpg" alt="" />
-				<div class="tit" id="titleContainer"></div>
-			</div>
-			<div class="empty_box"></div>
-			5<div class="i_box">
-				<img class="" src="https://www.timenews.co.kr/web/news/article_image/81d532e05ec6b0d7f2b10f9f362f4f88" alt="" />
-				<div class="tit" id="titleContainer"></div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="w-500 h-00 text-xl flec h-300">
-		<div class="flec">
-			1<div class="i_box w-00">
-				<img class="" src="https://cdn.ggilbo.com/news/photo/201911/725823_562028_88.jpg" alt="" />
-				<div class="tit" id="titleContainer"></div>
-			</div>
-			<div class="empty_box"></div>
-			2<div class="i_box">
-				<img class="" src="https://www.daejeontoday.com/news/photo/201903/541285_192161_5837.jpg" alt="" />
-				<div class="tit" id="titleContainer"></div>
-			</div>
-			<div class="empty_box"></div>
-			3<div class="i_box">
-				<img class="" src="https://cdn.ccdailynews.com/news/photo/202110/2090065_559742_2722.jpg" alt="" />
-				<div class="tit" id="titleContainer"></div>
-			</div>
-		</div>
-	</div>
-	
-</div>	
+
 </section>
+<!-- 페이지 -->
+<section class="div_center mt_50">
+	<div>
+		<c:forEach begin="1" end="3" var="i">
+			<a class="p-1 ${param.page == i ? 'btn-active' : '' }"
+				href="?page=${i }">${i }</a>
+		</c:forEach>
+	</div>
+</section>
+
 
 
 <style>
@@ -172,13 +282,23 @@
 	height: 50px;
 }
 
-.flec {
+.jc-sa {
+	display: flex;
+	justify-content: space-around;
+}
+
+.jc-sb {
 	display: flex;
 	justify-content: space-between;
 }
+
 .al-cc {
 	display: flex;
 	align-items: center;
+}
+
+.img_empty {
+	width: 50px;
 }
 </style>
 
