@@ -255,8 +255,8 @@
 			</c:forEach>
 		</div>
 
-		<!-- 댓글수정 -->
-		<script>
+<!-- 댓글수정 -->
+<script>
   function showModifyForm(replyId) {
     // 해당 요소 가져오기
     var btn = document.querySelector(".reply_modify_btn_" + replyId); // 댓글수정 보여지는 버튼
