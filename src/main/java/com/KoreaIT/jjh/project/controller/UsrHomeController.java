@@ -45,10 +45,10 @@ public class UsrHomeController {
 		return "usr/home/festvDetail";
 	}
 	
-	@RequestMapping("usr/home/bus")
-	public String bus() {
+	@RequestMapping("usr/home/test")
+	public String test(int page) {
 		
-		return "usr/home/bus";
+		return "usr/home/test";
 	}
 	
 	

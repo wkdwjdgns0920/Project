@@ -267,7 +267,6 @@ public class UsrArticleController {
 			MultipartFile multipartFile = fileMap.get(fileInputName);
 
 			if (multipartFile.isEmpty() == false) {
-				System.out.println("===================이미이미지===================");
 				genFileService.save(multipartFile, id);
 			}
 		}

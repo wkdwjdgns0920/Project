@@ -261,15 +261,18 @@
     // 해당 요소 가져오기
     var btn = document.querySelector(".reply_modify_btn_" + replyId); // 댓글수정 보여지는 버튼
     var doModify_btn = document.querySelector(".reply_doModify_btn_" + replyId); // 댓글 수정하기 버튼
-    var textarea = document.querySelector(".reply_modify_body_" + replyId);
+    var modifyTxt = document.querySelector(".reply_modify_body_" + replyId);
+    var replyBody = document.querySelector(".reply_body_" + replyId);
 
-    // 텍스트 영역의 표시 스타일을 전환
-    textarea.style.display = textarea.style.display === "none" ? "block" : "none";
+    // 수정창 영역의 표시 스타일을 전환
+    modifyTxt.style.display = modifyTxt.style.display === "none" ? "block" : "none";
 
-    // 텍스트 영역의 표시 스타일에 따라 버튼 텍스트 변경
-    btn.textContent = textarea.style.display === "none" ? "수정하기" : "취소";
-    // 텍스트 영역의 표시 스타일에 따라 doModify_btn 디스플레이 설정
-    doModify_btn.style.display = textarea.style.display === "none" ? "none" : "inline";
+    // 수정버튼의 표시 스타일에 따라 버튼 텍스트 변경
+    btn.textContent = modifyTxt.style.display === "none" ? "수정하기" : "취소";
+    // 수정창의 표시 스타일에 따라 doModify_btn 디스플레이 설정
+    doModify_btn.style.display = modifyTxt.style.display === "none" ? "none" : "inline";
+    // 수정창의 표시 스타일에 따라 댓글창 디스플레이 설정
+    replyBody.style.display = modifyTxt.style.display === "none" ? "block" : "none";
   }
   
   function modifyReply(replyId) {

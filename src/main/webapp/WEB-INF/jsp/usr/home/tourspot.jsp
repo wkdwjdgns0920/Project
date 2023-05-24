@@ -62,6 +62,12 @@
 	xhr.send('');
 </script>
 
+<!-- 페이지 알림섹션 -->
+<section class="topSection">
+	<img class="topImg" src="/resources/img/img4.jpg"/>
+	<div class="explain">문화관광(관광지)</div>
+</section>
+
 <!-- title 클릭시에 안의 내용보여주기 -->
 <script>
 	function showApi(el) {
@@ -97,8 +103,7 @@
 					</td>
 					<td>
 						<div id="titleContainer"></div>
-					</td>
-				</tr>
+					</td>	
 			</tbody>
 		</table>
 		<div id="map" style="width: 500px; height: 500px;"></div>
@@ -129,10 +134,9 @@
 
 			</div>
 		</div>
-
+		
+<!-- 지도API -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3047bd817887b648d90088cc385d3845&libraries=services"></script>
-<!-- 지도API -->
-<!-- 지도API -->
 <script>
 function showMap(lat1,lot1){
 	lat = lat1;

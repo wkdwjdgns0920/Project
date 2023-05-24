@@ -483,6 +483,21 @@ header>div>ul>li>ul>li:hover {
 	justify-content: center;
 
 }
+.topSection {
+	position: relative;
+}
+.topImg {
+	height: 500px;
+	width: 100%;
+}
+.explain {
+	color: white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 3rem;
+	transform: translate(-50%, -50%);
+}
 .element:hover {
   cursor: pointer; /* 마우스가 요소 위에 올라갔을 때 포인터 형태로 변경 */
 }
@@ -496,7 +511,7 @@ header>div>ul>li>ul>li:hover {
 	height: 630px;
 }
 
-/* event3 Page */
+/* festvPage */
 .w-800 {
 	width: 800px;
 }
@@ -506,6 +521,8 @@ header>div>ul>li>ul>li:hover {
 .mb-20 {
 	margin-bottom: 20px;
 }
+
+
 
 /* eventPage */
 .div_al_c {
@@ -517,7 +534,7 @@ header>div>ul>li>ul>li:hover {
 }
 
 
-/* event2Page */
+/* TourspotPage */
 #bodyContainer{
 	margin-left:30px;
 	width: 300px;

@@ -97,6 +97,12 @@ function showMap(festvAddr,festvNm) {
     
 </script>
 
+<!-- 페이지 알림섹션 -->
+<section class="topSection">
+	<img class="topImg" src="/resources/img/img3.jpg"/>
+	<div class="explain">문화축제 정보</div>
+</section>
+
 <section class="mt-8 div_center">
 	<div class="w-800 text-xl">
 	<table class="table table-zebra w-full">
