@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="대전광역시 문화관광(관광지)" />
 
@@ -6,8 +7,8 @@
 <script>
 	var itemsPerPage = 10;
 	var page = ${param.page};
-	var startPage = (page - 1) * itemsPerPage + 1;
-	var endPage = page * itemsPerPage;
+	var start = (page - 1) * itemsPerPage;
+	var end = start + itemsPerPage;
 
 	var xhr = new XMLHttpRequest();
 	var url = 'https://apis.data.go.kr/6300000/openapi2022/tourspot/gettourspot'; /*URL*/
@@ -27,7 +28,7 @@
 
 			console.log(eventData);
 
-			for (var i = startPage - 1; i < endPage; i++) {
+			for (var i = start; i < end; i++) {
 				var tourspotSumm = eventData.items[i].tourspotSumm;
 				var mapLat = eventData.items[i].mapLat;
 				var mapLot = eventData.items[i].mapLot;
@@ -43,29 +44,37 @@
 				eventElement.innerHTML = "<td><div class=eventId>" + (i + 1)
 						+ " </div></td><td><div class=eventTitle_" + i
 						+ " onclick=showModal(" + i
-						+ ") style='cursor: pointer'> " + tourspotSumm
+						+ ") style='cursor: pointer'> " + tourspotNm
 						+ " </div></td>"
 
 				event_box.appendChild(eventElement);
 
 				var spot_title = document.createElement("div");
-				spot_title.innerHTML = "<div class='tourSpot_Title_"+ i +"' style='display:none;'>주제 : "+ tourspotSumm + " </div>"
+				spot_title.innerHTML = "<div class='tourSpot_Title_"+ i +"' style='display:none;'>주제 : "
+						+ tourspotSumm + " </div>"
 				detail_title.appendChild(spot_title);
-				
+
 				var spot_body = document.createElement("div");
-				spot_body.innerHTML = "<div class='tourSpot_Body_"+ i +"' style='display:none;'>이용시간 : "+ mngTime+ "<br>위치 : "+ tourspotNm+ "<br>도로명주소 : "+ tourspotDtlAddr+ "<br>안내소 : "+ cnvenFcltGuid+ "<br>사이트 : "+ urlAddr+ "<br><br><button class='btn-text-link btn btn-active btn-ghost' onclick=showMap("+ mapLat +  ',' + mapLot +")>위치보기</button></div>";
+				spot_body.innerHTML = "<div class='tourSpot_Body_"+ i +"' style='display:none;'>이용시간 : "
+						+ mngTime
+						+ "<br>위치 : "
+						+ tourspotNm
+						+ "<br>도로명주소 : "
+						+ tourspotDtlAddr
+						+ "<br>안내소 : "
+						+ cnvenFcltGuid
+						+ "<br>사이트 : "
+						+ urlAddr
+						+ "<br><br><button class='btn-text-link btn btn-active btn-ghost' onclick=showMap("
+						+ mapLat + ',' + mapLot + ")>위치보기</button></div>";
 				detail_body.appendChild(spot_body);
 
 				var modal_btn = document.createElement("button");
-				modal_btn.innerHTML = "<button class='detail_close_btn' onclick='close_Modal(" + i
-						+ ")' style='display:none;'>X</button>"
+				modal_btn.innerHTML = "<button class='btn btn-circle detail_close_btn_"+i+"' style='display:none; position: fixed; top: 10%; left: 50%; z-index: 11;' onclick='close_Modal("+ i + ")'>X</button>"
 				detail_close.appendChild(modal_btn);
-
+						
 			}
 
-			/* var lat = 36.366615;
-			var lot = 127.38376;
-			showMap(lat, lot); */
 		}
 	};
 
@@ -83,10 +92,11 @@
 </section>
 
 <style>
-.modal_box{
+.modal_box {
 	display: none;
 }
-.map_box{
+
+.map_box {
 	width: 600px;
 	height: 500px;
 	position: fixed;
@@ -96,6 +106,7 @@
 	z-index: 12;
 	display: none;
 }
+
 .sopt_detail {
 	width: 600px;
 	height: 600px;
@@ -108,14 +119,17 @@
 	z-index: 11;
 	border-radius: 20px;
 	font-size: 25px;
-	padding:50px;
+	padding: 50px;
 }
+
 .modal_empty {
 	height: 100px;
 }
+
 .modal_empty2 {
 	height: 50px;
 }
+
 .sopt_detail_bg {
 	/* display: none; */
 	width: 100%;
@@ -138,12 +152,14 @@
 	width: 50px;
 }
 
-.detail_close_btn {
+/* .detail_close_btn {
 	width: 50px;
 	height: 50px;
 	background-color: rgba(0, 0, 0, .5);
-	color: rgba(0, 0, 0, .2);
-	text-align: center;
+	color: #F5FFFA;
+	font-weight: lighter;
+	display : flex;
+	justify-content: center;
 	border-radius: 50px;
 	font-size: 2rem;
 	position: fixed;
@@ -151,47 +167,46 @@
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
 	z-index: 11;
-}
+	display: flex
+} */
 
 #detail_body {
 	margin-bottom: 50px;
 }
-
-
 </style>
 
 <!-- 모달창 디스플레이 설정 -->
 <script>
-function close_Modal(el) {
-	var modalBox = document.querySelector(".modal_box");
-	var title = document.querySelector(".tourSpot_Title_" + el);
-	var body = document.querySelector(".tourSpot_Body_" + el);
-	var close = document.querySelector(".detail_close_btn");
-	var map_box = document.querySelector(".map_box");
+	function close_Modal(el) {
+		var modalBox = document.querySelector(".modal_box");
+		var title = document.querySelector(".tourSpot_Title_" + el);
+		var body = document.querySelector(".tourSpot_Body_" + el);
+		var close = document.querySelector(".detail_close_btn_" + el);
+		var mapBox = document.querySelector(".map_box");
+		
+		modalBox.style.display = "none";
+		title.style.display = "none";
+		body.style.display = "none";
+		close.style.display = "none";
+		mapBox.style.display = "none";
+	}
 
-	modalBox.style.display = "none";
-	title.style.display = "none";
-	body.style.display = "none";
-	close.style.display = "none";
-	map_box.style.display = "none";
-}
+	function showModal(el) {
+		var modalBox = document.querySelector(".modal_box");
+		var title = document.querySelector(".tourSpot_Title_" + el);
+		var body = document.querySelector(".tourSpot_Body_" + el);
+		var close = document.querySelector(".detail_close_btn_" + el);
 
-function showModal(el) {
-	var modalBox = document.querySelector(".modal_box");
-	var title = document.querySelector(".tourSpot_Title_" + el);
-	var body = document.querySelector(".tourSpot_Body_" + el );
-	var close = document.querySelector(".detail_close_btn");
-
-	modalBox.style.display = "block";
-	title.style.display = "block";
-	body.style.display = "block";
-	close.style.display = "block";
-}
+		modalBox.style.display = "block";
+		title.style.display = "block";
+		body.style.display = "block";
+		close.style.display = "block";
+	}
 </script>
 
 <!-- 모달창 -->
 <div class="modal_box">
-	
+
 	<div class="sopt_detail_bg"></div>
 	<div id="detail_close"></div>
 	<div class="sopt_detail">
@@ -222,8 +237,39 @@ function showModal(el) {
 		</table>
 	</div>
 </section>
-<div class="h-500">
-</div>
+<div class="flex justify-center mt-3">
+
+			<c:set var="pageLen" value="2" />
+			<c:set var="pagesCount" value="15" />
+			<c:set var="startPage" value="${page - pageLen >= 1 ? page - pageLen : 1 }" />
+			<c:set var="endPage" value="${page + pageLen <= pagesCount ? page + pageLen : pagesCount }" />
+			<c:if test="${startPage == 1 || startPage == 2 }">
+				<c:set var="endPage" value="${startPage + 4}" />
+			</c:if>
+			<c:if test="${endPage ==  pagesCount || endPage == pagesCount -1}">
+				<c:set var="startPage" value="${endPage - 4}" />
+			</c:if>
+			
+
+			<c:if test="${page > 1 }">
+				<a class="" href="?page=1">◀◀</a> &nbsp&nbsp
+				<a class="" href="?page=${page-1 }">◀</a>
+			</c:if>
+
+			<div>
+				<c:forEach begin="${startPage }" end="${endPage }" var="i">
+					<a class="p-1 ${param.page == i ? 'btn-active page_active' : '' }" href="?page=${i }">${i }</a>
+				</c:forEach>
+
+				<c:if test="${page < pagesCount }">
+					<a class="" href="?page=${page + 1 }">▶</a>&nbsp&nbsp
+				<a class="" href="?page=${pagesCount }">▶▶</a>
+				</c:if>
+	
+			</div>
+		</div>
+
+<div class="h-500"></div>
 
 <!-- 지도API -->
 <script type="text/javascript"
@@ -232,7 +278,7 @@ function showModal(el) {
 	function showMap(lat1, lot1) {
 		var map_box = document.querySelector(".map_box");
 		map_box.style.display = "block";
-		
+
 		lat = lat1;
 		lot = lot1;
 

@@ -139,6 +139,9 @@
 			<c:if test="${endPage ==  pagesCount || endPage == pagesCount -1}">
 				<c:set var="startPage" value="${endPage - 4}" />
 			</c:if>
+			<c:if test="${pagesCount == 1 || pagesCount == 2 || pagesCount == 3 || pagesCount == 4  }">
+				<c:set var="endPage" value="${pagesCount}" />
+			</c:if>	
 			
 			<c:set var="baseUri" value="?boardId=${boardId }" />
 			<c:set var="baseUri" value="${baseUri }&searchKeywordType=${searchKeywordType}" />
