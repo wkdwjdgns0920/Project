@@ -24,7 +24,7 @@
 
 			console.log(eventData);
 
-			for (var i = 0; i < Object.keys(eventData.items).length; i++) {
+			/* for (var i = 0; i < Object.keys(eventData.items).length; i++) {
 				console.log(eventData.items[i].festvNm);
 				var eventTitle = eventData.items[i].festvNm;
 
@@ -37,7 +37,7 @@
 
 				titleContainer.appendChild(titleBox);
 				idContainer.appendChild(idBox);
-			}
+			} */
 
 		}
 	};
@@ -247,7 +247,7 @@
 					<div class="empty_box"></div>
 
 					<div class="">
-						<a href="festvDetail?id=3">
+						<a href="festvDetail?id=13">
 							<img class="i_box"
 								src="https://newsimg.sedaily.com/2023/01/02/29KBGC3TII_1.jpg"
 								alt="" />

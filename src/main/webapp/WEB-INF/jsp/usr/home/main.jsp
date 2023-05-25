@@ -19,11 +19,51 @@
 		objImg.src = imgArray[imgNum];
 		setTimeout("showImage()", 2000);
 	}
+	
+	
 </script>
 
 <!-- <img class="main_body" src="https://www.yuseong.go.kr/thumbnail/trrsrt/TR_202105110257537201.jpg" alt=""> -->
 <div class="main_body">
+	
 	<img class="img_box" id="introImg" border="0">
+	<form action="">
+	<div class="search_box">
+		<input class="main_search" type="text" />
+		<div class="empty_box"></div>
+		<div class="search_submit">
+			<button type="submit"><img class="search_btn" src="/resources/img/search1.jpg"/></button>
+		</div>
+		</form>
+	</div>
+	
 </div>
+
+<style>
+.main_search {
+	width: 500px;
+	height: 70px;
+	border-radius: 20px;
+	padding: 0 30px;
+	font-size: 2rem;
+}
+.search_box {
+	z-index: 10;
+	position: absolute;
+	display:flex;
+	top:50%;
+	left: 38%;
+	border-radius: 20px;
+}
+.search_submit{
+	width: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.search_btn {
+	border-radius: 30px;;
+}
+</style>
  
 <%@ include file="../common/foot.jspf"%>

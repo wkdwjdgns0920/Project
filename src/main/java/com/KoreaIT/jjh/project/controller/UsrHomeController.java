@@ -45,18 +45,17 @@ public class UsrHomeController {
 		return "usr/home/festvDetail";
 	}
 	
-	@RequestMapping("usr/home/test")
-	public String test(int page) {
-		
-		return "usr/home/test";
-	}
-	
-	
-	
+
 	// 연습
 	@RequestMapping("usr/home/startPage")
 	public String startPage() {
 		return "usr/home/startPage";
+	}
+	
+	@RequestMapping("usr/home/test")
+	public String test(int page) {
+		
+		return "usr/home/test";
 	}
 	
 }
