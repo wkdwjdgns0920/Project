@@ -110,7 +110,7 @@
 			function like_reaction() {
 			var relId = ${param.id};
 			var actorId = ${rq.loginedMemberId}
-			
+			alert('좋아요!');
 			// ajax활용하여 reaction실행
 			$.get('../reactionPoint/like', {
 				isAjax : 'Y',
@@ -131,7 +131,7 @@
 			function cancelLike_reaction() {
 				var relId = ${param.id};
 				var actorId = ${rq.loginedMemberId}
-				
+				alert('좋아요취소');
 				// ajax활용하여 reaction실행
 				$.get('../reactionPoint/cancelLike', {
 					isAjax : 'Y',
@@ -151,7 +151,7 @@
 				function disLike_reaction() {
 					var relId = ${param.id};
 					var actorId = ${rq.loginedMemberId}
-					alert('제발..');
+					alert('싫어요!');
 					// ajax활용하여 reaction실행
 					$.get('../reactionPoint/disLike', {
 						isAjax : 'Y',
@@ -170,7 +170,7 @@
 				function cancelDisLike_reaction() {
 					var relId = ${param.id};
 					var actorId = ${rq.loginedMemberId}
-					alert('제발..');
+					alert('싫어요취소');
 					// ajax활용하여 reaction실행
 					$.get('../reactionPoint/cancelDisLike', {
 						isAjax : 'Y',
@@ -202,54 +202,32 @@
 				<div class="div_center reaction_box">
 					<c:if test="${actorCanReaction }">
 						<div class="reaction_btn">
-							<span class="bg_blue cursor" style="background: linen; font-size: 2em" onclick="like_reaction()">&#128525;</span>
+							<span class="cursor like" style="background: linen; font-size: 2em" onclick="like_reaction()">&#128525;</span>
 							<div class="empty_box"></div>
-							<span class="cursor" style="background: linen; font-size: 2em" onclick="disLike_reaction()">&#128557;</span>
+							<span class="cursor disLike" style="background: linen; font-size: 2em" onclick="disLike_reaction()">&#128557;</span>
 						</div>
 					</c:if>
 				</div>
 				<div class="div_center reaction_box">
 					<c:if test="${actorCanCancelLikeReaction }">
-						<div>
-							<span class="mt_10">
-								<span>&nbsp;</span>
-								<a
-									href="/usr/reactionPoint/cancelLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
-									class="">
-									<span class="bg_blue" style="background: linen blue; font-size: 2em">&#128525;</span>
-								</a>
-							</span>
-							<span class="mt_10">
-								<span>&nbsp;</span>
-								<a onclick="alert(this.title); return false;" title="좋아요를 먼저 취소해" class="">
-									<span style="background: linen; font-size: 2em">&#128557;</span>
-								</a>
-							</span>
+						<div class="reaction_btn">
+							<span class="bg_blue cursor cancelLike" style="background: linen blue; font-size: 2em" onclick="cancelLike_reaction()">&#128525;</span>
+							<div class="empty_box"></div>
+							<span class="cursor disLikeL" style="background: linen; font-size: 2em" onclick="alert(this.title)" title="좋아요를 취소해">&#128557;</span>
 						</div>
 					</c:if>
 				</div>
 				<div class="div_center reaction_box">
 					<c:if test="${actorCanCancelDisLikeReaction }">
-						<div>
-							<span class="mt_10">
-								<span>&nbsp;</span>
-								<a onclick="alert(this.title); return false;" title="싫어요를 먼저 취소해" class="">
-									<span style="background: linen; font-size: 2em">&#128525;</span>
-								</a>
-							</span>
-							<span class="mt_10">
-								<span>&nbsp;</span>
-								<a
-									href="/usr/reactionPoint/cancelDisLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
-									class="">
-									<span class="bg_red" style="background: linen red; font-size: 2em">&#128557;</span>
-								</a>
-							</span>
+						<div class="reaction_btn">
+							<span class="bg_blue cursor likeD" style="background: linen; font-size: 2em" onclick="alert(this.title)" title="싫어요를 취소해">&#128525;</span>
+							<div class="empty_box"></div>
+							<span class="cursor bg_red cancelDisLike" style="background: linen red; font-size: 2em" onclick="cancelDisLike_reaction()">&#128557;</span>
 						</div>
 					</c:if>
 				</div>
 				<div class="h-30"></div>
-				<div class="div_center">
+				<div class="div_center mb-20">
 					<span>좋아요 :&nbsp</span>
 					<span class="total_point">${article.likePoint }</span>
 				</div>
