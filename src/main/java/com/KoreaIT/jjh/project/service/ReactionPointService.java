@@ -71,8 +71,10 @@ public class ReactionPointService {
 			break;
 		}
 		//	싫어요를 한 게시글의 relTypeCode가 article일 경우 relId번 게시글에 싫어요를 증가
-
-		return ResultData.from("S-1", "싫어요", "affectedRow", affectedRow);
+		int sumLikePoint = articleService.getSumLikePointById(relId);
+		//	해당게시글에 대한 좋아요의 합 가져오기
+		
+		return ResultData.from("S-1", "싫어요", "sumLikePoint", sumLikePoint);
 		//	싫어요를 성공한 것에 대한 데이터를 리턴
 	}
 
@@ -87,8 +89,11 @@ public class ReactionPointService {
 			break;
 		}
 		//	좋아요를 취소한 relTypeCode가 article인 경우 relId번 게시글의 좋아요를 감소
-
-		return ResultData.from("S-1", "좋아요취소");
+		
+		int sumLikePoint = articleService.getSumLikePointById(relId);
+		//	해당게시글에 대한 좋아요의 합 가져오기
+		
+		return ResultData.from("S-1", "좋아요취소", "sumLikePoint", sumLikePoint);
 		//	좋아요취소 성공에 대한 데이터를 넘김
 	}
 
@@ -103,8 +108,11 @@ public class ReactionPointService {
 			break;
 		}
 		//	싫어요를 취소한 relTypeCode가 article이면 relId번 게시글의 싫어요를 감소시킴
-
-		return ResultData.from("S-1", "싫어요취소");
+		
+		int sumLikePoint = articleService.getSumLikePointById(relId);
+		//	해당게시글에 대한 좋아요의 합 가져오기
+		
+		return ResultData.from("S-1", "싫어요취소","sumLikePoint",sumLikePoint);
 		//	싫어요취소에 대한 데이터를 리턴함
 	}
 

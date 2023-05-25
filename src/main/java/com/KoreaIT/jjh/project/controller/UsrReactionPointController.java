@@ -27,7 +27,7 @@ public class UsrReactionPointController {
 	//	게시글의 좋아요를 실행해주는 페이지
 	@RequestMapping("usr/reactionPoint/like")
 	@ResponseBody
-	public ResultData like(String relTypeCode, int relId, String replaceUri) {
+	public ResultData like(String relTypeCode, int relId, @RequestParam(defaultValue = "/") String replaceUri) {
 		
 		ResultData acotrCanReactionRd = reactionPointService.actorCanReaction(rq.getLoginedMemberId(), relTypeCode, relId);
 		//	로그인한 회원이 게시글에 추천을 할 수 있는지에 대한 데이터
@@ -52,13 +52,13 @@ public class UsrReactionPointController {
 	//	좋아요취소실행 페이지
 	@RequestMapping("usr/reactionPoint/cancelLike")
 	@ResponseBody
-	public String cancelLike(String relTypeCode, int relId, @RequestParam(defaultValue = "/") String replaceUri) {
+	public ResultData cancelLike(String relTypeCode, int relId, @RequestParam(defaultValue = "/") String replaceUri) {
 		
 		ResultData acotrCanReactionRd = reactionPointService.actorCanReaction(rq.getLoginedMemberId(), relTypeCode, relId);
 		//	게시글에 대해 로그인한 사용자가 추천을 할 수 있는지에 대한 데이터를 받음
 		
 		if(acotrCanReactionRd.isSuccess()) {
-			return Ut.jsHistoryBack(acotrCanReactionRd.getResultCode(), acotrCanReactionRd.getMsg());
+			return ResultData.from(acotrCanReactionRd.getResultCode(), acotrCanReactionRd.getMsg());
 		}
 		//	사용자가 추천을 할 수 있으면 알림창을 띄우고 뒤로가기
 		
@@ -66,24 +66,24 @@ public class UsrReactionPointController {
 		//	relId번 게시글의 좋아요취소에 대한 데이터
 		
 		if(cancelLikeRd.isFail()) {
-			return Ut.jsHistoryBack(cancelLikeRd.getResultCode(), cancelLikeRd.getMsg());
+			return ResultData.from(cancelLikeRd.getResultCode(), cancelLikeRd.getMsg());
 		}
 		//	좋아요취소실패시에 알림창을 띄우고 뒤로가기
 		
-		return Ut.jsReplace(cancelLikeRd.getResultCode(), cancelLikeRd.getMsg(), Ut.f("../article/detail?id=%d", relId));
+		return ResultData.from(cancelLikeRd.getResultCode(), cancelLikeRd.getMsg(),"cancelLikeRd",cancelLikeRd.getData1());
 		//	좋아요취소에 대한 알림창을 띄우고 좋아요취소를한 게시글의 디테일페이지로 이동
 	}
 	
 	//	싫어요를 실행하는 페이지
 	@RequestMapping("usr/reactionPoint/disLike")
 	@ResponseBody
-	public String disLike(String relTypeCode, int relId, @RequestParam(defaultValue = "/") String replaceUri) {
+	public ResultData disLike(String relTypeCode, int relId, @RequestParam(defaultValue = "/") String replaceUri) {
 		
 		ResultData acotrCanReactionRd = reactionPointService.actorCanReaction(rq.getLoginedMemberId(), relTypeCode, relId);
 		//	게시글에 대해 추천을 할 수 있는지에 대한 데이터
 		
 		if(acotrCanReactionRd.isFail()) {
-			return Ut.jsHistoryBack(acotrCanReactionRd.getResultCode(), acotrCanReactionRd.getMsg());
+			return ResultData.from(acotrCanReactionRd.getResultCode(), acotrCanReactionRd.getMsg());
 		}
 		//	게시글에 대해 추천을 할 수 없으면 알림창을 띄우고 뒤로가기
 		
@@ -91,24 +91,24 @@ public class UsrReactionPointController {
 		//	싫어요를 실행한 데이터를 가짐
 		
 		if(disLikeRd.isFail()) {
-			return Ut.jsHistoryBack(disLikeRd.getResultCode(), disLikeRd.getMsg());
+			return ResultData.from(disLikeRd.getResultCode(), disLikeRd.getMsg());
 		}
 		//	싫어요를 실패했을 경우 알림창을 띄우고 뒤로가기
 		
-		return Ut.jsReplace(disLikeRd.getResultCode(), disLikeRd.getMsg(), Ut.f("../article/detail?id=%d", relId));
+		return ResultData.from(disLikeRd.getResultCode(), disLikeRd.getMsg(), "disLikeRd",disLikeRd.getData1());
 		//	싫어요성공에 대한 알림창을 띄우고 싫어요를 한 게시글의 디테일페이지로 이동
 	}
 
 	//	싫어요 취소 페이지
 	@RequestMapping("usr/reactionPoint/cancelDisLike")
 	@ResponseBody
-	public String cancelDisLike(String relTypeCode, int relId, String replaceUri) {
+	public ResultData cancelDisLike(String relTypeCode, int relId, @RequestParam(defaultValue = "/") String replaceUri) {
 		
 		ResultData acotrCanReactionRd = reactionPointService.actorCanReaction(rq.getLoginedMemberId(), relTypeCode, relId);
 		//	게시글에 대해 추천을 할 수 있는지에 대한 데이터
 		
 		if(acotrCanReactionRd.isSuccess()) {
-			return Ut.jsHistoryBack(acotrCanReactionRd.getResultCode(), acotrCanReactionRd.getMsg());
+			return ResultData.from(acotrCanReactionRd.getResultCode(), acotrCanReactionRd.getMsg());
 		}
 		//	게시글에 대해 추천을 할 수 없으면 알림창을 띄우고 뒤로가기
 		
@@ -116,11 +116,11 @@ public class UsrReactionPointController {
 		//	relId번 게시글의 싫어요취소에 대한 데이터
 		
 		if(cancelDisLikeRd.isFail()) {
-			return Ut.jsHistoryBack(cancelDisLikeRd.getResultCode(), cancelDisLikeRd.getMsg());
+			return ResultData.from(cancelDisLikeRd.getResultCode(), cancelDisLikeRd.getMsg());
 		}
 		//	싫어요취소를 실패한경우 알림창을 띄우고 뒤로가기
 		
-		return Ut.jsReplace(cancelDisLikeRd.getResultCode(), cancelDisLikeRd.getMsg(), Ut.f("../article/detail?id=%d", relId));
+		return ResultData.from(cancelDisLikeRd.getResultCode(), cancelDisLikeRd.getMsg(), "cancelDisLikeRd", cancelDisLikeRd.getData1());
 		//	싫어요취소를 했다는 알림창을 띄우고 싫어요 취소한 게시글의 디테일페이지로 이동
 	}
 

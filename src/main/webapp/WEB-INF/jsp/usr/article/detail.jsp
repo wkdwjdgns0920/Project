@@ -105,6 +105,7 @@
 				</tbody>
 			</table>
 			
+			<!-- Ajax활용 reaction -->
 			<script>
 			function like_reaction() {
 			var relId = ${param.id};
@@ -118,57 +119,92 @@
 			}, function(data) {
 				if (data.success) {
 					alert(data.data1);
-					
+					$('.total_point').html('<span class="total_point">' + data.data1 + '</span>')
+					$('.reaction_btn').html('<span class="bg_blue cursor cancelLike" style="background: linen blue; font-size: 2em" onclick="cancelLike_reaction()">&#128525;</span><div class="empty_box"></div><span class="cursor disLikeL" style="background: linen; font-size: 2em" onclick="alert(this.title)" title="좋아요를 취소해">&#128557;</span>')
 				} else {
 					alert('안됨');
 				}
 
 			}, 'json');
-			window.location.reload();
 			};
 			
-			function disLike_reaction() {
+			function cancelLike_reaction() {
 				var relId = ${param.id};
+				var actorId = ${rq.loginedMemberId}
 				
 				// ajax활용하여 reaction실행
-				$.get('../reactionPoint/disLike', {
+				$.get('../reactionPoint/cancelLike', {
 					isAjax : 'Y',
 					relTypeCode : 'article',
 					relId : relId
 				}, function(data) {
 					if (data.success) {
-						alert('됨');
+						$('.total_point').html('<span class="total_point">' + data.data1 + '</span>')
+						$('.reaction_btn').html('<span class="bg_blue cursor like" style="background: linen; font-size: 2em" onclick="like_reaction()">&#128525;</span><div class="empty_box"></div><span class="cursor disLike" style="background: linen; font-size: 2em" onclick="disLike_reaction()">&#128557;</span>')
 					} else {
 						alert('안됨');
 					}
 
 				}, 'json');
-				window.location.reload();
 				};
+				
+				function disLike_reaction() {
+					var relId = ${param.id};
+					var actorId = ${rq.loginedMemberId}
+					alert('제발..');
+					// ajax활용하여 reaction실행
+					$.get('../reactionPoint/disLike', {
+						isAjax : 'Y',
+						relTypeCode : 'article',
+						relId : relId
+					}, function(data) {
+						if (data.success) {
+							$('.reaction_btn').html('<span class="bg_blue cursor likeD" style="background: linen; font-size: 2em" onclick="alert(this.title)" title="싫어요를 취소해">&#128525;</span><div class="empty_box"></div><span class="cursor bg_red cancelDisLike" style="background: linen red; font-size: 2em" onclick="cancelDisLike_reaction()">&#128557;</span>')
+						} else {
+							alert('안됨');
+						}
+
+					}, 'json');
+					};
+					
+				function cancelDisLike_reaction() {
+					var relId = ${param.id};
+					var actorId = ${rq.loginedMemberId}
+					alert('제발..');
+					// ajax활용하여 reaction실행
+					$.get('../reactionPoint/cancelDisLike', {
+						isAjax : 'Y',
+						relTypeCode : 'article',
+						relId : relId
+					}, function(data) {
+						if (data.success) {
+							$('.reaction_btn').html('<span class="bg_blue cursor like" style="background: linen; font-size: 2em" onclick="like_reaction()">&#128525;</span><div class="empty_box"></div><span class="cursor disLike" style="background: linen; font-size: 2em" onclick="cancelDisLike_reaction()">&#128557;</span>')
+						} else {
+							alert('안됨');
+						}
+
+					}, 'json');
+					};
 			</script>
-			
+
 			<style>
 				.cursor {
 					cursor: pointer;
 				}
+				.reaction_btn {
+					display: flex;
+				}
+				
 			</style>
-			
+
 			<div>
 				<div class="h-30"></div>
 				<div class="div_center reaction_box">
 					<c:if test="${actorCanReaction }">
-						<div>
-							<span class="mt_10">
-								<span>&nbsp;</span>
-								<span class="bg_blue cursor" style="background: linen; font-size: 2em" onclick="like_reaction()">&#128525;</span>
-							</span>
-							<span class="mt_10">
-								<span>&nbsp;</span>
-								<%-- <a href="/usr/reactionPoint/disLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
-									class=""> --%>
-									<span class="cursor" style="background: linen; font-size: 2em" onclick="disLike_reaction()">&#128557;</span>
-								<!-- </a> -->
-							</span>
+						<div class="reaction_btn">
+							<span class="bg_blue cursor" style="background: linen; font-size: 2em" onclick="like_reaction()">&#128525;</span>
+							<div class="empty_box"></div>
+							<span class="cursor" style="background: linen; font-size: 2em" onclick="disLike_reaction()">&#128557;</span>
 						</div>
 					</c:if>
 				</div>
@@ -302,8 +338,8 @@
 			</c:forEach>
 		</div>
 
-<!-- 댓글수정 -->
-<script>
+		<!-- 댓글수정 -->
+		<script>
   function showModifyForm(replyId) {
     // 해당 요소 가져오기
     var btn = document.querySelector(".reply_modify_btn_" + replyId); // 댓글수정 보여지는 버튼
