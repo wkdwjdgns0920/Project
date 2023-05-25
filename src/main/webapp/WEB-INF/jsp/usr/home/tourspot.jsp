@@ -70,7 +70,7 @@
 				detail_body.appendChild(spot_body);
 
 				var modal_btn = document.createElement("button");
-				modal_btn.innerHTML = "<button class='btn btn-circle detail_close_btn_"+i+"' style='display:none; position: fixed; top: 10%; left: 50%; z-index: 11;' onclick='close_Modal("+ i + ")'>X</button>"
+				modal_btn.innerHTML = "<button class='btn btn-circle detail_close_btn_"+i+"' style='display:none; position: fixed; top: 10%; left: 50%; z-index: 17;' onclick='close_Modal("+ i + ")'>X</button>"
 				detail_close.appendChild(modal_btn);
 						
 			}
@@ -103,12 +103,12 @@
 	top: 50%;
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
-	z-index: 12;
+	z-index: 17;
 	display: none;
 }
 
 .sopt_detail {
-	width: 600px;
+	width: 700px;
 	height: 600px;
 	background-color: white;
 	color: black;
@@ -116,7 +116,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
-	z-index: 11;
+	z-index: 16;
 	border-radius: 20px;
 	font-size: 25px;
 	padding: 50px;
@@ -138,7 +138,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 10;
+	z-index: 15;
 }
 
 .z-index-0 {
@@ -150,6 +150,7 @@
 	justify-content: end;
 	height: 50px;
 	width: 50px;
+	z-index: 17;
 }
 
 /* .detail_close_btn {
@@ -241,6 +242,7 @@
 
 			<c:set var="pageLen" value="2" />
 			<c:set var="pagesCount" value="15" />
+			<c:set var="page" value="${param.page }" />
 			<c:set var="startPage" value="${page - pageLen >= 1 ? page - pageLen : 1 }" />
 			<c:set var="endPage" value="${page + pageLen <= pagesCount ? page + pageLen : pagesCount }" />
 			<c:if test="${startPage == 1 || startPage == 2 }">
@@ -256,18 +258,17 @@
 				<a class="" href="?page=${page-1 }">◀</a>
 			</c:if>
 
-			<div>
-				<c:forEach begin="${startPage }" end="${endPage }" var="i">
-					<a class="p-1 ${param.page == i ? 'btn-active page_active' : '' }" href="?page=${i }">${i }</a>
-				</c:forEach>
 
-				<c:if test="${page < pagesCount }">
-					<a class="" href="?page=${page + 1 }">▶</a>&nbsp&nbsp
+			<c:forEach begin="${startPage }" end="${endPage }" var="i">
+				<a class="p-1 ${param.page == i ? 'btn-active page_active' : '' }" href="?page=${i }">${i }</a>
+			</c:forEach>
+
+			<c:if test="${param.page < 15 }" >
+				<a class="" href="?page=${page + 1 }" >▶</a>&nbsp&nbsp
 				<a class="" href="?page=${pagesCount }">▶▶</a>
-				</c:if>
+			</c:if>
 	
-			</div>
-		</div>
+</div>
 
 <div class="h-500"></div>
 

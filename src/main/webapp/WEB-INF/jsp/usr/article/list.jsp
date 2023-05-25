@@ -133,7 +133,7 @@
 			<c:set var="pageLen" value="2" />
 			<c:set var="startPage" value="${page - pageLen >= 1 ? page - pageLen : 1 }" />
 			<c:set var="endPage" value="${page + pageLen <= pagesCount ? page + pageLen : pagesCount }" />
-			<c:if test="${page == 1 || page == 2 }">
+			<c:if test="${page == 1 || page == 2 || page == 3}">
 				<c:set var="endPage" value="${startPage + 4}" />
 			</c:if>
 			<c:if test="${endPage ==  pagesCount || endPage == pagesCount -1}">

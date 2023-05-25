@@ -242,7 +242,8 @@ header>div>ul>li>ul>li:hover {
 
 
 .reply_box_a {
-	font-weight: bold;
+	/* font-weight: bold; */
+	color: red;
 }
 
 /* .cbox {

@@ -104,16 +104,44 @@
 					</tr>
 				</tbody>
 			</table>
+			
+			<script>
+			function like_reaction() {
+			var relId = ${param.id};
+			
+			// ajax활용하여 reaction실행
+			$.get('../reactionPoint/like', {
+				isAjax : 'Y',
+				relTypeCode : 'article',
+				relId : relId
+			}, function(data) {
+				if (data.success) {
+					$('.total_point').html('<div class="can_use">' + data.msg + '</div>')
+				} else {
+					alert('싫어요');
+				}
+
+			}, 'json');
+			window.location.reload();
+			};
+			</script>
+			
+			<style>
+				.cursor {
+					cursor: pointer;
+				}
+			</style>
+			
 			<div>
 				<div class="h-30"></div>
-				<div class="div_center">
+				<div class="div_center reaction_box">
 					<c:if test="${actorCanReaction }">
 						<div>
 							<span class="mt_10">
 								<span>&nbsp;</span>
-								<a href="/usr/reactionPoint/like?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}">
-									<span class="bg_blue" style="background: linen; font-size: 2em">&#128525;</span>
-								</a>
+								<%-- <a href="/usr/reactionPoint/like?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"> --%>
+									<span class="bg_blue cursor" style="background: linen; font-size: 2em" onclick="like_reaction()">&#128525;</span>
+								<!-- </a> -->
 							</span>
 							<span class="mt_10">
 								<span>&nbsp;</span>
@@ -125,7 +153,7 @@
 						</div>
 					</c:if>
 				</div>
-				<div class="div_center">
+				<div class="div_center reaction_box">
 					<c:if test="${actorCanCancelLikeReaction }">
 						<div>
 							<span class="mt_10">
@@ -145,7 +173,7 @@
 						</div>
 					</c:if>
 				</div>
-				<div class="div_center">
+				<div class="div_center reaction_box">
 					<c:if test="${actorCanCancelDisLikeReaction }">
 						<div>
 							<span class="mt_10">
@@ -166,7 +194,7 @@
 					</c:if>
 				</div>
 				<div class="h-30"></div>
-				<div class="div_center">
+				<div class="div_center total_point">
 					<span>좋아요 : ${article.likePoint }&nbsp;</span>
 					<span>싫어요 : ${article.disLikePoint }&nbsp;</span>
 				</div>
@@ -217,7 +245,7 @@
 		</form>
 	</c:if>
 	<c:if test="${!rq.logined}">
-		<div class="reply_box_check_login">
+		<div class="reply_box check_login">
 			댓글을 작성하려면 &nbsp;
 			<a class="reply_box_a" href="${rq.loginUri }">로그인</a>
 			&nbsp; 해주세요
