@@ -205,4 +205,9 @@ public class ArticleService {
 		//	싫어요 감소 성공에 대한 정보를 전달
 	}
 
+	public int getSumLikePointById(int relId) {
+		
+		return articleRepository.getSumLikePointById(relId);
+	}
+
 }

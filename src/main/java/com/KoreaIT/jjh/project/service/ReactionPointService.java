@@ -49,7 +49,10 @@ public class ReactionPointService {
 		}
 		//	좋아요를 누른 relTypeCode가 "article"이면 relId번의 article의 좋아요를 증가시킴
 		
-		return ResultData.from("S-1", "좋아요", "affectedRow", affectedRow);
+		int sumLikePoint = articleService.getSumLikePointById(relId);
+		//	해당게시글에 대한 좋아요의 합 가져오기
+		
+		return ResultData.from("S-1", "좋아요", "sumLikePoint", sumLikePoint);
 		//	좋아요 증가성공에 대한 데이터를 리턴
 	}
 

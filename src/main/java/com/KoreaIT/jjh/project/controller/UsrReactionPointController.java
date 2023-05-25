@@ -27,13 +27,13 @@ public class UsrReactionPointController {
 	//	게시글의 좋아요를 실행해주는 페이지
 	@RequestMapping("usr/reactionPoint/like")
 	@ResponseBody
-	public String like(String relTypeCode, int relId, String replaceUri) {
+	public ResultData like(String relTypeCode, int relId, String replaceUri) {
 		
 		ResultData acotrCanReactionRd = reactionPointService.actorCanReaction(rq.getLoginedMemberId(), relTypeCode, relId);
 		//	로그인한 회원이 게시글에 추천을 할 수 있는지에 대한 데이터
 		
 		if(acotrCanReactionRd.isFail()) {
-			return Ut.jsHistoryBack(acotrCanReactionRd.getResultCode(), acotrCanReactionRd.getMsg());
+			return ResultData.from(acotrCanReactionRd.getResultCode(), acotrCanReactionRd.getMsg());
 		}
 		//	로그인한 회원이 게시글에 대해 추천을 할 수 없다면 알림창을 띄우고 뒤로가기
 		
@@ -41,11 +41,11 @@ public class UsrReactionPointController {
 		//	좋아요증가를 실행한 것에 대한 데이터를 받음
 		
 		if(likeRd.isFail()) {
-			return Ut.jsHistoryBack(likeRd.getResultCode(), likeRd.getMsg());
+			return ResultData.from(likeRd.getResultCode(), likeRd.getMsg());
 		}
 		//	좋아요증가에 실패한 경우 실패에 대한 메시지를 알림창에 띄우고 뒤로가기
 		
-		return Ut.jsReplace(likeRd.getResultCode(), likeRd.getMsg(), Ut.f("../article/detail?id=%d", relId));
+		return ResultData.from(likeRd.getResultCode(),likeRd.getMsg(),"좋아요점수", likeRd.getData1());
 		//	좋아요성공에 대한 알림창을 띄우고 좋아요를 누른 게시글로 이동
 	}
 	

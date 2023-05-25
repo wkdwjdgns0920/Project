@@ -224,6 +224,14 @@ public interface ArticleRepository {
 			""")
 	public int decreaseDisLikeReationPoint(int relId);
 	//	싫어요 감소
+	
+	
+	@Select("""
+			SELECT A.likePoint
+			FROM article AS A
+			WHERE id = #{relId}
+			""")
+	public int getSumLikePointById(int relId);
 
 
 }

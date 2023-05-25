@@ -15,11 +15,11 @@
 
 	function articleDetail_increaseHitCount() {
 
-		/* const localStorageKey = 'article__' + params.id + '__alreadyView';
+		const localStorageKey = 'article__' + params.id + '__alreadyView';
 		if (localStorage.getItem(localStorageKey)) {
 			return;
 		}
-		localStorage.setItem(localStorageKey, true); */
+		localStorage.setItem(localStorageKey, true);
 
 		$.get('../article/doIncreaseHitCount', {
 			id : paramId,
@@ -108,6 +108,7 @@
 			<script>
 			function like_reaction() {
 			var relId = ${param.id};
+			var actorId = ${rq.loginedMemberId}
 			
 			// ajax활용하여 reaction실행
 			$.get('../reactionPoint/like', {
@@ -116,14 +117,34 @@
 				relId : relId
 			}, function(data) {
 				if (data.success) {
-					$('.total_point').html('<div class="can_use">' + data.msg + '</div>')
+					alert(data.data1);
+					
 				} else {
-					alert('싫어요');
+					alert('안됨');
 				}
 
 			}, 'json');
 			window.location.reload();
 			};
+			
+			function disLike_reaction() {
+				var relId = ${param.id};
+				
+				// ajax활용하여 reaction실행
+				$.get('../reactionPoint/disLike', {
+					isAjax : 'Y',
+					relTypeCode : 'article',
+					relId : relId
+				}, function(data) {
+					if (data.success) {
+						alert('됨');
+					} else {
+						alert('안됨');
+					}
+
+				}, 'json');
+				window.location.reload();
+				};
 			</script>
 			
 			<style>
@@ -139,16 +160,14 @@
 						<div>
 							<span class="mt_10">
 								<span>&nbsp;</span>
-								<%-- <a href="/usr/reactionPoint/like?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"> --%>
-									<span class="bg_blue cursor" style="background: linen; font-size: 2em" onclick="like_reaction()">&#128525;</span>
-								<!-- </a> -->
+								<span class="bg_blue cursor" style="background: linen; font-size: 2em" onclick="like_reaction()">&#128525;</span>
 							</span>
 							<span class="mt_10">
 								<span>&nbsp;</span>
-								<a href="/usr/reactionPoint/disLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
-									class="">
-									<span style="background: linen; font-size: 2em">&#128557;</span>
-								</a>
+								<%-- <a href="/usr/reactionPoint/disLike?relTypeCode=article&relId=${param.id }&replaceUri=${rq.encodedCurrentUri}"
+									class=""> --%>
+									<span class="cursor" style="background: linen; font-size: 2em" onclick="disLike_reaction()">&#128557;</span>
+								<!-- </a> -->
 							</span>
 						</div>
 					</c:if>
@@ -194,9 +213,9 @@
 					</c:if>
 				</div>
 				<div class="h-30"></div>
-				<div class="div_center total_point">
-					<span>좋아요 : ${article.likePoint }&nbsp;</span>
-					<span>싫어요 : ${article.disLikePoint }&nbsp;</span>
+				<div class="div_center">
+					<span>좋아요 :&nbsp</span>
+					<span class="total_point">${article.likePoint }</span>
 				</div>
 			</div>
 		</div>
