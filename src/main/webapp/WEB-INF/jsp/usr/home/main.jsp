@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="MAIN" />
 <%@ include file="../common/head.jspf"%>
+<!-- flexCard파일 사용 -->
+<link rel="stylesheet" href="/resource/flexCard.css" />
 	
 </body>
 <body onload="showImage()">
@@ -38,6 +40,79 @@
 	</div>
 	
 </div>
+<div class="h-800"></div>
+
+<!-- flexCard -->
+<section class="flexCard">
+<div class="main2">
+
+<div class="options">
+
+   <div class="option active" style="--optionBackground:url(/resources/img/img1.jpg);" title="1" onclick="asd()">
+      <div class="shadow"></div>
+      <div class="label">
+         
+         <div class="info">
+            <div class="main">Blonkisoaz</div>
+            <div class="sub">Omuke trughte a otufta</div>
+            <div><a href="#">해당페이지로 이동</a></div>
+         </div>
+      </div>
+   </div>
+   <div class="option" style="--optionBackground:url(/resources/img/img2.jpg);" title="2" >
+      <div class="shadow"></div>
+      <div class="label">
+         <div class="info">
+            <div class="main">Oretemauw</div>
+            <div class="sub">Omuke trughte a otufta</div>
+            <div><a href="#">해당페이지로 이동</a></div>
+         </div>
+      </div>
+   </div>
+   <div class="option" style="--optionBackground:url(/resources/img/img3.jpg);" title="3" >
+      <div class="shadow"></div>
+      <div class="label">
+         <div class="info">
+            <div class="main">Iteresuselle</div>
+            <div class="sub">Omuke trughte a otufta</div>
+            <div><a href="#">해당페이지로 이동</a></div>
+         </div>
+      </div>
+   </div>
+   <div class="option" style="--optionBackground:url(/resources/img/img4.jpg);" title="4" >
+      <div class="shadow"></div>
+      <div class="label">
+         <div class="info">
+            <div class="main">Idiefe</div>
+            <div class="sub">Omuke trughte a otufta</div>
+            <div><a href="#">해당페이지로 이동</a></div>
+         </div>
+      </div>
+   </div>
+   <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/f19901f50b79604839ca761cd6d74748/tumblr_o65rohhkQL1qho82wo1_1280.jpg);" title="5" >
+      <div class="shadow"></div>
+      <div class="label">
+         <div class="info">
+            <div class="main">Inatethi</div>
+            <div class="sub">Omuke trughte a otufta</div>
+            <div><a href="#">해당페이지로 이동</a></div>
+         </div>
+      </div>
+   </div>
+</div>
+
+</div>
+</section>
+
+<!-- flexCard 액션관련 -->
+<script>
+$(".option").click(function(){
+	$(".option").removeClass("active");
+	$(this).addClass("active");
+	
+   });
+
+</script>
 
 <style>
 .main_search {
