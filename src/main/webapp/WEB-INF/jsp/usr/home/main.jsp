@@ -48,7 +48,7 @@
 
 <div class="options">
 
-   <div class="option active" style="--optionBackground:url(/resources/img/img1.jpg);" title="1" onclick="asd()">
+   <div class="option active" style="--optionBackground:url(/resources/img/img1.jpg);" title="1" >
       <div class="shadow"></div>
       <div class="label">
          
@@ -106,12 +106,19 @@
 
 <!-- flexCard 액션관련 -->
 <script>
+var clickCount;
+
 $(".option").click(function(){
 	$(".option").removeClass("active");
+	$(".option").removeClass("option_1");
 	$(this).addClass("active");
+	$(this).addClass("option_1");
 	
    });
 
+$(document).on("click", ".option_1", function(){
+	alert('실행!');
+});
 </script>
 
 <style>
