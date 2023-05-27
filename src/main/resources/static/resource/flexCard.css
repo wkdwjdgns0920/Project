@@ -5,7 +5,7 @@
     align-items: center;
     overflow: hidden;
     height: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'GoryeongStrawberry', sans-serif;
     transition: .25s;
 }
 .main2  .credit {
@@ -161,7 +161,7 @@
 }
 .main2  .options .option .label .info .main {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 .main2  .options .option .label .info .sub {
     transition-delay: .1s;

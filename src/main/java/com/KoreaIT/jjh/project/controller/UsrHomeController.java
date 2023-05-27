@@ -1,16 +1,39 @@
 package com.KoreaIT.jjh.project.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.KoreaIT.jjh.project.util.DateTime;
 
 @Controller
 public class UsrHomeController {
 	
 	//	메인페이지로 이동
 	@RequestMapping("usr/home/main")
-	public String showMain() {
+	public String showMain(Model model) {
+		
+		String date = DateTime.getNowDate();
+        int nowDate = Integer.parseInt(date);
+		String time = DateTime.getNowTime();
+		int nowTime = Integer.parseInt(time);
+        
+		System.out.println(nowTime);
+		System.out.println(time);
+		if(nowTime < 230) {
+			nowDate -= 1;
+			date = Integer.toString(nowDate);
+			time = "2300";
+			
+			model.addAttribute("date",date);
+	        model.addAttribute("time",time);
+		} else {
+			model.addAttribute("date",date);
+	        model.addAttribute("time",time);
+		}
+		
 		return "usr/home/main";
 	}
 	
@@ -43,6 +66,15 @@ public class UsrHomeController {
 	public String festvDetail(int id) {
 		
 		return "usr/home/festvDetail";
+	}
+	
+	@GetMapping
+	
+	
+	@RequestMapping("usr/home/story")
+	public String story() {
+		
+		return "usr/home/story";
 	}
 	
 
