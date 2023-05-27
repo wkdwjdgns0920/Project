@@ -110,21 +110,12 @@
             return rs;
         }
         
-        function doSomethingWithXY() {
-            // x와 y 값 사용
-            console.log('다른 스크립트에서 x 좌표: ' + x + ', y 좌표: ' + y);
-            // 여기서 원하는 동작 수행
-        }
-
-        // doSomethingWithXY 함수 호출
-        doSomethingWithXY();
-        
 
         function weatherApi(x,y) {
 			
         	var xhr = new XMLHttpRequest();
 			var url = 'https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst'; /*URL*/
-			var queryParams = '?' + encodeURIComponent('serviceKey') +;
+			var queryParams = '?' + encodeURIComponent('serviceKey');
 			queryParams += '='+'y5HTZhhwhcvQyk77GS%2FnJZn3cy3z%2FGy86ese9SbgZ60sMmoIdHrIzpxTFbNUABK9%2BluK3Rt2wawKZE3wjxgCGA%3D%3D'; /*Service Key*/
 			queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
 			queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('12'); /**/
@@ -236,7 +227,7 @@
 			};
 			
 			xhr.send('');
-			        }
+			        };
 </script>
 
 <script type="text/javascript">
