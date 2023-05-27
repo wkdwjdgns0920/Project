@@ -22,7 +22,7 @@ public class UsrHomeController {
         
 		System.out.println(nowTime);
 		System.out.println(time);
-		if(nowTime < 230) {
+		if(nowTime < 500) {
 			nowDate -= 1;
 			date = Integer.toString(nowDate);
 			time = "2300";

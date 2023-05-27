@@ -17,8 +17,10 @@
 		if (this.readyState == 4) {
 			console.log(this.responseText);
 			
-			var response = JSON.parse(this.response);
+			var response = JSON.parse(this.responseText);
 			var eventData = response.response.body;
+			
+			
 		}
 	};
 

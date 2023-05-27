@@ -257,7 +257,7 @@ ALTER TABLE reply ADD COLUMN likePoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
 ALTER TABLE reply ADD COLUMN disLikePoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
 
 # 댓글 테이블에 인덱스 추가
-ALTER TABLE `Project`.`reply` ADD KEY `relTypeCodeId` (`relTypeCode` , `relId`);
+ALTER TABLE `jjh`.`reply` ADD KEY `relTypeCodeId` (`relTypeCode` , `relId`);
 
 # 파일 테이블 추가
 CREATE TABLE genFile (
@@ -305,7 +305,7 @@ INSERT INTO article
 ( 
     regDate, updateDate, memberId, boardId, title, `body`, hitCount
 )
-SELECT NOW(), NOW(), FLOOR(RAND() * 2) + 2, FLOOR(RAND() * 2) + 1, CONCAT('제목_',RAND()), CONCAT('내용_',RAND()), ROUND(RAND() * 3,1)
+SELECT NOW(), NOW(), FLOOR(RAND() * 2) + 2, FLOOR(RAND() * 2) + 1, CONCAT('제목_',RAND()), CONCAT('내용_',RAND()), round(RAND() * 3,1)
 FROM article;
 
 SELECT COUNT(*) FROM article;
