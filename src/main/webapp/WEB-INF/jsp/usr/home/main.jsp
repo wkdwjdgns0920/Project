@@ -48,54 +48,54 @@
 
 <div class="options">
 
-   <div class="option active" style="--optionBackground:url(/resources/img/img1.jpg);" title="1" >
+   <div class="option active option_1" style="--optionBackground:url(https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1553041875109.jpg);" title="1" >
       <div class="shadow"></div>
       <div class="label">
          
          <div class="info">
-            <div class="main">Blonkisoaz</div>
-            <div class="sub">Omuke trughte a otufta</div>
-            <div><a href="#">해당페이지로 이동</a></div>
+            <div class="main">대청호 벚꽃축제</div>
+            <div class="sub"></div>
+            
          </div>
       </div>
    </div>
-   <div class="option" style="--optionBackground:url(/resources/img/img2.jpg);" title="2" >
+   <div class="option option_2" style="--optionBackground:url(https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1461904424401.jpg);" title="2" >
       <div class="shadow"></div>
       <div class="label">
          <div class="info">
-            <div class="main">Oretemauw</div>
-            <div class="sub">Omuke trughte a otufta</div>
-            <div><a href="#">해당페이지로 이동</a></div>
+            <div class="main">유성온천문화축제</div>
+            <div class="sub"></div>
+            
          </div>
       </div>
    </div>
-   <div class="option" style="--optionBackground:url(/resources/img/img3.jpg);" title="3" >
+   <div class="option option_3" style="--optionBackground:url(https://www.barefootfesta.com:444/mobile/project/design/main/main_img01.jpg);" title="3" >
       <div class="shadow"></div>
       <div class="label">
          <div class="info">
-            <div class="main">Iteresuselle</div>
-            <div class="sub">Omuke trughte a otufta</div>
-            <div><a href="#">해당페이지로 이동</a></div>
+            <div class="main">계족산맨발축제</div>
+            <div class="sub"></div>
+            
          </div>
       </div>
    </div>
-   <div class="option" style="--optionBackground:url(/resources/img/img4.jpg);" title="4" >
+   <div class="option option_4" style="--optionBackground:url(https://www.daejeontoday.com/news/photo/201903/541285_192161_5837.jpg);" title="4" >
       <div class="shadow"></div>
       <div class="label">
          <div class="info">
-            <div class="main">Idiefe</div>
-            <div class="sub">Omuke trughte a otufta</div>
-            <div><a href="#">해당페이지로 이동</a></div>
+            <div class="main">대청호 대덕뮤직페스티벌</div>
+            <div class="sub"></div>
+            
          </div>
       </div>
    </div>
-   <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/f19901f50b79604839ca761cd6d74748/tumblr_o65rohhkQL1qho82wo1_1280.jpg);" title="5" >
+   <div class="option option_5" style="--optionBackground:url(https://www.timenews.co.kr/web/news/article_image/81d532e05ec6b0d7f2b10f9f362f4f88);" title="5" >
       <div class="shadow"></div>
       <div class="label">
          <div class="info">
-            <div class="main">Inatethi</div>
-            <div class="sub">Omuke trughte a otufta</div>
-            <div><a href="#">해당페이지로 이동</a></div>
+            <div class="main">대전 0시 뮤직페스티벌</div>
+            <div class="sub"></div>
+            
          </div>
       </div>
    </div>
@@ -104,21 +104,39 @@
 </div>
 </section>
 
+<div class="h-500"></div>
+
 <!-- flexCard 액션관련 -->
 <script>
-var clickCount;
-
 $(".option").click(function(){
-	$(".option").removeClass("active");
-	$(".option").removeClass("option_1");
-	$(this).addClass("active");
-	$(this).addClass("option_1");
-	
-   });
-
-$(document).on("click", ".option_1", function(){
-	alert('실행!');
+	if (!$(this).hasClass("active")) {
+		$(".option").removeClass("active");
+		$(this).addClass("active");
+	} else {
+		replace_page(this.title);
+	}
+	$(".option").removeAttr("onclick");
 });
+
+function replace_page(el) {
+	if(el == 1) {
+		location.replace("festvDetail?id=2");
+	}
+	if(el == 2) {
+		location.replace("festvDetail?id=5");
+	}
+	if(el == 3) {
+		location.replace("festvDetail?id=4");
+	}
+	if(el == 4) {
+		location.replace("festvDetail?id=7");
+	}
+	if(el == 5) {
+		location.replace("festvDetail?id=10");
+	}
+	$(this).removeAttribute("onclick","replace_page("+this.title+")");
+}
+
 </script>
 
 <style>
