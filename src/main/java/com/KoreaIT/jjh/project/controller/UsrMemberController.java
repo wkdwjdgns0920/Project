@@ -1,13 +1,18 @@
 package com.KoreaIT.jjh.project.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.KoreaIT.jjh.project.service.ArticleService;
 import com.KoreaIT.jjh.project.service.MemberService;
 import com.KoreaIT.jjh.project.util.Ut;
+import com.KoreaIT.jjh.project.vo.Article;
 import com.KoreaIT.jjh.project.vo.Member;
 import com.KoreaIT.jjh.project.vo.ResultData;
 import com.KoreaIT.jjh.project.vo.Rq;
@@ -17,6 +22,8 @@ public class UsrMemberController {
 
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	ArticleService articleService;
 	@Autowired
 	private Rq rq;
 	
@@ -175,8 +182,16 @@ public class UsrMemberController {
 
 	//	회원정보페이지(myPage)로 이동
 	@RequestMapping("/usr/member/myPage")
-	public String showMyPage() {
-
+	public String showMyPage(Model model) {
+			
+		if(rq.isLogined() == false) {
+			return rq.jsHistoryBackOnView("로그인후에 이용해주세요");
+		}
+		
+		List<Article> articles = articleService.getArticlesByMemberId(rq.getLoginedMemberId());
+		
+		model.addAttribute("articles",articles);
+		
 		return "usr/member/myPage";
 	}
 	

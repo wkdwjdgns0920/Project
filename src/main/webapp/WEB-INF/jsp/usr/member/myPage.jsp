@@ -46,8 +46,49 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="back_btn">
-			<button class="btn-text-link btn btn-active btn-ghost" type="button" onclick="history.back();">뒤로가기</button>
+	</div>
+</section>
+
+<section class="div_center mt_50">
+	<div class="mt-8 text-xl bor-b w-800">
+		<div class="mx-auto px-3">
+			<table class="table table-zebra w-full list_fir">
+			<thead>
+			<colgroup>
+				<col width="50" />
+				<col width="100" />
+				<col width="150" />
+				<col width="150" />
+				<col width="300" />
+				<col width="50" />
+				<col width="50" />
+			</colgroup>
+			<tr>
+				<th>번호</th>
+				<th>작성날짜</th>
+				<th>작성자</th>
+				<th>제목</th>
+				<th>내용</th>
+				<th>조회수</th>
+				<th>좋아요</th>
+			</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="article" items="${articles }">
+					<tr>
+						<td class="flex justify-center">${article.id }</td>
+						<td>${article.regDate.substring(2,16) }</td>
+						<td>${article.extra_writer }</td>
+						<td>
+							<a class="hover:underline" href="../article/detail?id=${article.id }">${article.title }</a>
+						</td>
+						<td>${article.body }</td>
+						<td>${article.hitCount }</td>
+						<td>${article.likePoint }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 		</div>
 	</div>
 </section>

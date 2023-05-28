@@ -232,6 +232,16 @@ public interface ArticleRepository {
 			WHERE id = #{relId}
 			""")
 	public int getSumLikePointById(int relId);
+	
+	
+	@Select("""
+			SELECT A.*, M.name AS extra_writer
+			FROM article AS A
+			INNER JOIN `member` AS M
+			ON A.memberId = M.id
+			WHERE A.memberId = #{actorId}
+			""")
+	public List<Article> getArticlesByMemberId(int actorId);
 
 
 }

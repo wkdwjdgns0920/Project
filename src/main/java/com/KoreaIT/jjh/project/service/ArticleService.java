@@ -210,4 +210,9 @@ public class ArticleService {
 		return articleRepository.getSumLikePointById(relId);
 	}
 
+	public List<Article> getArticlesByMemberId(int actorId) {
+		
+		return articleRepository.getArticlesByMemberId(actorId);
+	}
+
 }
