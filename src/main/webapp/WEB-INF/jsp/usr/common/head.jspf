@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>${pageTitle }</title>
+<!-- animationCss 불러오기 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 <!-- 테일윈드 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
 
@@ -44,7 +47,7 @@
 
 			<div class="h-10 flex justify-center text-2xl con">
 
-				<div class="logo">
+				<div class="logo animate__animated animate__heartBeat">
 					<a class="h-100 flex justify-center items-center" href="/">
 						<img src="/resources/img/caravan.png"/>
 					</a>

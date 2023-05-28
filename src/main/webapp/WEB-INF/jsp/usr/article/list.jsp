@@ -5,7 +5,7 @@
 
 
 
-<section class="div_center mt-8">
+<section class="div_center mt-8 animate__animated animate__backInUp">
 
 	<div class="mt-8 text-xl po-rel">
 		

@@ -271,14 +271,15 @@
 		</div>
 	</div>
 	
-<!-- </div> -->
-<div class="h-100"></div>
-
+<!-- flexCardBg -->
+<section class = "flexCardBg">
+	<img class="flexCardTh" src="/resources/img/테마1.jpg" alt="" />
+	<div class="flexCardTitle animate__animated animate__tada">주요축제</div>
 <!-- flexCard -->
 <section class="flexCard">
 <div class="main2">
 
-<div class="options">
+<div class="options animate__animated animate__bounceInDown">
 
    <div class="option active option_1" style="--optionBackground:url(https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1553041875109.jpg);" title="1" >
       <div class="shadow"></div>
@@ -335,6 +336,7 @@
 
 </div>
 </section>
+</section>
 
 <div class="h-500"></div>
 
@@ -372,6 +374,28 @@ function replace_page(el) {
 </script>
 
 <style>
+.flexCardBg {
+	position: relative;	
+	
+}
+.flexCard {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.flexCardTh {
+	height: 700px;
+	width: 100%;
+}
+.flexCardTitle {
+	position: absolute;
+	font-size: 3rem;	
+	top : 5%;
+	left: 20%;
+}
+
 .main_search {
 	width: 500px;
 	height: 70px;

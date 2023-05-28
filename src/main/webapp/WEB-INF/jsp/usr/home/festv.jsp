@@ -80,7 +80,7 @@
 	<div class="explain">문화축제 정보</div>
 </section>
 
-<section class="mt_50 div_center">
+<section class="mt_50 div_center animate__fadeIn animate__animated">
 	<div>
 		<!-- 1페이지 -->
 		<c:if test="${param.page == 1}">

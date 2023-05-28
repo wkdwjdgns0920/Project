@@ -77,10 +77,10 @@
 
 <section class="div_center mt_50">
 	<div class="div_al_c">
-		<div id="titleContainer"></div>
+		<div class="animate__animated animate__backInLeft" id="titleContainer"></div>
 	</div>
 	<div class="empty_box"></div>
-	<div id='calendar'></div>
+	<div class="animate__animated animate__backInLeft" id='calendar'></div>
 </section>
 
 <div class="flex justify-center mt-3">
