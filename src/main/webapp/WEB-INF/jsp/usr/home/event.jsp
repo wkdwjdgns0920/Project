@@ -73,14 +73,28 @@
 </script>
 
 
+<style>
+.thema_box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+.bg-w {
+	background-color: white;
+}
+</style>
 
+<div class="thema_box">
+	<img class="flexCardTh" src="/resources/img/테마3.jpg" alt="" />
+</div>
 
 <section class="div_center mt_50">
 	<div class="div_al_c">
-		<div class="animate__animated animate__backInLeft" id="titleContainer"></div>
+		<div class="animate__animated animate__backInLeft bg-w" id="titleContainer"></div>
 	</div>
 	<div class="empty_box"></div>
-	<div class="animate__animated animate__backInLeft" id='calendar'></div>
+	<div class="animate__animated animate__backInLeft bg-w" id='calendar'></div>
 </section>
 
 <div class="flex justify-center mt-3">
@@ -95,7 +109,6 @@
 
 	</div>
 </div>
-<div class="h-500"></div>
 
 
 

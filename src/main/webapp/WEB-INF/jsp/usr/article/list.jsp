@@ -3,11 +3,22 @@
 <c:set var="pageTitle" value="${board.name }" />
 <%@ include file="../common/head.jspf"%>
 
+<style>
+.thema_box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+</style>
 
+<div class="thema_box">
+	<img class="flexCardTh" src="/resources/img/테마2.jpg" alt="" />
+</div>
 
 <section class="div_center mt-8 animate__animated animate__backInUp">
 
-	<div class="mt-8 text-xl po-rel">
+	<div class="mt-8 text-xl po-rel list_bg">
 		
 		<div class="flex mb-4">
 			<div>
@@ -31,29 +42,29 @@
 		</div>
 		<table class="table table-zebra w-full list_fir">
 			<thead>
-			<colgroup>
-				<col width="50" />
-				<col width="100" />
-				<col width="150" />
-				<col width="150" />
-				<col width="300" />
-				<col width="50" />
-				<col width="50" />
-			</colgroup>
-			<tr>
-				<th>번호</th>
-				<th>작성날짜</th>
-				<th>작성자</th>
-				<th>제목</th>
-				<th>내용</th>
-				<th>조회수</th>
-				<th>좋아요</th>
-			</tr>
+				<colgroup>
+					<col width="50" />
+					<col width="100" />
+					<col width="150" />
+					<col width="150" />
+					<col width="300" />
+					<col width="50" />
+					<col width="50" />
+				</colgroup>
+				<tr>
+					<th>번호</th>
+					<th>작성날짜</th>
+					<th>작성자</th>
+					<th>제목</th>
+					<th>내용</th>
+					<th>조회수</th>
+					<th>좋아요</th>
+				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="article" items="${articles }">
 					<tr>
-						<td class="flex justify-center">${article.id }</td>
+						<td class="">${article.id }</td>
 						<td>${article.regDate.substring(2,16) }</td>
 						<td>${article.extra_writer }</td>
 						<td>

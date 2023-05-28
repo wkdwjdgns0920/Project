@@ -4,11 +4,11 @@
 <%@ include file="../common/head.jspf"%>
 <!-- flexCard파일 사용 -->
 <link rel="stylesheet" href="/resource/flexCard.css" />
-	
+
 </body>
 <body onload="showImage()">
 
- <script>
+		<script>
  		/* 현재 위치의 위도,경도값을 가져옴 */
  		function success({ coords, timestamp }) {
             const latitude = coords.latitude;   // 위도
@@ -230,7 +230,7 @@
 			        };
 </script>
 
-<script type="text/javascript">
+		<script type="text/javascript">
 	var imgArray = new Array();
 	imgArray[0] = "https://www.yuseong.go.kr/thumbnail/trrsrt/TR_202105110257537201.jpg";
 	imgArray[1] = "https://www.yuseong.go.kr/thumbnail/trrsrt/TR_202105110255503251.jpg";
@@ -246,102 +246,115 @@
 	
 </script>
 
-<!-- <img class="main_body" src="https://www.yuseong.go.kr/thumbnail/trrsrt/TR_202105110257537201.jpg" alt=""> -->
-<div class="main_body">
-	<img class="img_box" id="introImg" border="0">
-	<form action="">
-	<div class="search_box">
-		<input class="main_search" type="text" />
-		<div class="empty_box"></div>
-		<div class="search_submit">
-			<button type="submit"><img class="search_btn" src="/resources/img/search1.jpg"/></button>
+		<!-- <img class="main_body" src="https://www.yuseong.go.kr/thumbnail/trrsrt/TR_202105110257537201.jpg" alt=""> -->
+		<div class="main_body">
+				<img class="img_box" id="introImg" border="0">
+				<form action="">
+						<div class="search_box">
+								<input class="main_search" type="text" />
+								<div class="empty_box"></div>
+								<div class="search_submit">
+										<button type="submit">
+												<img class="search_btn" src="/resources/img/search1.jpg" />
+										</button>
+								</div>
+						
+				</form>
 		</div>
-		</form>
-	</div>
-	<div class="weatherBox">
-		<div id=skyImgContainer></div>
-		<div>
-			<div id="skyContainer"></div>
-			<div id="tmpContainer"></div>
-			<div id="popContainer"></div>
-			<div id="pcpContainer"></div>
-			<div id="rehContainer"></div>
-			<div id="tmnContainer"></div>
-			<div id="tmxContainer"></div>
+		<div class="weatherBox">
+				<div id=skyImgContainer></div>
+				<div>
+						<div id="skyContainer"></div>
+						<div id="tmpContainer"></div>
+						<div id="popContainer"></div>
+						<div id="pcpContainer"></div>
+						<div id="rehContainer"></div>
+						<div id="tmnContainer"></div>
+						<div id="tmxContainer"></div>
+				</div>
 		</div>
-	</div>
-	
-<!-- flexCardBg -->
-<section class = "flexCardBg">
-	<img class="flexCardTh" src="/resources/img/테마1.jpg" alt="" />
-	<div class="flexCardTitle animate__animated animate__tada">주요축제</div>
-<!-- flexCard -->
-<section class="flexCard">
-<div class="main2">
 
-<div class="options animate__animated animate__bounceInDown">
+		<!-- flexCardBg -->
+		<section class="flexCardBg">
+				<img class="flexCardTh" src="/resources/img/테마1.jpg" alt="" />
+				<div class="flexCardTitle animate__animated animate__tada">주요축제</div>
+				<!-- flexCard -->
+				<section class="flexCard">
+						<div class="main2">
 
-   <div class="option active option_1" style="--optionBackground:url(https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1553041875109.jpg);" title="1" >
-      <div class="shadow"></div>
-      <div class="label">
-         
-         <div class="info">
-            <div class="main">대청호 벚꽃축제</div>
-            <div class="sub"></div>
-            
-         </div>
-      </div>
-   </div>
-   <div class="option option_2" style="--optionBackground:url(https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1461904424401.jpg);" title="2" >
-      <div class="shadow"></div>
-      <div class="label">
-         <div class="info">
-            <div class="main">유성온천문화축제</div>
-            <div class="sub"></div>
-            
-         </div>
-      </div>
-   </div>
-   <div class="option option_3" style="--optionBackground:url(https://www.barefootfesta.com:444/mobile/project/design/main/main_img01.jpg);" title="3" >
-      <div class="shadow"></div>
-      <div class="label">
-         <div class="info">
-            <div class="main">계족산맨발축제</div>
-            <div class="sub"></div>
-            
-         </div>
-      </div>
-   </div>
-   <div class="option option_4" style="--optionBackground:url(https://www.daejeontoday.com/news/photo/201903/541285_192161_5837.jpg);" title="4" >
-      <div class="shadow"></div>
-      <div class="label">
-         <div class="info">
-            <div class="main">대청호 대덕뮤직페스티벌</div>
-            <div class="sub"></div>
-            
-         </div>
-      </div>
-   </div>
-   <div class="option option_5" style="--optionBackground:url(https://www.timenews.co.kr/web/news/article_image/81d532e05ec6b0d7f2b10f9f362f4f88);" title="5" >
-      <div class="shadow"></div>
-      <div class="label">
-         <div class="info">
-            <div class="main">대전 0시 뮤직페스티벌</div>
-            <div class="sub"></div>
-            
-         </div>
-      </div>
-   </div>
-</div>
+								<div class="options animate__animated animate__bounceInDown">
 
-</div>
-</section>
-</section>
+										<div class="option active option_1"
+												style="--optionBackground: url(https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1553041875109.jpg);"
+												title="1">
+												<div class="shadow"></div>
+												<div class="label">
 
-<div class="h-500"></div>
+														<div class="info">
+																<div class="main">대청호 벚꽃축제</div>
+																<div class="sub"></div>
 
-<!-- flexCard 액션관련 -->
-<script>
+														</div>
+												</div>
+										</div>
+										<div class="option option_2"
+												style="--optionBackground: url(https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1461904424401.jpg);"
+												title="2">
+												<div class="shadow"></div>
+												<div class="label">
+														<div class="info">
+																<div class="main">유성온천문화축제</div>
+																<div class="sub"></div>
+
+														</div>
+												</div>
+										</div>
+										<div class="option option_3"
+												style="--optionBackground: url(https://www.barefootfesta.com:444/mobile/project/design/main/main_img01.jpg);"
+												title="3">
+												<div class="shadow"></div>
+												<div class="label">
+														<div class="info">
+																<div class="main">계족산맨발축제</div>
+																<div class="sub"></div>
+
+														</div>
+												</div>
+										</div>
+										<div class="option option_4"
+												style="--optionBackground: url(https://www.daejeontoday.com/news/photo/201903/541285_192161_5837.jpg);"
+												title="4">
+												<div class="shadow"></div>
+												<div class="label">
+														<div class="info">
+																<div class="main">대청호 대덕뮤직페스티벌</div>
+																<div class="sub"></div>
+
+														</div>
+												</div>
+										</div>
+										<div class="option option_5"
+												style="--optionBackground: url(https://www.timenews.co.kr/web/news/article_image/81d532e05ec6b0d7f2b10f9f362f4f88);"
+												title="5">
+												<div class="shadow"></div>
+												<div class="label">
+														<div class="info">
+																<div class="main">대전 0시 뮤직페스티벌</div>
+																<div class="sub"></div>
+
+														</div>
+												</div>
+										</div>
+								</div>
+
+						</div>
+				</section>
+		</section>
+
+		<div class="h-500"></div>
+
+		<!-- flexCard 액션관련 -->
+		<script>
 $(".option").click(function(){
 	if (!$(this).hasClass("active")) {
 		$(".option").removeClass("active");
@@ -373,26 +386,28 @@ function replace_page(el) {
 
 </script>
 
-<style>
+		<style>
 .flexCardBg {
-	position: relative;	
-	
+	position: relative;
 }
+
 .flexCard {
-	width: 100%;
-	position: absolute;
+	width: 100%; position : absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	position: absolute;
 }
+
 .flexCardTh {
 	height: 700px;
 	width: 100%;
 }
+
 .flexCardTitle {
 	position: absolute;
-	font-size: 3rem;	
-	top : 5%;
+	font-size: 3rem;
+	top: 5%;
 	left: 20%;
 }
 
@@ -403,41 +418,47 @@ function replace_page(el) {
 	padding: 0 30px;
 	font-size: 2rem;
 }
+
 .search_box {
 	z-index: 10;
 	position: absolute;
-	display:flex;
-	top:50%;
+	display: flex;
+	top: 50%;
 	left: 38%;
 	border-radius: 20px;
 }
+
 .weatherBox {
 	display: flex;
 	z-index: 10;
 	position: absolute;
-	top:25%;
+	top: 25%;
 	left: auto;
 	right: 10%;
 	border-radius: 20px;
 	background-color: gold;
 }
+
 .skyImgBox {
 	height: 100px;
 	width: 100px;
 	border-radius: 20px;
 }
+
 #skyImgContainer {
 	border-radius: 20px;
 }
-.search_submit{
+
+.search_submit {
 	width: 50px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
 .search_btn {
 	border-radius: 30px;;
 }
 </style>
- 
-<%@ include file="../common/foot.jspf"%>
+
+		<%@ include file="../common/foot.jspf"%>

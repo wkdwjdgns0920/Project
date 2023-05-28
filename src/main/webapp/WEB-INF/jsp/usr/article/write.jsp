@@ -3,7 +3,20 @@
 <c:set var="pageTitle" value="Article Write" />
 <%@ include file="../common/head.jspf"%>
 
-<section class="div_center mt_50">
+<style>
+.thema_box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+</style>
+
+<div class="thema_box">
+	<img class="flexCardTh" src="/resources/img/테마2.jpg" alt="" />
+</div>
+
+<section class="div_center mt_50 animate__animated animate__backInUp">
 	<div class="mt-8 text-xl po-rel w-800 h-800">
 		<form action="../article/doWrite" method="POST" enctype="multipart/form-data">
 			<table class="table table-zebra w-full h-700">

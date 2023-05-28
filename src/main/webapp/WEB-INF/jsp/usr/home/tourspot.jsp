@@ -81,9 +81,21 @@
 	xhr.send('');
 </script>
 
-<script>
-	
-</script>
+<style>
+.thema_box {
+	position: absolute;
+	top: 60%;
+	left: 0;
+	z-index: -1;
+}
+.bg-w {
+	background-color: white;
+}
+</style>
+
+<div class="thema_box">
+	<img class="flexCardTh" src="/resources/img/테마4.jpg" alt="" />
+</div>
 
 <!-- 페이지 알림섹션 -->
 <section class="topSection">
@@ -269,8 +281,6 @@
 			</c:if>
 	
 </div>
-
-<div class="h-500"></div>
 
 <!-- 지도API -->
 <script type="text/javascript"
