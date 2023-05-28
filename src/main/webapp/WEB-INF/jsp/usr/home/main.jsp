@@ -163,26 +163,26 @@
 			        	sky = "소나기";
 			        }
 			        
-			        var skyBox = document.createElement("div");
+			       /*  var skyBox = document.createElement("div");
 			        skyBox.innerHTML = "<div class='skyBox'>날씨 : " + sky + " </div>"
-			        skyContainer.appendChild(skyBox);
+			        skyContainer.appendChild(skyBox); */
 			        
 			        //	날씨이미지
 			        var skyImgBox = document.createElement("div");
 			        if(sky == "맑음"){
-			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img src='/resources/img/맑음.png'/></div>"        	
+			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img class='weatehrImg' src='/resources/img/맑음.png'/></div>"        	
 			        } else if (sky == "구름많음") {
-			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img src='/resources/img/구름많음.png'/></div>" 
+			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img class='weatehrImg' src='/resources/img/구름많음.png'/></div>" 
 			        } else if (sky == "흐림"){
-			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img src='/resources/img/흐림.png'/></div>" 
+			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img class='weatehrImg' src='/resources/img/흐림.png'/></div>" 
 			        } else if (sky == "비내림"){
-			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img src='/resources/img/비내림.png'/></div>"
+			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img class='weatehrImg' src='/resources/img/비내림.png'/></div>"
 			        } else if (sky == "비/눈"){
-			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img src='/resources/img/비눈.png'/></div>"
+			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img class='weatehrImg' src='/resources/img/비눈.png'/></div>"
 			        } else if (sky == "눈"){
-			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img src='/resources/img/눈.png'/></div>"
+			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img class='weatehrImg' src='/resources/img/눈.png'/></div>"
 			        } else {
-			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img src='/resources/img/소나기.png'/></div>"
+			        	skyImgBox.innerHTML = "<div class='skyImgBox'><img class='weatehrImg' src='/resources/img/소나기.png'/></div>"
 			        }
 			        
 			        skyImgContainer.appendChild(skyImgBox);
@@ -191,20 +191,20 @@
 			        //	기온(℃)
 			        var tmp = data.items.item[0].fcstValue;
 			        var tmpBox = document.createElement("div");
-			        tmpBox.innerHTML = "<div class='tmpBox'>현재온도 : " + tmp + " ℃</div>"
+			        tmpBox.innerHTML = "<div class='tmpBox'>" + tmp + " ℃</div>"
 			        tmpContainer.appendChild(tmpBox);
 			        
 					//	일일 최저기온(℃)
-			        var tmx = data.items.item[0].fcstValue;
+			        /* var tmx = data.items.item[0].fcstValue;
 			        var tmxBox = document.createElement("div");
 			        tmxBox.innerHTML = "<div class='tmxBox'>최저기온 : " + tmx + " ℃</div>"
-			        tmxContainer.appendChild(tmxBox);
+			        tmxContainer.appendChild(tmxBox); */
 			        
 					//  일일 최고기온(℃)
-			        var tmn = data.items.item[0].fcstValue;
+			       /*  var tmn = data.items.item[0].fcstValue;
 			        var tmnBox = document.createElement("div");
 			        tmnBox.innerHTML = "<div class='tmnBox'>최고기온 : " + tmn + " ℃</div>"
-			        tmnContainer.appendChild(tmnBox);
+			        tmnContainer.appendChild(tmnBox); */
 			        
 			        //	강수확률(%)
 			        var pop = data.items.item[7].fcstValue;
@@ -213,16 +213,16 @@
 			        popContainer.appendChild(popBox);
 			        
 					//	1시간 강수량(mm)
-			        var pcp = data.items.item[9].fcstValue;
+			        /* var pcp = data.items.item[9].fcstValue;
 			        var pcpBox = document.createElement("div");
 			        pcpBox.innerHTML = "<div class='pcpBox'>강수량 : " + pcp + " </div>"
-			        pcpContainer.appendChild(pcpBox);
+			        pcpContainer.appendChild(pcpBox); */
 			        
 					//	습도(%)
-			        var reh = data.items.item[10].fcstValue;
+			       /*  var reh = data.items.item[10].fcstValue;
 			        var rehBox = document.createElement("div");
 			        rehBox.innerHTML = "<div class='rehBox'>습도 : " + reh + " %</div>"
-			        rehContainer.appendChild(rehBox);
+			        rehContainer.appendChild(rehBox); */
 			    }
 			};
 			
@@ -261,19 +261,17 @@
 						
 				</form>
 		</div>
+		
+	<section class="weatherSection">
+		<div class="regionBox">대전광역시</div>
 		<div class="weatherBox">
-				<div id=skyImgContainer></div>
-				<div>
-						<div id="skyContainer"></div>
-						<div id="tmpContainer"></div>
-						<div id="popContainer"></div>
-						<div id="pcpContainer"></div>
-						<div id="rehContainer"></div>
-						<div id="tmnContainer"></div>
-						<div id="tmxContainer"></div>
-				</div>
+			<div id=skyImgContainer></div>
+			<div>
+				<div id="tmpContainer"></div>
+				<div id="popContainer"></div>
+			</div>
 		</div>
-
+	</section>
 		<!-- flexCardBg -->
 		<section class="flexCardBg">
 				<img class="flexCardTh" src="/resources/img/테마1.jpg" alt="" />
@@ -427,22 +425,54 @@ function replace_page(el) {
 	left: 38%;
 	border-radius: 20px;
 }
-
-.weatherBox {
-	display: flex;
+.weatherSection {
 	z-index: 10;
 	position: absolute;
 	top: 25%;
 	left: auto;
 	right: 10%;
-	border-radius: 20px;
-	background-color: gold;
 }
 
-.skyImgBox {
-	height: 100px;
-	width: 100px;
+.weatherBox {
+	display: flex;
+	justify-content :center;
+	align-items: center;
+	z-index: 10;
 	border-radius: 20px;
+	background-color: gray;
+	opacity: 0.7;
+	width: 220px;
+}
+.regionBox {
+	width: 220px;
+	height: 50px;
+	border-radius: 20px;
+	background-color: gray;
+	opacity: 0.7;
+	margin-bottom: 3px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem;
+}
+
+.weatehrImg {
+	border-radius: 100px;
+	height: 70px;
+	display: flex;
+	justify-content :center;
+	align-items: center;
+	margin: 10px 10px;
+	
+}
+.tmpBox {
+	font-size: 2rem;
+	align-items: center;
+	margin: 0 10px;
+}
+
+.popBox {
+	margin: 0 10px;
 }
 
 #skyImgContainer {

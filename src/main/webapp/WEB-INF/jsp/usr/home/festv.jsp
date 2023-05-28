@@ -74,6 +74,24 @@
 	</div>
 </section> --%>
 
+<script>
+$(document).ready(function(){
+	$('.i_box').mouseover(function(){
+		$(this).addClass("animate__headShake animate__animated");
+	});
+});
+
+$(document).ready(function(){
+	$('.i_box').mouseleave(function(){
+		$(this).removeClass("animate__headShake animate__animated");
+	});
+});
+</script>
+
+<div class="thema_box">
+	<img class="flexCardTh" src="/resources/img/테마4.jpg" alt="" />
+</div>
+
 <!-- 페이지 알림섹션 -->
 <section class="topSection">
 	<img class="topImg" src="/resources/img/img2.jpg"/>
@@ -87,7 +105,7 @@
 			<div class="w-500 h-00 text-xl h-300">
 
 				<div class="jc-sb">
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=1">
 							<img class="i_box"
 								src="https://www.newstnt.com/news/photo/201911/40653_33359_4942.jpg"
@@ -98,7 +116,7 @@
 
 					<div class="img_empty"></div>
 
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=2">
 							<img class="i_box"
 								src="https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1553041875109.jpg"
@@ -109,7 +127,7 @@
 
 					<div class="img_empty"></div>
 
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=3">
 							<img class="i_box"
 								src="https://mblogthumb-phinf.pstatic.net/MjAxNzA1MTJfMTQg/MDAxNDk0NTI4MTY0ODgx.HjeOwQNGczmjevfbyKv0zZBWEcZa5nyy0YNcYF0G41Ug.EjUKx9j9B5BQBcY3UyAPprEsaU5K2ZraMHqMn_nO79Ug.JPEG.first_seogu/%EB%8C%80%EC%A0%84_%EC%84%9C%EA%B5%AC%ED%9E%90%EB%A7%81_%EC%95%84%ED%8A%B8%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C%E2%94%83%EC%95%84%ED%8A%B8_%EB%B9%9B_%ED%84%B0%EB%84%9016.jpg?type=w800"
@@ -127,7 +145,7 @@
 
 				<div class="jc-sb">
 
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=4">
 							<img class="i_box"
 								src="https://www.barefootfesta.com:444/mobile/project/design/main/main_img01.jpg"
@@ -138,7 +156,7 @@
 
 					<div class="img_empty"></div>
 
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=5">
 							<img class="i_box"
 								src="https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1461904424401.jpg"
@@ -149,7 +167,7 @@
 
 					<div class="img_empty"></div>
 
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=6">
 							<img class="i_box"
 								src="https://cdn.ggilbo.com/news/photo/201911/725823_562028_88.jpg"
@@ -167,7 +185,7 @@
 			<div class="w-500 h-00 text-xl h-300">
 				<div class="jc-sb">
 
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=7">
 							<img class="i_box"
 								src="https://www.daejeontoday.com/news/photo/201903/541285_192161_5837.jpg"
@@ -178,7 +196,7 @@
 
 					<div class="img_empty"></div>
 
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=8">
 							<img class="i_box"
 								src="https://cdn.ccdailynews.com/news/photo/202110/2090065_559742_2722.jpg"
@@ -189,7 +207,7 @@
 
 					<div class="img_empty"></div>
 
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=9">
 							<img class="i_box"
 								src="https://image.여기유.com/content_festival/2020011311055815788811582751.jpg"
@@ -205,7 +223,7 @@
 
 			<div class="w-500 h-00 text-xl h-300">
 				<div class="jc-sb">
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=10">
 							<img class="i_box"
 								src="https://www.timenews.co.kr/web/news/article_image/81d532e05ec6b0d7f2b10f9f362f4f88"
@@ -216,7 +234,7 @@
 
 					<div class="img_empty"></div>
 
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=11">
 							<img class="i_box"
 								src="https://img2.yna.co.kr/etc/inner/KR/2018/10/17/AKR20181017088900063_01_i_P4.jpg"
@@ -227,7 +245,7 @@
 
 					<div class="img_empty"></div>
 
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=12">
 							<img class="i_box"
 								src="https://www.thesegye.com/news/data/20221016/p1065578299763795_321_thum.jpg"
@@ -246,7 +264,7 @@
 
 					<div class="empty_box"></div>
 
-					<div class="">
+					<div class="festvImg">
 						<a href="festvDetail?id=13">
 							<img class="i_box"
 								src="https://newsimg.sedaily.com/2023/01/02/29KBGC3TII_1.jpg"
@@ -284,6 +302,16 @@
 
 
 <style>
+.thema_box {
+	position: absolute;
+	top: 60%;
+	left: 0;
+	z-index: -1;
+}
+.bg-w {
+	background-color: white;
+}
+
 .i_box {
 	height: 250px;
 	width: 250px;

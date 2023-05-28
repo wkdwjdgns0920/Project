@@ -509,7 +509,7 @@ header>div>ul>li>ul>li:hover {
 .event_section {
 	display: flex;
 	justify-content: center;
-
+	opacity: 0.8;
 }
 .topSection {
 	position: relative;

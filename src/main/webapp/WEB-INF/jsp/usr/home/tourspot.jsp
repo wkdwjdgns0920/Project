@@ -132,6 +132,7 @@
 	border-radius: 20px;
 	font-size: 25px;
 	padding: 50px;
+	opacity: 0.9;
 }
 
 .modal_empty {
