@@ -10,13 +10,14 @@
 	left: 0;
 	z-index: -1;
 }
+
 </style>
 
 <div class="thema_box">
 	<img class="flexCardTh" src="/resources/img/테마2.jpg" alt="" />
 </div>
 
-<section class="div_center mt-8 animate__animated animate__backInUp">
+<section class="div_center mt-8 animate__animated animate__backInUp ">
 
 	<div class="mt-8 text-xl po-rel list_bg">
 		

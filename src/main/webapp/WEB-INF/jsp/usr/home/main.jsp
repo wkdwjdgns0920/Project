@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="연습" />
+<c:set var="pageTitle" value="Main" />
 
 <%@ include file="../common/head.jspf"%>
 <!-- flexCard파일 사용 -->
@@ -684,7 +684,7 @@ html, body{
 	border: 2px solid #444;
 	padding: 5% 5% 5% 5%;
 	font-weight: bold;
-	background-color: #00bf00;
+	background-color: #FFC0CB;
 }
 
 .card > p {

@@ -99,7 +99,7 @@
 
 <!-- 페이지 알림섹션 -->
 <section class="topSection">
-	<img class="topImg" src="/resources/img/img4.jpg" />
+	<img class="topImg" src="/resources/img/img5.jpg" />
 	<div class="explain">문화관광(관광지)</div>
 </section>
 

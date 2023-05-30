@@ -247,9 +247,8 @@
 				</a>
 			</div>
 			<div class="empty_box"></div>
-			<button class="btn btn-active btn-ghost" type="button" onclick="history.back();">뒤로가기</button>
 			<c:if test="${article.actorCanModify }">
-				<a class="btn btn-active btn-ghost" href="../article/modify?id=${article.id }">수정</a>
+				<a class="btn btn-active btn-ghost detail_modify-btn" href="../article/modify?id=${article.id }">수정</a>
 			</c:if>
 			<c:if test="${article.actorCanDelete }">
 				<a class="btn btn-active btn-ghost" onclick="if(confirm('정말 삭제하시겠습니까?')==false) return false;"
@@ -309,7 +308,7 @@
 				<div class="modify_btn_box">
 					<c:if test="${reply.actorCanModify }">
 						<button class="reply_modify_btn_${reply.id }" onclick="showModifyForm(${reply.id})">수정하기</button>
-						<button class="p-1 reply_doModify_btn_${reply.id }" onclick="modifyReply(${reply.id})" style="display: none;">수정하기2</button>
+						<button class="p-1 reply_doModify_btn_${reply.id }" onclick="modifyReply(${reply.id})" style="display: none;">수정하기</button>
 					</c:if>
 				</div>
 				<hr />
@@ -350,9 +349,9 @@
 			}, function(data) {
 
 				if (data.success) {
-					alert('수정성공!@#');
+					alert('댓글수정성공!');
 				} else {
-					alert('수정실패!@#');
+					alert('댓글수정실패!');
 				}
 
 			}, 'json');

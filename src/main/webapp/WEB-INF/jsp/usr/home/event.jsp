@@ -47,9 +47,9 @@
 				var targetCdNm = eventData[i].targetCdNm;
 
 				var eventElement = document.createElement("div");
-				eventElement.innerHTML = "<br>title: " + title + "<br>날짜: "
-						+ beginDt + "<br>장소:" + placeCdNm + "<br>관람연령:"
-						+ targetCdNm + "<br>";
+				eventElement.innerHTML = "<div class='schedule'><br>공연: " + title + "<br>날짜: "
+						+ beginDt + "<br>장소: " + placeCdNm + "<br>관람연령: "
+						+ targetCdNm + "<br></div>";
 				titleContainer.appendChild(eventElement);
 
 			}
@@ -83,6 +83,17 @@
 .bg-w {
 	background-color: white;
 }
+.showTitle{
+	font-size: 2rem;
+	text-align: center;
+}
+.schedule_box{
+	color: black;
+	background-color: white;
+}
+.schedule {
+	padding: 0 10px;
+}
 </style>
 
 <div class="thema_box">
@@ -90,8 +101,9 @@
 </div>
 
 <section class="div_center mt_50">
-	<div class="div_al_c">
-		<div class="animate__animated animate__backInLeft bg-w" id="titleContainer"></div>
+	<div class="schedule_box animate__animated animate__backInLeft">
+		<div class="showTitle">공연정보</div>
+		<div class="" id="titleContainer"></div>
 	</div>
 	<div class="empty_box"></div>
 	<div class="animate__animated animate__backInLeft bg-w" id='calendar'></div>

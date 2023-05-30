@@ -4,8 +4,35 @@
 <%@ include file="../common/head.jspf"%>
 <hr />
 
+<style>
+.myPage_bg {
+	position: absolute;
+	z-index: -10;	
+}
+.myPageTitle {
+	margin-bottom: 20px;
+	font-size: 2rem;
+	font-weight: bold;
+}
+.myPageList {
+	font-size: 2rem;
+	font-weight: bold;
+	padding: 10px;
+	z-index: 19;
+}
+.bg-w {
+	background-color: white;
+}
+</style>
+
+<div class="myPage_bg">
+	<img class="flexCardTh" src="/resources/img/테마2.jpg" alt="" />
+</div>
 <section class="div_center mt_50">
-	<div class="mt-8 text-xl bor-b po-rel w-800">
+	<div class="mt-8 text-xl po-rel w-800">
+		<div class="div_center">
+			<div class="myPageTitle">회원정보</div>
+		</div>
 		<div class="mx-auto px-3">
 			<table border="1" class="table table-zebra w-full">
 				<colgroup>
@@ -50,9 +77,12 @@
 </section>
 
 <section class="div_center mt_50">
-	<div class="mt-8 text-xl bor-b w-800">
-		<div class="mx-auto px-3">
-			<table class="table table-zebra w-full list_fir">
+	<div class="mt-8 text-xl w-800">
+		<div class="div_center bg-w">
+			<div class="myPageList bg-w">나의 게시글</div>
+		</div>
+		<div class="mx-auto px-3 bg-w">
+			<table class="table table-zebra w-full">
 			<thead>
 			<colgroup>
 				<col width="50" />

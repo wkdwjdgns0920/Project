@@ -149,7 +149,7 @@ header>div>ul>li>ul>li:hover {
 
 .list_bg{
 	background-color: white;
-	
+	padding: 20px;
 }
 
 
@@ -191,7 +191,10 @@ header>div>ul>li>ul>li:hover {
 .p_50 {
 	padding: 50px;
 }
-
+.detail_modify-btn {
+	margin-right: 10px;
+	
+}
 .reply_modify_box {
 	height: 200px;
 	width: 100%;
@@ -221,7 +224,7 @@ header>div>ul>li>ul>li:hover {
 } */
 
 .reply_form {
-	margin-top: 50px;
+	margin-top: 80px;
 	display: flex;
 	justify-content: flex-start;
 }
@@ -413,7 +416,7 @@ header>div>ul>li>ul>li:hover {
 }
 
 .checkPwId_put {
-	width: 400px;
+	width: 450px;
 	height: 50px;
 	border: 1px solid black;
 	border-radius: 10px;
@@ -422,7 +425,7 @@ header>div>ul>li>ul>li:hover {
 }
 
 .checkPw_put {
-	width: 400px;
+	width: 450px;
 	height: 50px;
 	border: 1px solid black;
 	border-radius: 10px;
@@ -445,6 +448,7 @@ header>div>ul>li>ul>li:hover {
 	border: 3px solid black;
 	margin-left: 50px;
 	margin-right: 50px;
+	border-radius: 10px;
 }
 
 .bor-1 {
@@ -466,7 +470,7 @@ header>div>ul>li>ul>li:hover {
 	position: relative;
 }
 .topImg {
-	height: 500px;
+	height: 300px;
 	width: 100%;
 }
 .explain {

@@ -24,7 +24,6 @@ $(document).ready(function() {
 
 			<div class="checkPw_put_box">
 				<input class="checkPw_put mt_3" type="text" autocomplete="off" placeholder="비밀번호" name="loginPw" />
-				<div class="empty_btn btn btn-xs pw_empty">X</div>
 			</div>
 			<div class="h-30"></div>
 			<button class="btn_put input input-bordered" type="submit">확인</button>

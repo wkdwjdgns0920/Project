@@ -4,10 +4,17 @@
 <%@ include file="../common/head.jspf"%>
 <hr />
 
-
-
+<style>
+.modifyPage_bg {
+	position: absolute;
+	z-index: -10;	
+}
+</style>
+<div class="modifyPage_bg">
+	<img class="flexCardTh" src="/resources/img/테마2.jpg" alt="" />
+</div>
 <section class="div_center mt_50">
-	<div class="mt-8 text-xl bor-b po-rel w-800">
+	<div class="mt-8 text-xl po-rel w-800">
 		<div class="table-box-type-2">
 			<form action="../member/doModify" method="POST" onsubmit="if(confirm('정말 수정하시겠습니까?')==false) return false;">
 				<input type="hidden" name="loginId" value="${rq.loginedMember.loginId }" />
@@ -71,16 +78,13 @@
 							<th></th>
 							<td>
 								<div class="flex justify-end">
-									<button class="btn btn-ghost" type="submit" value="수정" />수정</button>
+									<button class="btn btn-active btn-ghost" type="submit" value="수정" />수정</button>
 								</div>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</form>
-		</div>
-		<div class="back_btn">
-			<button class="btn-text-link btn btn-active btn-ghost" type="button" onclick="history.back();">뒤로가기</button>
 		</div>
 	</div>
 </section>
