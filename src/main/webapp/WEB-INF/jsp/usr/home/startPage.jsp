@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/resource/flexCard.css" />
 
 
-		<script>
+<script>
  		/* 현재 위치의 위도,경도값을 가져옴 */
  		function success({ coords, timestamp }) {
             const latitude = coords.latitude;   // 위도
@@ -209,7 +209,7 @@
 			        //	강수확률(%)
 			        var pop = data.items.item[7].fcstValue;
 			        var popBox = document.createElement("div");
-			        popBox.innerHTML = "<div class='popBox'>강수확률 : " + pop + " %</div>"
+			        popBox.innerHTML = "<div class='popBox'>강수확률 : " + pop + "%</div>"
 			        popContainer.appendChild(popBox);
 			        
 					//	1시간 강수량(mm)
@@ -231,6 +231,44 @@
 </script>
 
 
+<style>
+.img_box {
+	height: 960px;
+	width: 100%;
+	z-index: -10;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.main_search {
+	border : 1px solid black;
+	width: 500px;
+	height: 70px;
+	border-radius: 20px;
+	padding: 0 30px;
+	font-size: 2rem;
+}
+
+.search_box {
+	z-index: 10;
+	position: absolute;
+	display: flex;
+	top: 50%;
+	left: 38%;
+	border-radius: 20px;
+}
+.search_submit {
+	width: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.search_btn {
+	border-radius: 30px;;
+}
+</style>
+
 <!-- 메인페이지 이미지 -->
 <script type="text/javascript">
 	var imgArray = new Array();
@@ -248,24 +286,25 @@
 	
 </script>
 
-<body onload ="showImage()"></body>
+<body onload="showImage()"></body>
 <div class="content">
-	<!-- 메인페이지 이미지 -->
-		<div class="main_body">
-			<img class="img_box" id="introImg" border="0" />
-		</div>
-		<form action="">
-			<div class="search_box">
-				<input class="main_search" type="text" />
-				<div class="empty_box"></div>
-				<div class="search_submit">
-					<button type="submit">
-						<img class="search_btn" src="/resources/img/search1.jpg" />
-					</button>
-				</div>
-			</div>
-		</form>
-<!-- 날씨박스 -->	
+	<div class="h-800"></div>
+	<section class="first_mainPage">
+		<img class="img_box" id="introImg" border="0">
+		<form action="../article/list">
+						<input type="hidden" name="searchKeywordType" value="title,body" />
+						<div class="search_box">
+								<input class="main_search" value="${param.searchKeyword }" type="text" ></input>
+								<div class="empty_box"></div>
+								<div class="search_submit">
+										<button type="submit">
+												<img class="search_btn" src="/resources/img/search1.jpg" />
+										</button>
+								</div>
+						</div>
+				</form>
+	</section>
+	<!-- 날씨 -->
 	<section class="weatherSection">
 		<div class="regionBox">대전광역시</div>
 		<div class="weatherBox">
@@ -279,12 +318,14 @@
 </div>
 
 <div class="content">
-	<!-- flexCardBg -->
-		<section class="flexCardBg">
-				<img class="flexCardTh" src="/resources/img/테마1.jpg" alt="" />
-				<div class="flexCardTitle animate__animated animate__tada">주요축제</div>
+
+	<div class="div_center">
+		<div class="flexCardTitle animate__animated animate__tada">주요축제</div>
+	</div>
+	<div class="h-200"></div>
 				<!-- flexCard -->
 				<section class="flexCard">
+				<img class="flexCardTh" src="/resources/img/img1.jpg" alt="" />
 						<div class="main2">
 								<div class="options animate__animated animate__bounceInDown">
 
@@ -352,23 +393,101 @@
 
 						</div>
 				</section>
-		</section>
 </div>
+
+<script>
+$(document).ready(function(){
+	$('.image').mouseover(function(){
+		$(this).addClass("animate__headShake animate__animated");
+	});
+});
+
+$(document).ready(function(){
+	$('.image').mouseleave(function(){
+		$(this).removeClass("animate__headShake animate__animated");
+	});
+});
+</script>
+
 <div class="content">
-	<h1>3</h1>
+	
+	<div class="div_center">
+		<div class="polaroidTitle animate__animated animate__tada">대전여행영상</div>
+	</div>
+	
+	
+	<section class="polaroidBox">
+		<img class="polaroidTh" src="/resources/img/한밭수목원2.jpg" alt="" />
+		<div class="polaroid">
+		<div class="card">
+			<div class="image">
+				<a href="https://www.youtube.com/watch?v=OhNELFhe87w">
+					<img src="https://daejeontour.co.kr/boardImageStreamOut.do?file_idx=861" alt="">
+				</a>
+			</div>
+			<p>2020년 새로운 대전여행!</p>
+		</div>
+		</div>
+		
+		<div class="polaroid">
+		<div class="card">
+			<div class="image">
+				<a href="https://www.youtube.com/watch?v=7OGX_xXC06s">
+					<img src="https://daejeontour.co.kr/boardImageStreamOut.do?file_idx=860" alt="">
+				</a>
+			</div>
+			<p>맛있는 계족산황톳길~!!</p>
+		</div>
+		</div>
+		
+		<div class="polaroid">
+		<div class="card">
+			<div class="image">
+				<a href="https://www.youtube.com/watch?v=P5C7GPmTenY">
+					<img src="https://daejeontour.co.kr/boardImageStreamOut.do?file_idx=859" alt="">
+				</a>
+			</div>
+			<p>랜선여행 여름안에서 대전 안에서 대전육교</p>
+		</div>
+		</div>
+	</section>
+	
+	<section class="polaroidBox">
+		<div class="polaroid">
+		<div class="card">
+			<div class="image">
+				<a href="https://www.youtube.com/watch?v=Hozsbhhkfck">
+					<img src="https://daejeontour.co.kr/boardImageStreamOut.do?file_idx=856" alt="">
+				</a>
+			</div>
+			<p>랜선여행 여름안에서 대전 안에서 한밭수목원</p>
+		</div>
+		</div>
+		
+		<div class="polaroid">
+		<div class="card">
+			<div class="image">
+				<a href="https://www.youtube.com/watch?v=NJ4WiItqd1Q">
+					<img src="https://daejeontour.co.kr/boardImageStreamOut.do?file_idx=855" alt="">
+				</a>
+			</div>
+			<p>랜선여행 여름안에서 대전 안에서 대청호</p>
+		</div>
+		</div>
+		
+		<div class="polaroid">
+		<div class="card">
+			<div class="image">
+				<a href="https://www.youtube.com/watch?v=AzwaMHhYnJQ">
+					<img src="https://daejeontour.co.kr/boardImageStreamOut.do?file_idx=854" alt="">
+				</a>
+			</div>
+			<p>대전 원도심 역사투어 1박2일 코스</p>
+		</div>
+		</div>
+	</section>
 </div>
-<div class="content">
-	<h1>4</h1>
-</div>
-<div class="content">
-	<h1>5</h1>
-</div>
-<div class="content">
-	<h1>6</h1>
-</div>
-<div class="content">
-	<h1>7</h1>
-</div>
+
 
 <script>
 var $html = $("html");
@@ -435,7 +554,7 @@ function replace_page(el) {
 
 <style>
 html{
-	overflow: hidden;
+	/* overflow: hidden; */
 }
  
 html, body{
@@ -455,7 +574,6 @@ html, body{
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
- 
 	font-size: 20em;
 	font-weight: bold;
 	text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6);
@@ -464,47 +582,38 @@ html, body{
 
 .flexCardBg {
 	position: relative;
-	height: 100%;
 }
 
 .flexCard {
 	width: 100%;
-	/* position : absolute; */
-	top: 40%;
+	/* position : absolute;
+	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	position: absolute;
+	position: absolute; */
 }
 
 .flexCardTh {
-	height: 100%;
+	height: 960px;
 	width: 100%;
+	z-index: -10;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 .flexCardTitle {
-	position: absolute;
+	margin-top: 50px;
 	font-size: 3rem;
 	top: 5%;
 	left: 20%;
+	padding: 0 10px;
+	background-color: white;
+	border-radius: 20px;
+	font-family: 'GoryeongStrawberry', sans-serif;
+	font-weight: lighter;
 }
 
-.main_search {
-	width: 500px;
-	height: 70px;
-	border-radius: 20px;
-	padding: 0 30px;
-	font-size: 2rem;
-	z-index: 100;
-}
-
-.search_box {
-	z-index: 12;
-	position: absolute;
-	display: flex;
-	top: 50%;
-	left: 38%;
-	border-radius: 20px;
-}
 .weatherSection {
 	z-index: 10;
 	position: absolute;
@@ -521,10 +630,10 @@ html, body{
 	border-radius: 20px;
 	background-color: gray;
 	opacity: 0.7;
-	width: 220px;
+	width: 240px;
 }
 .regionBox {
-	width: 220px;
+	width: 240px;
 	height: 50px;
 	border-radius: 20px;
 	background-color: gray;
@@ -559,15 +668,56 @@ html, body{
 	border-radius: 20px;
 }
 
-.search_submit {
-	width: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+</style>
+
+<!-- polaroidCard -->
+<style>
+.polaroidTh {
+	height: 960px;
+	width: 100%;
+	z-index: -10;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
-.search_btn {
-	border-radius: 30px;;
+.polaroidBox {
+	display: flex;
+	justify-content: center;
+}
+
+.polaroid {
+	width: 400px;
+	margin: 40px 40px;
+}
+
+.card {
+	aspect-ratio: 3 / 2;
+	border: 2px solid #444;
+	padding: 5% 5% 5% 5%;
+	font-weight: bold;
+	background-color: #fff;
+}
+
+.card > p {
+	margin-top: 5%;
+	text-align: center;
+}
+
+.image {
+	width: 100%;
+	border: 2px solid #444;	
+}
+.polaroidTitle {
+	margin-top: 50px;
+	font-size: 3rem;
+	top: 5%;
+	left: 20%;
+	padding: 0 10px;
+	background-color: white;
+	border-radius: 20px;
+	font-family: 'GoryeongStrawberry', sans-serif;
+	font-weight: lighter;
 }
 </style>
 

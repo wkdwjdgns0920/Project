@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="대전광역시 문화축제 정보" />
 
@@ -75,17 +74,17 @@
 </section> --%>
 
 <script>
-$(document).ready(function(){
-	$('.i_box').mouseover(function(){
-		$(this).addClass("animate__headShake animate__animated");
+	$(document).ready(function() {
+		$('.i_box').mouseover(function() {
+			$(this).addClass("animate__headShake animate__animated");
+		});
 	});
-});
 
-$(document).ready(function(){
-	$('.i_box').mouseleave(function(){
-		$(this).removeClass("animate__headShake animate__animated");
+	$(document).ready(function() {
+		$('.i_box').mouseleave(function() {
+			$(this).removeClass("animate__headShake animate__animated");
+		});
 	});
-});
 </script>
 
 <div class="thema_box">
@@ -94,7 +93,7 @@ $(document).ready(function(){
 
 <!-- 페이지 알림섹션 -->
 <section class="topSection">
-	<img class="topImg" src="/resources/img/img2.jpg"/>
+	<img class="topImg" src="/resources/img/img2.jpg" />
 	<div class="explain">문화축제 정보</div>
 </section>
 
@@ -105,38 +104,40 @@ $(document).ready(function(){
 			<div class="w-500 h-00 text-xl h-300">
 
 				<div class="jc-sb">
-					<div class="festvImg">
-						<a href="festvDetail?id=1">
-							<img class="i_box"
-								src="https://www.newstnt.com/news/photo/201911/40653_33359_4942.jpg"
-								alt="" />
-							유성 국화 페스티벌
-						</a>
+					<div class="festvImgBox">
+						<div class="festvImg">
+							<a href="festvDetail?id=1">
+								<img class="i_box" src="https://www.newstnt.com/news/photo/201911/40653_33359_4942.jpg" alt="" />
+								유성 국화 페스티벌
+							</a>
+						</div>
+					</div>
+					<div class="img_empty"></div>
+
+					<div class="festvImgBox">
+						<div class="festvImg">
+							<a href="festvDetail?id=2">
+								<img class="i_box"
+									src="https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1553041875109.jpg" alt="" />
+								대청호 벚꽃축제
+							</a>
+						</div>
 					</div>
 
 					<div class="img_empty"></div>
 
-					<div class="festvImg">
-						<a href="festvDetail?id=2">
-							<img class="i_box"
-								src="https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1553041875109.jpg"
-								alt="" />
-							대청호 벚꽃축제
-						</a>
+					<div class="festvImgBox">
+						<div class="festvImg">
+							<a href="festvDetail?id=3">
+								<img class="i_box"
+									src="https://mblogthumb-phinf.pstatic.net/MjAxNzA1MTJfMTQg/MDAxNDk0NTI4MTY0ODgx.HjeOwQNGczmjevfbyKv0zZBWEcZa5nyy0YNcYF0G41Ug.EjUKx9j9B5BQBcY3UyAPprEsaU5K2ZraMHqMn_nO79Ug.JPEG.first_seogu/%EB%8C%80%EC%A0%84_%EC%84%9C%EA%B5%AC%ED%9E%90%EB%A7%81_%EC%95%84%ED%8A%B8%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C%E2%94%83%EC%95%84%ED%8A%B8_%EB%B9%9B_%ED%84%B0%EB%84%9016.jpg?type=w800"
+									alt="" />
+								서구힐링아트페스티벌
+							</a>
+						</div>
 					</div>
-
-					<div class="img_empty"></div>
-
-					<div class="festvImg">
-						<a href="festvDetail?id=3">
-							<img class="i_box"
-								src="https://mblogthumb-phinf.pstatic.net/MjAxNzA1MTJfMTQg/MDAxNDk0NTI4MTY0ODgx.HjeOwQNGczmjevfbyKv0zZBWEcZa5nyy0YNcYF0G41Ug.EjUKx9j9B5BQBcY3UyAPprEsaU5K2ZraMHqMn_nO79Ug.JPEG.first_seogu/%EB%8C%80%EC%A0%84_%EC%84%9C%EA%B5%AC%ED%9E%90%EB%A7%81_%EC%95%84%ED%8A%B8%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C%E2%94%83%EC%95%84%ED%8A%B8_%EB%B9%9B_%ED%84%B0%EB%84%9016.jpg?type=w800"
-								alt="" />
-							서구힐링아트페스티벌
-						</a>
-					</div>
-
 				</div>
+
 			</div>
 
 			<div class="h-30"></div>
@@ -144,37 +145,39 @@ $(document).ready(function(){
 			<div class="w-500 h-00 text-xl h-300">
 
 				<div class="jc-sb">
-
-					<div class="festvImg">
-						<a href="festvDetail?id=4">
-							<img class="i_box"
-								src="https://www.barefootfesta.com:444/mobile/project/design/main/main_img01.jpg"
-								alt="" />
-							계족산맨발축제
-						</a>
+					<div class="festvImgBox">
+						<div class="festvImg">
+							<a href="festvDetail?id=4">
+								<img class="i_box" src="https://www.barefootfesta.com:444/mobile/project/design/main/main_img01.jpg" alt="" />
+								계족산맨발축제
+							</a>
+						</div>
 					</div>
+
+
+					<div class="img_empty"></div>
+					<div class="festvImgBox">
+						<div class="festvImg">
+							<a href="festvDetail?id=5">
+								<img class="i_box"
+									src="https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1461904424401.jpg" alt="" />
+								유성온천문화축제
+							</a>
+						</div>
+					</div>
+
 
 					<div class="img_empty"></div>
 
-					<div class="festvImg">
-						<a href="festvDetail?id=5">
-							<img class="i_box"
-								src="https://www.mcst.go.kr/attachFiles/cultureInfoCourt/localFestival/notifyFestival/1461904424401.jpg"
-								alt="" />
-							유성온천문화축제
-						</a>
+					<div class="festvImgBox">
+						<div class="festvImg">
+							<a href="festvDetail?id=6">
+								<img class="i_box" src="https://cdn.ggilbo.com/news/photo/201911/725823_562028_88.jpg" alt="" />
+								효문화뿌리축제
+							</a>
+						</div>
 					</div>
 
-					<div class="img_empty"></div>
-
-					<div class="festvImg">
-						<a href="festvDetail?id=6">
-							<img class="i_box"
-								src="https://cdn.ggilbo.com/news/photo/201911/725823_562028_88.jpg"
-								alt="" />
-							효문화뿌리축제
-						</a>
-					</div>
 
 				</div>
 			</div>
@@ -185,36 +188,39 @@ $(document).ready(function(){
 			<div class="w-500 h-00 text-xl h-300">
 				<div class="jc-sb">
 
-					<div class="festvImg">
-						<a href="festvDetail?id=7">
-							<img class="i_box"
-								src="https://www.daejeontoday.com/news/photo/201903/541285_192161_5837.jpg"
-								alt="" />
-							대청호 대덕뮤직페스티벌
-						</a>
+					<div class="festvImgBox">
+						<div class="festvImg">
+							<a href="festvDetail?id=7">
+								<img class="i_box" src="https://www.daejeontoday.com/news/photo/201903/541285_192161_5837.jpg" alt="" />
+								대청호 대덕뮤직페스티벌
+							</a>
+						</div>
 					</div>
+
 
 					<div class="img_empty"></div>
 
-					<div class="festvImg">
-						<a href="festvDetail?id=8">
-							<img class="i_box"
-								src="https://cdn.ccdailynews.com/news/photo/202110/2090065_559742_2722.jpg"
-								alt="" />
-							대전사이언스페스티벌
-						</a>
+					<div class="festvImgBox">
+						<div class="festvImg">
+							<a href="festvDetail?id=8">
+								<img class="i_box" src="https://cdn.ccdailynews.com/news/photo/202110/2090065_559742_2722.jpg" alt="" />
+								대전사이언스페스티벌
+							</a>
+						</div>
 					</div>
+
 
 					<div class="img_empty"></div>
 
-					<div class="festvImg">
-						<a href="festvDetail?id=9">
-							<img class="i_box"
-								src="https://image.여기유.com/content_festival/2020011311055815788811582751.jpg"
-								alt="" />
-							2022 대전국제와인페스티벌
-						</a>
+					<div class="festvImgBox">
+						<div class="festvImg">
+							<a href="festvDetail?id=9">
+								<img class="i_box" src="https://image.여기유.com/content_festival/2020011311055815788811582751.jpg" alt="" />
+								2022 대전국제와인페스티벌
+							</a>
+						</div>
 					</div>
+
 
 				</div>
 			</div>
@@ -223,36 +229,41 @@ $(document).ready(function(){
 
 			<div class="w-500 h-00 text-xl h-300">
 				<div class="jc-sb">
-					<div class="festvImg">
-						<a href="festvDetail?id=10">
-							<img class="i_box"
-								src="https://www.timenews.co.kr/web/news/article_image/81d532e05ec6b0d7f2b10f9f362f4f88"
-								alt="" />
-							대전 0시 뮤직페스티벌
-						</a>
+
+					<div class="festvImgBox">
+						<div class="festvImg">
+							<a href="festvDetail?id=10">
+								<img class="i_box" src="https://www.timenews.co.kr/web/news/article_image/81d532e05ec6b0d7f2b10f9f362f4f88"
+									alt="" />
+								대전 0시 뮤직페스티벌
+							</a>
+						</div>
 					</div>
+
 
 					<div class="img_empty"></div>
 
-					<div class="festvImg">
-						<a href="festvDetail?id=11">
-							<img class="i_box"
-								src="https://img2.yna.co.kr/etc/inner/KR/2018/10/17/AKR20181017088900063_01_i_P4.jpg"
-								alt="" />
-							대전사이언스페스티벌
-						</a>
+					<div class="festvImgBox">
+						<div class="festvImg">
+							<a href="festvDetail?id=11">
+								<img class="i_box" src="https://img2.yna.co.kr/etc/inner/KR/2018/10/17/AKR20181017088900063_01_i_P4.jpg" alt="" />
+								대전사이언스페스티벌
+							</a>
+						</div>
 					</div>
+
 
 					<div class="img_empty"></div>
 
-					<div class="festvImg">
-						<a href="festvDetail?id=12">
-							<img class="i_box"
-								src="https://www.thesegye.com/news/data/20221016/p1065578299763795_321_thum.jpg"
-								alt="" />
-							2022 대전 서구 힐링 아트페스티벌
-						</a>
+					<div class="festvImgBox">
+						<div class="festvImg">
+							<a href="festvDetail?id=12">
+								<img class="i_box" src="https://www.thesegye.com/news/data/20221016/p1065578299763795_321_thum.jpg" alt="" />
+								서구 힐링 아트페스티벌
+							</a>
+						</div>
 					</div>
+
 				</div>
 			</div>
 		</c:if>
@@ -263,14 +274,14 @@ $(document).ready(function(){
 				<div class="flex">
 
 					<div class="empty_box"></div>
-
+					
+					<div class="festvImgBox">
 					<div class="festvImg">
 						<a href="festvDetail?id=13">
-							<img class="i_box"
-								src="https://newsimg.sedaily.com/2023/01/02/29KBGC3TII_1.jpg"
-								alt="" />
+							<img class="i_box" src="https://newsimg.sedaily.com/2023/01/02/29KBGC3TII_1.jpg" alt="" />
 							2023 대전맨몸마라톤
 						</a>
+					</div>
 					</div>
 
 				</div>
@@ -291,10 +302,9 @@ $(document).ready(function(){
 		<c:if test="${endPage ==  pagesCount || endPage == pagesCount -1}">
 			<c:set var="startPage" value="${endPage - 4}" />
 		</c:if>
-		
+
 		<c:forEach begin="1" end="3" var="i">
-			<a class="p-1 ${param.page == i ? 'page_active btn-active' : '' }"
-				href="?page=${i }">${i }</a>
+			<a class="p-1 ${param.page == i ? 'page_active btn-active' : '' }" href="?page=${i }">${i }</a>
 		</c:forEach>
 	</div>
 </section>
@@ -308,6 +318,7 @@ $(document).ready(function(){
 	left: 0;
 	z-index: -1;
 }
+
 .bg-w {
 	background-color: white;
 }
@@ -343,6 +354,13 @@ $(document).ready(function(){
 
 .img_empty {
 	width: 50px;
+}
+
+.festvImgBox {
+	border: 3px solid black;
+	padding: 10px;
+	background-color: pink;
+	border-radius: 10px;
 }
 </style>
 
