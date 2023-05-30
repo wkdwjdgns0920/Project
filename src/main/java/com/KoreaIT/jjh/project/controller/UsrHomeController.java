@@ -109,7 +109,56 @@ public class UsrHomeController {
 
 	// 연습
 	@RequestMapping("usr/home/startPage")
-	public String startPage() {
+	public String startPage(Model model) {
+		
+		String date = DateTime.getNowDate();
+        int nowDate = Integer.parseInt(date);
+		String time = DateTime.getNowTime();
+		int nowTime = Integer.parseInt(time);
+        
+		System.out.println(nowTime);
+		System.out.println(time);
+		if(nowTime < 210) {
+			nowDate -= 1;
+			date = Integer.toString(nowDate);
+			time = "2300";
+			
+			model.addAttribute("date",date);
+	        model.addAttribute("time",time);
+		} else if (nowTime > 210 && nowTime < 510) {
+			time = "0210";
+			model.addAttribute("date",date);
+	        model.addAttribute("time",time);
+		} else if (nowTime > 510 && nowTime < 810) {
+			time = "0510";
+			model.addAttribute("date",date);
+	        model.addAttribute("time",time);
+		}  else if (nowTime > 810 && nowTime < 1110) {
+			time = "0810";
+			model.addAttribute("date",date);
+	        model.addAttribute("time",time);
+		} else if (nowTime > 1110 && nowTime < 1410) {
+			time = "1110";
+			model.addAttribute("date",date);
+	        model.addAttribute("time",time);
+		} else if (nowTime > 1410 && nowTime < 1710) {
+			time = "1410";
+			model.addAttribute("date",date);
+	        model.addAttribute("time",time);
+		} else if (nowTime > 1710 && nowTime < 2010) {
+			time = "1710";
+			model.addAttribute("date",date);
+	        model.addAttribute("time",time);
+		} else if (nowTime > 2010 && nowTime < 2310) {
+			time = "2010";
+			model.addAttribute("date",date);
+	        model.addAttribute("time",time);
+		}  else if (nowTime > 2310 && nowTime < 2400) {
+			time = "2310";
+			model.addAttribute("date",date);
+	        model.addAttribute("time",time);
+		}
+		
 		return "usr/home/startPage";
 	}
 	

@@ -230,7 +230,8 @@
 			        };
 </script>
 
-		<script type="text/javascript">
+<!-- 메인페이지 이미지 -->
+<script type="text/javascript">
 	var imgArray = new Array();
 	imgArray[0] = "https://www.yuseong.go.kr/thumbnail/trrsrt/TR_202105110257537201.jpg";
 	imgArray[1] = "https://www.yuseong.go.kr/thumbnail/trrsrt/TR_202105110255503251.jpg";
@@ -246,9 +247,9 @@
 	
 </script>
 
-		<!-- <img class="main_body" src="https://www.yuseong.go.kr/thumbnail/trrsrt/TR_202105110257537201.jpg" alt=""> -->
+		<!-- 메인페이지 이미지 -->
 		<div class="main_body">
-				<img class="img_box" id="introImg" border="0">
+				<img class="img_box" id="introImg" border="0" />
 				<form action="">
 						<div class="search_box">
 								<input class="main_search" type="text" />
@@ -261,7 +262,8 @@
 						
 				</form>
 		</div>
-		
+	
+	<!-- 날씨박스 -->	
 	<section class="weatherSection">
 		<div class="regionBox">대전광역시</div>
 		<div class="weatherBox">
@@ -272,6 +274,7 @@
 			</div>
 		</div>
 	</section>
+	
 		<!-- flexCardBg -->
 		<section class="flexCardBg">
 				<img class="flexCardTh" src="/resources/img/테마1.jpg" alt="" />
@@ -351,8 +354,8 @@
 
 		<div class="h-500"></div>
 
-		<!-- flexCard 액션관련 -->
-		<script>
+<!-- flexCard 액션관련 -->
+<script>
 $(".option").click(function(){
 	if (!$(this).hasClass("active")) {
 		$(".option").removeClass("active");
@@ -384,7 +387,7 @@ function replace_page(el) {
 
 </script>
 
-		<style>
+<style>
 .flexCardBg {
 	position: relative;
 }
