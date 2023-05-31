@@ -9,12 +9,20 @@
 	position: absolute;
 	z-index: -10;	
 }
+.myPageTitle {
+	margin-bottom: 20px;
+	font-size: 2rem;
+	font-weight: bold;
+}
 </style>
 <div class="modifyPage_bg">
 	<img class="flexCardTh" src="/resources/img/테마2.jpg" alt="" />
 </div>
 <section class="div_center mt_50">
 	<div class="mt-8 text-xl po-rel w-800">
+		<div class="div_center">
+			<div class="myPageTitle">회원정보수정</div>
+		</div>
 		<div class="table-box-type-2">
 			<form action="../member/doModify" method="POST" onsubmit="if(confirm('정말 수정하시겠습니까?')==false) return false;">
 				<input type="hidden" name="loginId" value="${rq.loginedMember.loginId }" />

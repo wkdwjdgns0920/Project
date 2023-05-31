@@ -57,7 +57,7 @@
 <!-- 게시글상세보기 -->
 <section class="div_center">
 	<div class="mt-8 text-xl bor-b po-rel w-800">
-
+		
 		<div class="mx-auto px-3">
 			<table class="table table-zebra w-full">
 				<colgroup>
@@ -187,15 +187,6 @@
 					};
 			</script>
 
-			<style>
-				.cursor {
-					cursor: pointer;
-				}
-				.reaction_btn {
-					display: flex;
-				}
-				
-			</style>
 
 			<div>
 				<div class="h-30"></div>
@@ -393,6 +384,15 @@
 		</div>
 	</div>
 </section>
+
+<style>
+.cursor {
+	cursor: pointer;
+}
+.reaction_btn {
+	display: flex;
+}
+</style>
 
 
 <%@ include file="../common/foot.jspf"%>

@@ -3,8 +3,12 @@
 <c:set var="pageTitle" value="Article Modify" />
 <%@ include file="../common/head.jspf"%>
 
-<div class="mt-8 text-xl bor-b po-rel">
-	<div class="container mx-auto px-3">
+
+<div class="thema_box">
+	<img class="flexCardTh" src="/resources/img/테마2.jpg" alt="" />
+</div>
+<section class="div_center">
+	<div class="mt-8 text-xl po-rel w-800">
 		<form action="../article/doModify" method="POST">
 		<input type="hidden" name="id" value="${article.id }" />
 		<table class="table table-zebra w-full">
@@ -25,6 +29,12 @@
 					<td class="text-center">${article.updateDate.substring(2,16) }</td>
 				</tr>
 				<tr>
+					<th>첨부 이미지</th>
+						<td>
+							<input name="file__article__0__extra__Img__1" placeholder="이미지를 선택해주세요" type="file" />
+						</td>
+					</tr>
+				<tr>
 					<th>작성자</th>
 					<td class="text-center">${article.extra_writer }</td>
 				</tr>
@@ -37,13 +47,13 @@
 				<tr>
 					<th>내용</th>
 					<td>
-						<textarea class="w-full" type="text" name="body" placeholder="내용을 입력해주세요" />${article.body }</textarea>
+						<textarea class="w-full modify_body" type="text" name="body" placeholder="내용을 입력해주세요" />${article.body }</textarea>
 					</td>
 				</tr>
 				<tr>
 					<th></th>
-					<td>
-						<button type="submit">수정!</button>
+					<td class="modify_btn">
+						<button type="submit" class="btn btn-active btn-ghost">수정</button>
 					</td>
 				</tr>
 			</tbody>
@@ -62,6 +72,21 @@
 	</div>
 </div>
 
+<style>
+.modify_body {
+	height: 300px;
+}
+.modify_btn {
+	display: flex;
+	justify-content: flex-end;
+}
+.thema_box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+</style>
 
 
 
