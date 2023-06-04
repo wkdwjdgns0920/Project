@@ -313,7 +313,7 @@ public class UsrMemberController {
 	//	로그아웃실행페이지
 	@RequestMapping("usr/member/doLogout")
 	@ResponseBody
-	public String doLogout(String afterLogoutUri) {
+	public String doLogout() {
 
 		if (rq.isLogined() == false) {
 			return Ut.jsHistoryBack("F-1", "로그인안함");
@@ -323,7 +323,7 @@ public class UsrMemberController {
 		rq.logout();
 		//	rq에서 isLogined을 false로 바꿈
 		
-		return Ut.jsReplace("S-1", "로그아웃!", afterLogoutUri);
+		return Ut.jsReplace("S-1", "로그아웃!", "/");
 		//	로그아웃성공에 대한 알림창과 로그아웃을 하기전에 페이지로 이동
 	}
 	
@@ -367,6 +367,11 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack("F-5", "비밀번호가 틀립니다");
 		}
 		//	로그인 비밀번호가 loginId와 일치하는 회원의 비밀번호와 일치하지 않으면 알림창을 띄우고 뒤로가기
+		
+		if (member.isDelStatus() == true) {
+			return Ut.jsReplace("F-6","탈퇴한 회원입니다", "/");
+		}
+		//	탈퇴된 계정로그인 체크
 
 		rq.login(member);
 		//	rq에서 isLogined를 true로 바꿈

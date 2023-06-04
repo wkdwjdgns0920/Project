@@ -1,5 +1,8 @@
 package com.KoreaIT.jjh.project.repository;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -82,5 +85,82 @@ public interface MemberRepository {
 			""")
 	int modify(int actorId, String loginPw, String name, String nickname, String cellphoneNum, String email);
 	//	회원정보를 수정하고 수정한 행에 대한 정보를 전달	
-		
+	
+	@Select("""
+			<script>
+			SELECT COUNT(*) AS cnt
+			FROM `member` AS M
+			WHERE 1
+			<if test="mSearchKeyword != ''">
+				<choose>
+					<when test="mSearchKeywordTypeCode == 'loginId'">
+						AND M.loginId LIKE CONCAT('%', #{mSearchKeyword}, '%')
+					</when>
+					<when test="mSearchKeywordTypeCode == 'name'">
+						AND M.name LIKE CONCAT('%', #{mSearchKeyword}, '%')
+					</when>
+					<when test="mSearchKeywordTypeCode == 'nickname'">
+						AND M.nickname LIKE CONCAT('%', #{mSearchKeyword}, '%')
+					</when>
+					<otherwise>
+						AND (
+							M.loginId LIKE CONCAT('%', #{mSearchKeyword}, '%')
+							OR M.name LIKE CONCAT('%', #{mSearchKeyword}, '%')
+							OR M.nickname LIKE CONCAT('%', #{mSearchKeyword}, '%')
+							)
+					</otherwise>
+				</choose>
+			</if>
+			</script>
+			""")
+	int getMembersCount(String mSearchKeywordTypeCode, String mSearchKeyword);
+	//	회원수를 가져옴	
+	
+	@Select("""
+			<script>
+			SELECT M.*
+			FROM `member` AS M
+			WHERE 1
+			<if test="mSearchKeyword != ''">
+				<choose>
+					<when test="mSearchKeywordTypeCode == 'loginId'">
+						AND M.loginId LIKE CONCAT('%', #{mSearchKeyword}, '%')
+					</when>
+					<when test="mSearchKeywordTypeCode == 'name'">
+						AND M.name LIKE CONCAT('%', #{mSearchKeyword}, '%')
+					</when>
+					<when test="mSearchKeywordTypeCode == 'nickname'">
+						AND M.nickname LIKE CONCAT('%', #{mSearchKeyword}, '%')
+					</when>
+					<otherwise>
+						AND (
+							M.loginId LIKE CONCAT('%', #{mSearchKeyword}, '%')
+							OR M.name LIKE CONCAT('%', #{mSearchKeyword}, '%')
+							OR M.nickname LIKE CONCAT('%', #{mSearchKeyword}, '%')
+							)
+					</otherwise>
+				</choose>
+			</if>
+			ORDER BY M.id DESC
+				<if test="limitTake != -1">
+					LIMIT #{limitFrom}, #{limitTake}
+				</if>
+			</script>
+			""")
+	List<Member> getForPrintMembers(String mSearchKeywordTypeCode, String mSearchKeyword, int limitFrom,
+			int limitTake);
+	//	회원정보를 가져옴
+	
+	@Delete("""
+			<script>
+			UPDATE `member`
+			<set>
+				updateDate = NOW(),
+				delStatus = 1,
+				delDate = NOW(),
+			</set>
+			WHERE id = #{id}
+			</script>
+			""")
+	void deleteMember(int id);
 }

@@ -1,5 +1,7 @@
 package com.KoreaIT.jjh.project.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -110,6 +112,36 @@ public class MemberService {
 	//	id에 대한 회원의 정보를 가져옴
 	public Member getMemberById(int id) {
 		return memberRepository.getMemberById(id);
+	}
+
+	public int getMembersCount(String mSearchKeywordTypeCode, String mSearchKeyword) {
+		
+		return memberRepository.getMembersCount(mSearchKeywordTypeCode,mSearchKeyword);
+	}
+
+	public List<Member> getForPrintMembers(String mSearchKeywordTypeCode, String mSearchKeyword,
+			int memberItemsInAPage, int mPage) {
+		
+		int limitFrom = (mPage - 1) * memberItemsInAPage;
+		int limitTake = memberItemsInAPage;
+		List<Member> members = memberRepository.getForPrintMembers(mSearchKeywordTypeCode, mSearchKeyword,
+				limitFrom, limitTake);
+		
+		return members;
+	}
+
+	public void deleteMembers(List<Integer> memberIds) {
+		for (int memberId : memberIds) {
+			Member member = getMemberById(memberId);
+
+			if (member != null) {
+				deleteMember(member);
+			}
+		}
+	}
+
+	private void deleteMember(Member member) {
+		memberRepository.deleteMember(member.getId());
 	}
 
 }

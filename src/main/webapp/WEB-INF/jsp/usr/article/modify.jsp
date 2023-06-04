@@ -5,7 +5,7 @@
 
 
 <div class="thema_box">
-	<img class="flexCardTh" src="/resources/img/테마2.jpg" alt="" />
+	<img class="flexCardTh" src="/resources/img/테마4.jpg" alt="" />
 </div>
 <section class="div_center">
 	<div class="mt-8 text-xl po-rel w-800">

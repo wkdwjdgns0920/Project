@@ -139,7 +139,7 @@ public class Rq {
 	
 	//	로그아웃 후에 이동할 페이지
 	public String getLogoutUri() {
-		return "../member/doLogout?afterLogoutUri=" + getEncodedCurrentUri();
+		return "../member/doLogout";
 	}
 	
 	//	회원가입후에 이동할 페이지

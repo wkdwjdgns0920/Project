@@ -24,24 +24,32 @@
 <!-- 공통 js파일 사용 -->
 <script src="/resource/common.js" defer="defer"></script>
 </head>
+<style>
+	.loginBar_menu{
+		font-size: 15px;
+	}
+</style>
 <body>
 	<section class="head_con">
 		<header>
 			<div class="flex justify-end pr-5 text-xs login_bar">
 				<c:if test="${!rq.logined}">
-					<a class=" p-3" href="${rq.loginUri }">LOGIN</a>
+					<a class="loginBar_menu p-3" href="${rq.loginUri }">LOGIN</a>
 				</c:if>
 				<c:if test="${rq.logined}">
-					<div class="nickname_box">${rq.loginedMember.nickname }님..환영합니다</div>
+					<div class="loginBar_menu nickname_box">${rq.loginedMember.nickname }님..환영합니다</div>
 				</c:if>
 				<c:if test="${rq.logined}">
-					<a class=" p-3" href="${rq.logoutUri }">로그아웃</a>
+					<a class="loginBar_menu p-3" href="${rq.logoutUri }">로그아웃</a>
 				</c:if>
 				<c:if test="${rq.logined}">
-					<a class=" p-3" href="/usr/member/myPage">마이페이지</a>
+					<a class="loginBar_menu p-3" href="/usr/member/myPage">마이페이지</a>
 				</c:if>
 				<c:if test="${!rq.logined}">
-					<a class=" p-3" href="${rq.joinUri }">회원가입</a>
+					<a class="loginBar_menu p-3" href="${rq.joinUri }">회원가입</a>
+				</c:if>
+				<c:if test="${rq.loginedMember.authLevel == 7 }">
+					<a class="loginBar_menu p-3" href="../admin/list">관리자페이지</a>
 				</c:if>
 			</div>
 

@@ -215,4 +215,21 @@ public class ArticleService {
 		return articleRepository.getArticlesByMemberId(actorId);
 	}
 
+	public void deleteArticles(List<Integer> articleIds) {
+		
+		for (int articleId : articleIds) {
+			Article article = getArticle(articleId);
+
+			if (article != null) {
+				deleteArticle(article);
+				
+			}
+		}
+		
+	}
+
+	private void deleteArticle(Article article) {
+		articleRepository.deleteArticle(article.getId());
+	}
+
 }

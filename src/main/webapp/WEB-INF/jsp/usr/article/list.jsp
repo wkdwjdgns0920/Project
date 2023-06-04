@@ -14,7 +14,7 @@
 </style>
 
 <div class="thema_box">
-	<img class="flexCardTh" src="/resources/img/테마2.jpg" alt="" />
+	<img class="flexCardTh" src="/resources/img/테마4.jpg" alt="" />
 </div>
 
 <section class="div_center mt-8 animate__animated animate__backInUp ">

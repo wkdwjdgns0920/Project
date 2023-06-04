@@ -46,7 +46,7 @@ public class UsrArticleController {
 	public String showList(Model model, @RequestParam(defaultValue = "1") int boardId,
 			@RequestParam(defaultValue = "title,body") String searchKeywordType,
 			@RequestParam(defaultValue = "") String searchKeyword, @RequestParam(defaultValue = "1") int page) {
-
+		
 		Board board = boardService.getBoardById(boardId); // boardId를 이용해서 board를 가져옴
 
 		if (board == null) { // boardId를 통해 가져온 board가 없는 경우
