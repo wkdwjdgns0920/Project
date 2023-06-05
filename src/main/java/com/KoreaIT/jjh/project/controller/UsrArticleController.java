@@ -247,6 +247,14 @@ public class UsrArticleController {
 			return Ut.jsHistoryBack("F-1", "로그인후에 이용해주세요");
 		}
 		// 로그인을 하지 않았으면 로그인후 이용해달라는 알림창을 띄우고 뒤로가기
+		
+		if(boardId == 1) {
+			int loginedMemberAuthLevel = rq.getLoginedMember().getAuthLevel();
+			
+			if(loginedMemberAuthLevel != 7) {
+				return Ut.jsHistoryBack("F-A", "공지사항은 관리자만 사용이 가능합니다.");
+			}
+		}
 
 		if (Ut.empty(title)) {
 			return Ut.jsHistoryBack("F-1", "제목을 입력해주세요");

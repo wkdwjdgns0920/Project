@@ -410,7 +410,7 @@ $(document).ready(function(){
 		<div class="card">
 			<div class="image">
 				<a href="https://www.youtube.com/watch?v=OhNELFhe87w">
-					<img src="https://daejeontour.co.kr/boardImageStreamOut.do?file_idx=861" alt="">
+					<img src="/resources/img/2020년 새로운 대전여행!.jpg" alt="">
 				</a>
 			</div>
 			<p>2020년 새로운 대전여행!</p>
@@ -421,7 +421,7 @@ $(document).ready(function(){
 		<div class="card">
 			<div class="image">
 				<a href="https://www.youtube.com/watch?v=7OGX_xXC06s">
-					<img src="https://daejeontour.co.kr/boardImageStreamOut.do?file_idx=860" alt="">
+					<img src="/resources/img/맛있는 계족산황톳길~!!.jpg" alt="">
 				</a>
 			</div>
 			<p>맛있는 계족산황톳길~!!</p>
@@ -432,7 +432,7 @@ $(document).ready(function(){
 		<div class="card">
 			<div class="image">
 				<a href="https://www.youtube.com/watch?v=P5C7GPmTenY">
-					<img src="https://daejeontour.co.kr/boardImageStreamOut.do?file_idx=859" alt="">
+					<img src="/resources/img/랜선여행 여름안에서 대전 안에서 대전육교.jpg" alt="">
 				</a>
 			</div>
 			<p>랜선여행 여름안에서 대전 안에서 대전육교</p>
@@ -445,7 +445,7 @@ $(document).ready(function(){
 		<div class="card">
 			<div class="image">
 				<a href="https://www.youtube.com/watch?v=Hozsbhhkfck">
-					<img src="https://daejeontour.co.kr/boardImageStreamOut.do?file_idx=856" alt="">
+					<img src="/resources/img/랜선여행 여름안에서 대전 안에서 한밭수목원.jpg" alt="">
 				</a>
 			</div>
 			<p>랜선여행 여름안에서 대전 안에서 한밭수목원</p>
@@ -456,7 +456,7 @@ $(document).ready(function(){
 		<div class="card">
 			<div class="image">
 				<a href="https://www.youtube.com/watch?v=NJ4WiItqd1Q">
-					<img src="https://daejeontour.co.kr/boardImageStreamOut.do?file_idx=855" alt="">
+					<img src="/resources/img/랜선여행 여름안에서 대전 안에서 대청호.jpg" alt="">
 				</a>
 			</div>
 			<p>랜선여행 여름안에서 대전 안에서 대청호</p>
@@ -467,7 +467,7 @@ $(document).ready(function(){
 		<div class="card">
 			<div class="image">
 				<a href="https://www.youtube.com/watch?v=AzwaMHhYnJQ">
-					<img src="https://daejeontour.co.kr/boardImageStreamOut.do?file_idx=854" alt="">
+					<img src="/resources/img/대전 원도심 역사투어 1박2일 코스.jpg" alt="">
 				</a>
 			</div>
 			<p>대전 원도심 역사투어 1박2일 코스</p>

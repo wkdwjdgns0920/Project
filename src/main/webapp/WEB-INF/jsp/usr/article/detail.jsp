@@ -110,7 +110,7 @@
 			function like_reaction() {
 			var relId = ${param.id};
 			var actorId = ${rq.loginedMemberId}
-			alert('좋아요!');
+			
 			// ajax활용하여 reaction실행
 			$.get('../reactionPoint/like', {
 				isAjax : 'Y',
@@ -118,7 +118,7 @@
 				relId : relId
 			}, function(data) {
 				if (data.success) {
-					alert(data.data1);
+					alert('좋아요!');
 					$('.total_point').html('<span class="total_point">' + data.data1 + '</span>')
 					$('.reaction_btn').html('<span class="bg_blue cursor cancelLike" style="background: linen blue; font-size: 2em" onclick="cancelLike_reaction()">&#128525;</span><div class="empty_box"></div><span class="cursor disLikeL" style="background: linen; font-size: 2em" onclick="alert(this.title)" title="좋아요를 취소해">&#128557;</span>')
 				} else {
@@ -131,7 +131,7 @@
 			function cancelLike_reaction() {
 				var relId = ${param.id};
 				var actorId = ${rq.loginedMemberId}
-				alert('좋아요취소');
+				
 				// ajax활용하여 reaction실행
 				$.get('../reactionPoint/cancelLike', {
 					isAjax : 'Y',
@@ -139,6 +139,7 @@
 					relId : relId
 				}, function(data) {
 					if (data.success) {
+						alert('좋아요취소');
 						$('.total_point').html('<span class="total_point">' + data.data1 + '</span>')
 						$('.reaction_btn').html('<span class="bg_blue cursor like" style="background: linen; font-size: 2em" onclick="like_reaction()">&#128525;</span><div class="empty_box"></div><span class="cursor disLike" style="background: linen; font-size: 2em" onclick="disLike_reaction()">&#128557;</span>')
 					} else {
@@ -151,7 +152,7 @@
 				function disLike_reaction() {
 					var relId = ${param.id};
 					var actorId = ${rq.loginedMemberId}
-					alert('싫어요!');
+					
 					// ajax활용하여 reaction실행
 					$.get('../reactionPoint/disLike', {
 						isAjax : 'Y',
@@ -159,6 +160,7 @@
 						relId : relId
 					}, function(data) {
 						if (data.success) {
+							alert('싫어요!');
 							$('.reaction_btn').html('<span class="bg_blue cursor likeD" style="background: linen; font-size: 2em" onclick="alert(this.title)" title="싫어요를 취소해">&#128525;</span><div class="empty_box"></div><span class="cursor bg_red cancelDisLike" style="background: linen red; font-size: 2em" onclick="cancelDisLike_reaction()">&#128557;</span>')
 						} else {
 							alert('안됨');
@@ -170,7 +172,7 @@
 				function cancelDisLike_reaction() {
 					var relId = ${param.id};
 					var actorId = ${rq.loginedMemberId}
-					alert('싫어요취소');
+					
 					// ajax활용하여 reaction실행
 					$.get('../reactionPoint/cancelDisLike', {
 						isAjax : 'Y',
@@ -178,6 +180,7 @@
 						relId : relId
 					}, function(data) {
 						if (data.success) {
+							alert('싫어요취소');
 							$('.reaction_btn').html('<span class="bg_blue cursor like" style="background: linen; font-size: 2em" onclick="like_reaction()">&#128525;</span><div class="empty_box"></div><span class="cursor disLike" style="background: linen; font-size: 2em" onclick="cancelDisLike_reaction()">&#128557;</span>')
 						} else {
 							alert('안됨');
